@@ -12,12 +12,66 @@ waypoint = -7.07 0.0 -7.07
 waypoint = 0.0 0.0 -10.0
 waypoint = 7.07 0.0 -7.07
 
+[Path]
+name     = "Path2"
+position = 0.0 2.5 0.0
+waypoint = 15.0 0.0 0.0
+waypoint = 10.6 0.0 10.6
+waypoint = 0.0 0.0 15.0
+waypoint = -10.605 0.0 10.605
+waypoint = -15.0 0.0 0.0
+waypoint = -10.605 0.0 -10.605
+waypoint = 0.0 0.0 -15.0
+waypoint = 10.605 0.0 -10.605
 
+[Path]
+name     = "Path3"
+position = 0.0 2.5 0.0
+waypoint = 20.0 0.0 0.0
+waypoint = 14.14 0.0 14.14
+waypoint = 0.0 0.0 20.0
+waypoint = -14.14 0.0 14.14
+waypoint = -20.0 0.0 0.0
+waypoint = -14.14 0.0 -14.14
+waypoint = 0.0 0.0 -20.0
+waypoint = 14.14 0.0 -14.14
 
+[Path]
+name     = "Path4"
+position = 0.0 2.5 0.0
+waypoint = 40.0 0.0 0.0
+waypoint = 28.28 0.0 28.28
+waypoint = 0.0 0.0 40.0
+waypoint = -28.28 0.0 28.28
+waypoint = -40.0 0.0 0.0
+waypoint = -28.28 0.0 -28.28
+waypoint = 0.0 0.0 -40.0
+waypoint = 28.28 0.0 -28.28
 
 [Sphere]
-name     = "Sphere"
+name     = "Planet1"
 scaling  = 1.0 1.0 1.0
 position = 0.0 5.0 -12.0
 boundpath = "Path"
+pathspeed = 5.00
+
+[Sphere]
+name     = "Planet2"
+scaling  = 1.0 1.0 1.0
+position = 0.0 5.0 -12.0
+boundpath = "Path2"
+pathspeed = 5.00
+
+[Sphere]
+name     = "Planet3"
+scaling  = 1.0 1.0 1.0
+position = 0.0 5.0 -12.0
+boundpath = "Path3"
+pathspeed = 5.00
+
+[Sphere]
+name     = "Planet4"
+scaling  = 1.0 1.0 1.0
+position = 0.0 5.0 -12.0
+boundpath = "Path4"
 pathspeed = 5.00
