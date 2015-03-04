@@ -6,7 +6,6 @@
 
 #include "StaticCamera.h"
 
-#include "CubeModel.h"
 #include "SphereModel.h"
 #include "Path.h"
 
@@ -26,6 +25,9 @@ World::World()
 	mCamera.push_back(new StaticCamera(vec3(3.0f, 5.0f, 5.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
 	mCamera.push_back(new StaticCamera(vec3(3.0f, 30.0f, 5.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
 	mCamera.push_back(new StaticCamera(vec3(0.5f,  0.5f, 5.0f), vec3(0.0f, 0.5f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
+    
+    mCamera.push_back(new StaticCamera(vec3(3.0f, 80.0f, 5.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
+    
 	mCurrentCamera = 0;
 
 }
@@ -77,7 +79,13 @@ void World::Update(float dt)
 		{
 			mCurrentCamera = 2;
 		}
-	}
+    }else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_4 ) == GLFW_PRESS)
+    {
+        if (mCamera.size() > 3)
+        {
+            mCurrentCamera = 3;
+        }
+    }
 
 	// Spacebar to change the shader
 	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_0 ) == GLFW_PRESS)

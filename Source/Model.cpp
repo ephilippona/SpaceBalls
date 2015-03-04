@@ -147,7 +147,6 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 
 glm::mat4 Model::GetWorldMatrix() const
 {
-	// @TODO 2, you must build the world matrix from the position, scaling and rotation informations
 
 	//Translate
 	glm::mat4 translatedView = glm::translate(glm::mat4(1.0f), mPosition);
