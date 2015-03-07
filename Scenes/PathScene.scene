@@ -1,6 +1,12 @@
 # This is a comment
 
 [Path]
+name     = "Center"
+position = 0.0 2.5 0.0
+waypoint = 0.1 0.0 0.0
+waypoint = 0.0 0.0 0.0
+
+[Path]
 name     = "Path"
 position = 0.0 2.5 0.0
 waypoint = 10.0 0.0 0.0
@@ -37,7 +43,43 @@ waypoint = 0.0 0.0 -20.0
 waypoint = 14.14 0.0 -14.14
 
 [Path]
-name     = "Path4"
+name	= "Path4"
+position = 0.0 2.5 0.0
+waypoint = 25 0	0
+waypoint = 17.675 0 17.675
+waypoint = 0 0 25
+waypoint = -17.675 0 17.675
+waypoint = -25 0 0
+waypoint = -17.675 0 -17.675
+waypoint = 0 0 -25
+waypoint = 17.675 0 -17.675
+
+[Path]
+name	= "Path5"
+position = 0.0 2.5 0.0
+waypoint = 	30	0	0
+waypoint = 	21.21	0	21.21
+waypoint = 	0	0	30
+waypoint = 	-21.21	0	21.21
+waypoint = 	-30	0	0
+waypoint = 	-21.21	0	-21.21
+waypoint = 	0	0	-30
+waypoint = 	21.21	0	-21.21
+
+[Path]
+name	= "Path6"
+position = 0.0 2.5 0.0
+waypoint = 	35	0	0
+waypoint = 	24.745	0	24.745
+waypoint = 	0	0	35
+waypoint = 	-24.745	0	24.745
+waypoint = 	-35	0	0
+waypoint = 	-24.745	0	-24.745
+waypoint = 	0	0	-35
+waypoint = 	24.745	0	-24.745
+
+[Path]
+name     = "Path7"
 position = 0.0 2.5 0.0
 waypoint = 40.0 0.0 0.0
 waypoint = 28.28 0.0 28.28
@@ -47,6 +89,18 @@ waypoint = -40.0 0.0 0.0
 waypoint = -28.28 0.0 -28.28
 waypoint = 0.0 0.0 -40.0
 waypoint = 28.28 0.0 -28.28
+
+[Path]
+name     = "Path8"
+position = 0.0 2.5 0.0
+waypoint = 	45	0	0
+waypoint = 	31.815	0	31.815
+waypoint = 	0	0	45
+waypoint = 	-31.815	0	31.815
+waypoint = 	-45	0	0
+waypoint = 	-31.815	0	-31.815
+waypoint = 	0	0	-45
+waypoint = 	31.815	0	-31.815
 
 [Sphere]
 name     = "Planet1"
@@ -75,3 +129,38 @@ scaling  = 1.0 1.0 1.0
 position = 0.0 5.0 -12.0
 boundpath = "Path4"
 pathspeed = 5.00
+
+[Sphere]
+name     = "Planet5"
+scaling  = 1.0 1.0 1.0
+position = 0.0 5.0 -12.0
+boundpath = "Path5"
+pathspeed = 5.00
+
+[Sphere]
+name     = "Planet6"
+scaling  = 1.0 1.0 1.0
+position = 0.0 5.0 -12.0
+boundpath = "Path6"
+pathspeed = 5.00
+
+[Sphere]
+name     = "Planet7"
+scaling  = 1.0 1.0 1.0
+position = 0.0 5.0 -12.0
+boundpath = "Path7"
+pathspeed = 5.00
+
+[Sphere]
+name     = "Planet8"
+scaling  = 1.0 1.0 1.0
+position = 0.0 5.0 -12.0
+boundpath = "Path8"
+pathspeed = 5.00
+
+[Sphere]
+name     = "Sun"
+scaling  = 5.0 5.0 5.0
+position = 0.0 5.0 -12.0
+boundpath = "Center"
+pathspeed = 0.00
