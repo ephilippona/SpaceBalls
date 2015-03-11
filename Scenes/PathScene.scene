@@ -3,164 +3,164 @@
 [Path]
 name     = "Center"
 position = 0.0 2.5 0.0
-waypoint = 0.1 0.0 0.0
+waypoint = 0.001 0.0 0.0
 waypoint = 0.0 0.0 0.0
 
-[Path]
-name     = "Path"
+[Spline]
+name     = "Path1"
 position = 0.0 2.5 0.0
-waypoint = 10.0 0.0 0.0
-waypoint = 7.07 0.0 7.07
-waypoint = 0.0 0.0 10.0
-waypoint = -7.07 0.0 7.07
-waypoint = -10.0 0.0 0.0
-waypoint = -7.07 0.0 -7.07
-waypoint = 0.0 0.0 -10.0
-waypoint = 7.07 0.0 -7.07
+controlpoint = 10.0 0.0 0.0
+controlpoint = 7.07 0.0 7.07
+controlpoint = 0.0 0.0 10.0
+controlpoint = -7.07 0.0 7.07
+controlpoint = -10.0 0.0 0.0
+controlpoint = -7.07 0.0 -7.07
+controlpoint = 0.0 0.0 -10.0
+controlpoint = 7.07 0.0 -7.07
 
-[Path]
+[Spline]
 name     = "Path2"
 position = 0.0 2.5 0.0
-waypoint = 15.0 0.0 0.0
-waypoint = 10.6 0.0 10.6
-waypoint = 0.0 0.0 15.0
-waypoint = -10.605 0.0 10.605
-waypoint = -15.0 0.0 0.0
-waypoint = -10.605 0.0 -10.605
-waypoint = 0.0 0.0 -15.0
-waypoint = 10.605 0.0 -10.605
+controlpoint = 15.0 0.0 0.0
+controlpoint = 10.6 0.0 10.6
+controlpoint = 0.0 0.0 15.0
+controlpoint = -10.605 0.0 10.605
+controlpoint = -15.0 0.0 0.0
+controlpoint = -10.605 0.0 -10.605
+controlpoint = 0.0 0.0 -15.0
+controlpoint = 10.605 0.0 -10.605
 
-[Path]
+[Spline]
 name     = "Path3"
 position = 0.0 2.5 0.0
-waypoint = 20.0 0.0 0.0
-waypoint = 14.14 0.0 14.14
-waypoint = 0.0 0.0 20.0
-waypoint = -14.14 0.0 14.14
-waypoint = -20.0 0.0 0.0
-waypoint = -14.14 0.0 -14.14
-waypoint = 0.0 0.0 -20.0
-waypoint = 14.14 0.0 -14.14
+controlpoint = 20.0 0.0 0.0
+controlpoint = 14.14 0.0 14.14
+controlpoint = 0.0 0.0 20.0
+controlpoint = -14.14 0.0 14.14
+controlpoint = -20.0 0.0 0.0
+controlpoint = -14.14 0.0 -14.14
+controlpoint = 0.0 0.0 -20.0
+controlpoint = 14.14 0.0 -14.14
 
-[Path]
+[Spline]
 name	= "Path4"
 position = 0.0 2.5 0.0
-waypoint = 25 0	0
-waypoint = 17.675 0 17.675
-waypoint = 0 0 25
-waypoint = -17.675 0 17.675
-waypoint = -25 0 0
-waypoint = -17.675 0 -17.675
-waypoint = 0 0 -25
-waypoint = 17.675 0 -17.675
+controlpoint = 25 0	0
+controlpoint = 17.675 0 17.675
+controlpoint = 0 0 25
+controlpoint = -17.675 0 17.675
+controlpoint = -25 0 0
+controlpoint = -17.675 0 -17.675
+controlpoint = 0 0 -25
+controlpoint = 17.675 0 -17.675
 
-[Path]
+[Spline]
 name	= "Path5"
 position = 0.0 2.5 0.0
-waypoint = 	30	0	0
-waypoint = 	21.21	0	21.21
-waypoint = 	0	0	30
-waypoint = 	-21.21	0	21.21
-waypoint = 	-30	0	0
-waypoint = 	-21.21	0	-21.21
-waypoint = 	0	0	-30
-waypoint = 	21.21	0	-21.21
+controlpoint = 	30	0	0
+controlpoint = 	21.21	0	21.21
+controlpoint = 	0	0	30
+controlpoint = 	-21.21	0	21.21
+controlpoint = 	-30	0	0
+controlpoint = 	-21.21	0	-21.21
+controlpoint = 	0	0	-30
+controlpoint = 	21.21	0	-21.21
 
-[Path]
+[Spline]
 name	= "Path6"
 position = 0.0 2.5 0.0
-waypoint = 	35	0	0
-waypoint = 	24.745	0	24.745
-waypoint = 	0	0	35
-waypoint = 	-24.745	0	24.745
-waypoint = 	-35	0	0
-waypoint = 	-24.745	0	-24.745
-waypoint = 	0	0	-35
-waypoint = 	24.745	0	-24.745
+controlpoint = 	35	0	0
+controlpoint = 	24.745	0	24.745
+controlpoint = 	0	0	35
+controlpoint = 	-24.745	0	24.745
+controlpoint = 	-35	0	0
+controlpoint = 	-24.745	0	-24.745
+controlpoint = 	0	0	-35
+controlpoint = 	24.745	0	-24.745
 
-[Path]
+[Spline]
 name     = "Path7"
 position = 0.0 2.5 0.0
-waypoint = 40.0 0.0 0.0
-waypoint = 28.28 0.0 28.28
-waypoint = 0.0 0.0 40.0
-waypoint = -28.28 0.0 28.28
-waypoint = -40.0 0.0 0.0
-waypoint = -28.28 0.0 -28.28
-waypoint = 0.0 0.0 -40.0
-waypoint = 28.28 0.0 -28.28
+controlpoint = 40.0 0.0 0.0
+controlpoint = 28.28 0.0 28.28
+controlpoint = 0.0 0.0 40.0
+controlpoint = -28.28 0.0 28.28
+controlpoint = -40.0 0.0 0.0
+controlpoint = -28.28 0.0 -28.28
+controlpoint = 0.0 0.0 -40.0
+controlpoint = 28.28 0.0 -28.28
 
-[Path]
+[Spline]
 name     = "Path8"
 position = 0.0 2.5 0.0
-waypoint = 	45	0	0
-waypoint = 	31.815	0	31.815
-waypoint = 	0	0	45
-waypoint = 	-31.815	0	31.815
-waypoint = 	-45	0	0
-waypoint = 	-31.815	0	-31.815
-waypoint = 	0	0	-45
-waypoint = 	31.815	0	-31.815
-
-[Sphere]
-name     = "Planet1"
-scaling  = 1.0 1.0 1.0
-position = 0.0 5.0 -12.0
-boundpath = "Path"
-pathspeed = 5.00
-
-[Sphere]
-name     = "Planet2"
-scaling  = 1.0 1.0 1.0
-position = 0.0 5.0 -12.0
-boundpath = "Path2"
-pathspeed = 5.00
-
-[Sphere]
-name     = "Planet3"
-scaling  = 1.0 1.0 1.0
-position = 0.0 5.0 -12.0
-boundpath = "Path3"
-pathspeed = 5.00
-
-[Sphere]
-name     = "Planet4"
-scaling  = 1.0 1.0 1.0
-position = 0.0 5.0 -12.0
-boundpath = "Path4"
-pathspeed = 5.00
-
-[Sphere]
-name     = "Planet5"
-scaling  = 1.0 1.0 1.0
-position = 0.0 5.0 -12.0
-boundpath = "Path5"
-pathspeed = 5.00
-
-[Sphere]
-name     = "Planet6"
-scaling  = 1.0 1.0 1.0
-position = 0.0 5.0 -12.0
-boundpath = "Path6"
-pathspeed = 5.00
-
-[Sphere]
-name     = "Planet7"
-scaling  = 1.0 1.0 1.0
-position = 0.0 5.0 -12.0
-boundpath = "Path7"
-pathspeed = 5.00
-
-[Sphere]
-name     = "Planet8"
-scaling  = 1.0 1.0 1.0
-position = 0.0 5.0 -12.0
-boundpath = "Path8"
-pathspeed = 5.00
+controlpoint = 	45	0	0
+controlpoint = 	31.815	0	31.815
+controlpoint = 	0	0	45
+controlpoint = 	-31.815	0	31.815
+controlpoint = 	-45	0	0
+controlpoint = 	-31.815	0	-31.815
+controlpoint = 	0	0	-45
+controlpoint = 	31.815	0	-31.815
 
 [Sphere]
 name     = "Sun"
-scaling  = 5.0 5.0 5.0
 position = 0.0 5.0 -12.0
+scaling = 5.0 5.0 5.0
 boundpath = "Center"
-pathspeed = 0.00
+pathspeed = 0.0
+
+[Sphere]
+name     = "Planet1"
+position = 0.0 5.0 -12.0
+scaling = 1.0 1.0 1.0
+boundpath = "Path1"
+pathspeed = 5.0
+
+[Sphere]
+name     = "Planet2"
+position = 0.0 5.0 -12.0
+scaling = 1.0 1.0 1.0
+boundpath = "Path2"
+pathspeed = 5.0
+
+[Sphere]
+name     = "Planet3"
+position = 0.0 5.0 -12.0
+scaling = 1.0 1.0 1.0
+boundpath = "Path3"
+pathspeed = 5.0
+
+[Sphere]
+name     = "Planet4"
+position = 0.0 5.0 -12.0
+scaling = 1.0 1.0 1.0
+boundpath = "Path4"
+pathspeed = 5.0
+
+[Sphere]
+name     = "Planet5"
+position = 0.0 5.0 -12.0
+scaling = 1.0 1.0 1.0
+boundpath = "Path5"
+pathspeed = 5.0
+
+[Sphere]
+name     = "Planet6"
+position = 0.0 5.0 -12.0
+scaling = 1.0 1.0 1.0
+boundpath = "Path6"
+pathspeed = 5.0
+
+[Sphere]
+name     = "Planet7"
+position = 0.0 5.0 -12.0
+scaling = 1.0 1.0 1.0
+boundpath = "Path7"
+pathspeed = 5.0
+
+[Sphere]
+name     = "Planet8"
+position = 0.0 5.0 -12.0
+scaling = 1.0 1.0 1.0
+boundpath = "Path8"
+pathspeed = 5.0

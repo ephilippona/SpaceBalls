@@ -9,6 +9,7 @@
 
 #include "Model.h"
 #include "Path.h"
+#include "BSpline.h"
 #include "World.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/common.hpp>
@@ -16,7 +17,7 @@
 using namespace std;
 using namespace glm;
 
-Model::Model() : mName("UNNAMED"), mPosition(0.0f, 0.0f, 0.0f), mScaling(1.0f, 1.0f, 1.0f), mRotationAxis(0.0f, 1.0f, 0.0f), mRotationAngleInDegrees(0.0f), mPath(nullptr), mSpeed(0.0f), mTargetWaypoint(0)
+Model::Model() : mName("UNNAMED"), mPosition(0.0f, 0.0f, 0.0f), mScaling(1.0f, 1.0f, 1.0f), mRotationAxis(0.0f, 1.0f, 0.0f), mRotationAngleInDegrees(0.0f), mPath(nullptr), mSpeed(0.0f), mTargetWaypoint(1), mSpline(nullptr), mSplineParameterT(0.0f)
 {
 }
 
@@ -26,7 +27,9 @@ Model::~Model()
 
 void Model::Update(float dt)
 {
-	vec3 target = mPath->GetWaypoint(mTargetWaypoint);
+    if(mPath != nullptr)
+    {
+		vec3 target = mPath->GetWaypoint(mTargetWaypoint);
 		vec3 directionToTarget = target - mPosition;
 		float distanceToTarget = length(directionToTarget);
 
@@ -40,6 +43,13 @@ void Model::Update(float dt)
 		{
 			++mTargetWaypoint;
 		}
+    }
+	else if (mSpline)
+	{
+		// @TODO - Animate along the spline
+		//         You can adjust the parameter T every frame to compute the new position
+		//         Make sure the speed matches mSpeed in units per second
+	}
 }
 
 void Model::Draw()
@@ -62,7 +72,7 @@ void Model::Load(ci_istringstream& iss)
 
 		if (ParseLine(token) == false)
 		{
-			fprintf(stderr, "Error loading scene file... token:  %s!", token[0].c_str());
+			fprintf(stderr, "Error loading scene file... token:  %s!", token[0]);
 			getchar();
 			exit(-1);
 		}
@@ -130,10 +140,18 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 			ci_string pathName = token[2];
             World* w = World::GetInstance();
             mPath = w->FindPath(pathName);
-			mTargetWaypoint = 1;
+
+			if (mPath == nullptr)
+			{
+				mSpline = w->FindSpline(pathName);
+			}
 			if (mPath != nullptr)
 			{
 				mPosition = mPath->GetWaypoint(0);
+			}
+			else if (mSpline)
+			{
+				mPosition = mSpline->GetPosition(mSplineParameterT);
 			}
 		}
 		else
@@ -147,15 +165,12 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 
 glm::mat4 Model::GetWorldMatrix() const
 {
+	mat4 worldMatrix(1.0f);
 
-	//Translate
-	glm::mat4 translatedView = glm::translate(glm::mat4(1.0f), mPosition);
-	//Rotate
-	glm::mat4 rotatedView    = glm::rotate(glm::mat4(1.0f), mRotationAngleInDegrees, mRotationAxis);	
-	//Scale
-	glm::mat4 scaledView     = glm::scale(glm::mat4(1.0f), mScaling);
-	//Define World Matrix
-	glm::mat4 worldMatrix = translatedView*rotatedView*scaledView;
+	mat4 t = glm::translate(mat4(1.0f), mPosition);
+	mat4 r = glm::rotate(mat4(1.0f), mRotationAngleInDegrees, mRotationAxis);
+	mat4 s = glm::scale(mat4(1.0f), mScaling);
+	worldMatrix = t * r * s;
 
 	return worldMatrix;
 }
