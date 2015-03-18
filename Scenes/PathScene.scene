@@ -105,62 +105,175 @@ controlpoint = 	31.815	0	-31.815
 [Sphere]
 name     = "Sun"
 position = 0.0 5.0 -12.0
+#scaling = 27.32467 27.32467 27.32467
 scaling = 5.0 5.0 5.0
 boundpath = "Center"
 pathspeed = 0.0
 
 [Sphere]
-name     = "Planet1"
+name     = "Mercury"
 position = 0.0 5.0 -12.0
-scaling = 1.0 1.0 1.0
+scaling = 0.0955 0.0955 0.0955
 boundpath = "Path1"
 pathspeed = 5.0
 
 [Sphere]
-name     = "Planet2"
+name     = "Venus"
 position = 0.0 5.0 -12.0
-scaling = 1.0 1.0 1.0
+scaling = 0.23725 0.23725 0.23725
 boundpath = "Path2"
 pathspeed = 5.0
 
 [Sphere]
-name     = "Planet3"
+name     = "Earth"
 position = 0.0 5.0 -12.0
-scaling = 1.0 1.0 1.0
+scaling = 0.25 0.25 0.25
 boundpath = "Path3"
 pathspeed = 5.0
 
 [Sphere]
-name     = "Planet4"
+name     = "Mars"
 position = 0.0 5.0 -12.0
-scaling = 1.0 1.0 1.0
+scaling = 0.133 0.133 0.133
 boundpath = "Path4"
 pathspeed = 5.0
 
 [Sphere]
-name     = "Planet5"
+name     = "Jupiter"
 position = 0.0 5.0 -12.0
-scaling = 1.0 1.0 1.0
+scaling = 2.80225 2.80225 2.80225
 boundpath = "Path5"
 pathspeed = 5.0
 
 [Sphere]
-name     = "Planet6"
+name     = "Saturn"
 position = 0.0 5.0 -12.0
-scaling = 1.0 1.0 1.0
+scaling = 2.36225 2.36225 2.36225
 boundpath = "Path6"
 pathspeed = 5.0
 
 [Sphere]
-name     = "Planet7"
+name     = "Uranus"
 position = 0.0 5.0 -12.0
-scaling = 1.0 1.0 1.0
+scaling = 1.00175 1.00175 1.00175
 boundpath = "Path7"
 pathspeed = 5.0
 
 [Sphere]
-name     = "Planet8"
+name     = "Neptune"
 position = 0.0 5.0 -12.0
-scaling = 1.0 1.0 1.0
+scaling = 0.97075 0.97075 0.97075
 boundpath = "Path8"
+pathspeed = 5.0
+
+[Moon]
+name     = "Moon"
+parent = "Earth"
+position = 0.0 0.0 0.0
+scaling = 0.042 0.042 0.042
+parentDistance = 0.4
+pathspeed = 5.0
+
+[Moon]
+name     = "Europa"
+parent = "Jupiter"
+position = 0.0 0.0 0.0
+scaling = 0.06125 0.06125 0.06125
+parentDistance = 3.0
+pathspeed = 5.0
+
+[Moon]
+name     = "Io"
+parent = "Jupiter"
+position = 0.0 0.0 0.0
+scaling = 0.0715 0.0715 0.0715
+parentDistance = 3.0
+pathspeed = 5.0
+
+[Moon]
+name     = "Callisto"
+parent = "Jupiter"
+position = 0.0 0.0 0.0
+scaling = 0.0945 0.0945 0.0945
+parentDistance = 3.0
+pathspeed = 5.0
+
+[Moon]
+name     = "Ganymede"
+parent = "Jupiter"
+position = 0.0 0.0 0.0
+scaling = 0.10325 0.10325 0.10325
+parentDistance = 3.0
+pathspeed = 5.0
+
+[Moon]
+name     = "Titan"
+parent = "Saturn"
+position = 0.0 0.0 0.0
+scaling = 0.101 0.101 0.101
+parentDistance = 2.63
+pathspeed = 5.0
+
+[Moon]
+name     = "Rhea"
+parent = "Saturn"
+position = 0.0 0.0 0.0
+scaling = 0.03 0.03 0.03
+parentDistance = 2.63
+pathspeed = 5.0
+
+[Moon]
+name     = "Iapetus"
+parent = "Saturn"
+position = 0.0 0.0 0.0
+scaling = 0.02825 0.02825 0.02825
+parentDistance = 2.63
+pathspeed = 5.0
+
+[Moon]
+name     = "Dione"
+parent = "Saturn"
+position = 0.0 0.0 0.0
+scaling = 0.022 0.022 0.022
+parentDistance = 2.63
+pathspeed = 5.0
+
+[Moon]
+name     = "Titania"
+parent = "Uranus"
+position = 0.0 0.0 0.0
+scaling = 0.031 0.031 0.031
+parentDistance = 1.2
+pathspeed = 5.0
+
+[Moon]
+name     = "Oberon"
+parent = "Uranus"
+position = 0.0 0.0 0.0
+scaling = 0.03 0.03 0.03
+parentDistance = 1.2
+pathspeed = 5.0
+
+[Moon]
+name     = "Umbriel"
+parent = "Uranus"
+position = 0.0 0.0 0.0
+scaling = 0.023 0.023 0.023
+parentDistance = 1.2
+pathspeed = 5.0
+
+[Moon]
+name     = "Ariel"
+parent = "Uranus"
+position = 0.0 0.0 0.0
+scaling = 0.02275 0.02275 0.02275
+parentDistance = 1.2
+pathspeed = 5.0
+
+[Moon]
+name     = "Triton"
+parent = "Neptune"
+position = 0.0 0.0 0.0
+scaling = 0.053 0.053 0.053
+parentDistance = 1.2
 pathspeed = 5.0

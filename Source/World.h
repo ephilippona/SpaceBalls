@@ -14,6 +14,7 @@
 
 class Camera;
 class Model;
+class MoonModel;
 class Path;
 class BSpline;
 
@@ -30,11 +31,13 @@ public:
 
 	void LoadScene(const char * scene_path);
     void LoadCameras();
+	void SetMoon(MoonModel m, ci_string parentModelName);
 
     Path* FindPath(ci_string pathName);
     BSpline* FindSpline(ci_string pathName);
     BSpline* FindSplineByIndex(unsigned int index);
     Model* FindModelByIndex(unsigned int index);
+	Model* FindModelByName(ci_string name);
 
 private:
     static World* instance;

@@ -40,8 +40,10 @@ public:
 	glm::vec3 GetRotationAxis() const	{ return mRotationAxis; }
 	float     GetRotationAngle() const	{ return mRotationAngleInDegrees; }
     ci_string GetName()                 { return mName; }
+	unsigned int GetNumChildren()       { return mNumChildren; }
 
     void SetSpeed(float spd);
+	void IncrementNumChild()       { mNumChildren++; }
 
 protected:
 	virtual bool ParseLine(const std::vector<ci_string> &token) = 0;
@@ -58,4 +60,5 @@ protected:
 	float mSplineParameterT;
     float mSpeed;
     unsigned int mTargetWaypoint;
+	unsigned int mNumChildren;
 };

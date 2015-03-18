@@ -12,6 +12,7 @@
 #include "ParsingHelper.h"
 
 #include "SphereModel.h"
+#include "MoonModel.h"
 #include "Path.h"
 #include "BSpline.h"
 
@@ -30,11 +31,11 @@ World::World()
     instance = this;
 
 	// Setup Camera
-	mCamera.push_back(new StaticCamera(vec3(3.0f, 5.0f, 5.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
+	mCamera.push_back(new StaticCamera(vec3(3.0f, 70.0f, 5.0f), vec3(10.0f, 0.0f, 10.0f), vec3(0.0f, 1.0f, 0.0f)));//looks at initial placement of planets
 	mCamera.push_back(new StaticCamera(vec3(3.0f, 30.0f, 5.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
 	mCamera.push_back(new StaticCamera(vec3(0.5f,  0.5f, 5.0f), vec3(0.0f, 0.5f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
     
-    mCamera.push_back(new StaticCamera(vec3(3.0f, 80.0f, 5.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
+    mCamera.push_back(new StaticCamera(vec3(3.0f, 90.0f, 5.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
     
 	mCurrentCamera = 0;
 }
@@ -218,6 +219,13 @@ void World::LoadScene(const char * scene_path)
 				path->Load(iss);
                 mSpline.push_back(path);
 			}
+			else if( result == "moon" )
+			{
+				MoonModel* moon = new MoonModel();
+				moon->Load(iss);
+				moon->SetParent(FindModelByName(moon->GetParentName()));
+				mModel.push_back(moon);
+			}
 			else if ( result.empty() == false && result[0] == '#')
 			{
 				// this is a comment line
@@ -248,7 +256,6 @@ void World::LoadScene(const char * scene_path)
     
     LoadCameras();
 }
-
 void World::LoadCameras()
 {      
     // BSpline Camera
@@ -293,4 +300,14 @@ BSpline* World::FindSplineByIndex(unsigned int index)
 Model* World::FindModelByIndex(unsigned int index)
 {
     return mModel.size() > 0 ? mModel[index % mModel.size()] : nullptr;
+}
+
+Model* World::FindModelByName(ci_string name)
+{
+	for (vector<Model*>::iterator it = mModel.begin(); it < mModel.end(); ++it)
+	{
+		if(!strcmp((*it)->GetName().c_str(),name.c_str()))
+			return (*it);
+	}
+	return nullptr;
 }
