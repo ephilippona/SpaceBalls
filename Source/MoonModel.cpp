@@ -8,7 +8,7 @@ using namespace glm;
 using namespace std;
 
 MoonModel::MoonModel(vec3 size) : Model()
-{
+{ 
     Vertex vertexBuffer[] = {
         // position,                                    normal,                              color
         { vec3(0.000000, 0.000000, -1.000000), vec3(0.000000, 0.000000, -1.000000), vec3(1.0f, 0.05f, 0.05f) },
@@ -1399,6 +1399,7 @@ bool MoonModel::ParseLine(const std::vector<ci_string> &token)
     {
         return Model::ParseLine(token);
     }
+	return true;
 }
 /*
 * Sets the distance from the parent planet and this moon

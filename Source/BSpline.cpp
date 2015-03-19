@@ -5,7 +5,7 @@
 // Updated by Gary Chang on 24/1/15
 //
 // Copyright (c) 2014-2015 Concordia University. All rights reserved.
-//
+// 
 
 #include "BSpline.h"
 #include "Renderer.h"
