@@ -11,6 +11,7 @@
 #include "Renderer.h"
 #include "ParsingHelper.h"
 
+#include "ShipModel.h"
 #include "SphereModel.h"
 #include "MoonModel.h"
 #include "Path.h"
@@ -225,7 +226,13 @@ void World::LoadScene(const char * scene_path)
 				moon->Load(iss);
 				moon->SetParent(FindModelByName(moon->GetParentName()));
 				mModel.push_back(moon);
-			}
+            }else if( result == "ship" )
+            {
+                ShipModel* ship = new ShipModel();
+                ship->Load(iss);
+//                ship->SetParent(FindModelByName(ship->GetParentName()));
+                mModel.push_back(ship);
+            }
 			else if ( result.empty() == false && result[0] == '#')
 			{
 				// this is a comment line

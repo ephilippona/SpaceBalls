@@ -72,8 +72,9 @@ void Model::Load(ci_istringstream& iss)
 
 		if (ParseLine(token) == false)
 		{
-			fprintf(stdout, "Error loading scene file... token:  %s!", line);
-			getchar();
+			fprintf(stdout, "Error loading scene file... token:  %s!", line.c_str());
+
+            getchar();
 			exit(-1);
 		}
 	}

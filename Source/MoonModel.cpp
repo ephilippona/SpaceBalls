@@ -1,5 +1,4 @@
 
-
 #include "MoonModel.h"
 #include "Renderer.h"
 #include <GL/glew.h>
@@ -1388,18 +1387,16 @@ bool MoonModel::ParseLine(const std::vector<ci_string> &token)
 		mParentName = token[2];
 	}
 	else if (token[0] == "parentDistance")
-		{
-			assert(token.size() > 2);
-			assert(token[1] == "=");
-
-            float radius = static_cast<float>(atof(token[2].c_str()));
-            SetParentDistance(radius);
-		}
-    else
     {
-        return Model::ParseLine(token);
+        assert(token.size() > 2);
+        assert(token[1] == "=");
+        
+        float radius = static_cast<float>(atof(token[2].c_str()));
+        SetParentDistance(radius);
     }
+    
 	return true;
+    
 }
 /*
 * Sets the distance from the parent planet and this moon

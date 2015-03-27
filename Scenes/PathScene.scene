@@ -263,3 +263,6 @@ parent = "Neptune"
 position = 0.0 0.0 0.0
 scaling = 0.053 0.053 0.053
 parentDistance = 1.2
+
+[Ship]
+position = 0.0 0.0 20.0
