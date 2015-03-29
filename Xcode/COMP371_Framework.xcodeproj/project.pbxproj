@@ -24,6 +24,7 @@
 		038B791A1A6FF39000111E36 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038B79191A6FF39000111E36 /* CoreVideo.framework */; };
 		038B791E1A6FF3EB00111E36 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038B791D1A6FF3EB00111E36 /* IOKit.framework */; };
 		A17043DA1AC7CDD3002708AC /* ThirdPersonCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A17043D81AC7CDD3002708AC /* ThirdPersonCamera.cpp */; };
+		A17043E21AC861CE002708AC /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A17043E11AC861CE002708AC /* Path.cpp */; };
 		A19C9B6B1ABA7555008CCF54 /* BSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A19C9B691ABA7555008CCF54 /* BSpline.cpp */; };
 		A19C9B761ABA7599008CCF54 /* CubeModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A19C9B6C1ABA7599008CCF54 /* CubeModel.cpp */; };
 		A19C9B771ABA7599008CCF54 /* MoonModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A19C9B6E1ABA7599008CCF54 /* MoonModel.cpp */; };
@@ -73,6 +74,7 @@
 		038B791D1A6FF3EB00111E36 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		A17043D81AC7CDD3002708AC /* ThirdPersonCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThirdPersonCamera.cpp; sourceTree = "<group>"; };
 		A17043D91AC7CDD3002708AC /* ThirdPersonCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdPersonCamera.h; sourceTree = "<group>"; };
+		A17043E11AC861CE002708AC /* Path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
 		A19C9B681ABA74B4008CCF54 /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		A19C9B691ABA7555008CCF54 /* BSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BSpline.cpp; sourceTree = "<group>"; };
 		A19C9B6A1ABA7555008CCF54 /* BSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSpline.h; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				038B78661A6EB3F500111E36 /* Model.cpp */,
 				038B78671A6EB3F500111E36 /* Model.h */,
 				038B78681A6EB3F500111E36 /* ParsingHelper.h */,
+				A17043E11AC861CE002708AC /* Path.cpp */,
 				038B786A1A6EB3F500111E36 /* Path.h */,
 				038B786B1A6EB3F500111E36 /* Renderer.cpp */,
 				A19C9B681ABA74B4008CCF54 /* Renderer.h */,
@@ -261,6 +264,7 @@
 				038B78821A6EB3F500111E36 /* World.cpp in Sources */,
 				038B787F1A6EB3F500111E36 /* Renderer.cpp in Sources */,
 				A1D9A0ED1ABB149E00A6959D /* ShipModel.cpp in Sources */,
+				A17043E21AC861CE002708AC /* Path.cpp in Sources */,
 				038B787C1A6EB3F500111E36 /* main.cpp in Sources */,
 				038B78791A6EB3F500111E36 /* Camera.cpp in Sources */,
 				A17043DA1AC7CDD3002708AC /* ThirdPersonCamera.cpp in Sources */,

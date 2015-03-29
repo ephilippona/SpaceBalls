@@ -3,14 +3,13 @@
 #include "ShipModel.h"
 #include "Renderer.h"
 #include <GL/glew.h>
-#include "vboindexer.hpp"
 
 
 using namespace glm;
 
 ShipModel::ShipModel(vec3 size) : Model()
 {
-    Vertex vertexBuffer[] = {
+   	Vertex vertexBuffer[] = {
         // position,                                    normal,                              color
         { vec3(0.000000, 0.000000, -1.000000), vec3(0.000000, 0.000000, -1.000000), vec3(1.0f, 0.05f, 0.05f) },
         { vec3(0.173648, 0.000000, -0.984808), vec3(0.173648, 0.000000, -0.984808), vec3(1.0f, 0.05f, 0.05f) },
@@ -1281,8 +1280,6 @@ ShipModel::ShipModel(vec3 size) : Model()
     glGenBuffers(1, &mVertexBufferID);
     glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferID);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexBuffer), vertexBuffer, GL_STATIC_DRAW);
-    
-    
 }
 
 ShipModel::~ShipModel()

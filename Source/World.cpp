@@ -17,7 +17,6 @@
 #include "Path.h"
 #include "BSpline.h"
 #include "ThirdPersonCamera.h"
-#include "CollisionDetection.h"
 
 #include "StaticCamera.h"
 
@@ -242,12 +241,13 @@ void World::LoadScene(const char * scene_path)
 				moon->Load(iss);
 				moon->SetParent(FindModelByName(moon->GetParentName()));
 				mModel.push_back(moon);
+                
             }else if( result == "ship" )
             {
                 ShipModel* ship = new ShipModel();
                 ship->Load(iss);
                 mModel.push_back(ship);
-                ship -> SetScaling(vec3(0.1f,0.1f,0.1f));
+//                ship -> SetScaling(vec3(0.1f,0.1f,0.1f));
             }
 			else if ( result.empty() == false && result[0] == '#')
 			{
