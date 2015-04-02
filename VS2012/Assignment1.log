@@ -1,47 +1,24 @@
-﻿Build started 01/04/2015 9:26:24 PM.
+﻿Build started 04/03/2015 9:44:00 PM.
      1>Project "C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\Assignment1.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"../ThirdParty/glew-1.10.0/include" /I"../ThirdParty/glfw-3.0.4/include" /I../ThirdParty/glm /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/" /Fd"C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Source\Camera.cpp ..\Source\EventManager.cpp ..\Source\Model.cpp ..\Source\Path.cpp ..\Source\Renderer.cpp ..\Source\SphereModel.cpp ..\Source\StaticCamera.cpp ..\Source\World.cpp ..\Source\main.cpp
-         main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"../ThirdParty/glew-1.10.0/include" /I"../ThirdParty/glfw-3.0.4/include" /I../ThirdParty/glm /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/" /Fd"C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Source\Model.cpp ..\Source\World.cpp
          World.cpp
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(371): error C2039: 'iterator_category' : is not a member of 'glm::detail::tvec3<float,0>'
-                 c:\users\philip\documents\github\spaceballs\source\world.cpp(133) : see reference to class template instantiation 'std::iterator_traits<glm::vec3>' being compiled
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(371): error C2146: syntax error : missing ';' before identifier 'iterator_category'
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(371): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(371): error C2602: 'std::iterator_traits<glm::vec3>::iterator_category' is not a member of a base class of 'std::iterator_traits<glm::vec3>'
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(371) : see declaration of 'std::iterator_traits<glm::vec3>::iterator_category'
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(371): error C2868: 'std::iterator_traits<glm::vec3>::iterator_category' : illegal syntax for using-declaration; expected qualified-name
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(373): error C2039: 'difference_type' : is not a member of 'glm::detail::tvec3<float,0>'
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(373): error C2146: syntax error : missing ';' before identifier 'difference_type'
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(373): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(373): error C2602: 'std::iterator_traits<glm::vec3>::difference_type' is not a member of a base class of 'std::iterator_traits<glm::vec3>'
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(373) : see declaration of 'std::iterator_traits<glm::vec3>::difference_type'
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(373): error C2868: 'std::iterator_traits<glm::vec3>::difference_type' : illegal syntax for using-declaration; expected qualified-name
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(375): error C2039: 'pointer' : is not a member of 'glm::detail::tvec3<float,0>'
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(375): error C2146: syntax error : missing ';' before identifier 'pointer'
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(375): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(375): error C2602: 'std::iterator_traits<glm::vec3>::pointer' is not a member of a base class of 'std::iterator_traits<glm::vec3>'
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(375) : see declaration of 'std::iterator_traits<glm::vec3>::pointer'
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(375): error C2868: 'std::iterator_traits<glm::vec3>::pointer' : illegal syntax for using-declaration; expected qualified-name
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(376): error C2039: 'reference' : is not a member of 'glm::detail::tvec3<float,0>'
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(376): error C2146: syntax error : missing ';' before identifier 'reference'
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(376): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(376): error C2602: 'std::iterator_traits<glm::vec3>::reference' is not a member of a base class of 'std::iterator_traits<glm::vec3>'
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(376) : see declaration of 'std::iterator_traits<glm::vec3>::reference'
-     1>c:\program files (x86)\microsoft visual studio 12.0\vc\include\xutility(376): error C2868: 'std::iterator_traits<glm::vec3>::reference' : illegal syntax for using-declaration; expected qualified-name
-         StaticCamera.cpp
-         SphereModel.cpp
-         Renderer.cpp
-     1>c:\users\philip\documents\github\spaceballs\source\renderer.cpp(110): warning C4018: '<' : signed/unsigned mismatch
-         Path.cpp
          Model.cpp
          GLM: rotate function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.
-         EventManager.cpp
-         Camera.cpp
-         GLM: perspective function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.
          Generating Code...
-     1>Done Building Project "C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\Assignment1.vcxproj" (Build target(s)) -- FAILED.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Bin/Spaceballs-Debug.exe" /INCREMENTAL /NOLOGO /LIBPATH:"../ThirdParty/glew-1.10.0/lib/Release/Win32" /LIBPATH:"../ThirdParty/glfw-3.0.4/lib/Win32/lib-msvc110" opengl32.lib glew32s.lib glfw3.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Bin/Spaceballs-Debug.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Bin/Spaceballs-Debug.lib" /MACHINE:X86 C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/Camera.obj
+         C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/Path.obj
+         C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/SphereModel.obj
+         C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/StaticCamera.obj
+         C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/EventManager.obj
+         C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/main.obj
+         C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/Model.obj
+         C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/Renderer.obj
+         C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Build/Debug/World.obj
+         Assignment1.vcxproj -> C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\/../Bin/Spaceballs-Debug.exe
+     1>Done Building Project "C:\Users\Philip\Documents\GitHub\SpaceBalls\VS2012\Assignment1.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:14.08
+Time Elapsed 00:00:09.36

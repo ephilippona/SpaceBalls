@@ -14,6 +14,7 @@
 		038B787B1A6EB3F500111E36 /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038B78631A6EB3F500111E36 /* EventManager.cpp */; };
 		038B787C1A6EB3F500111E36 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038B78651A6EB3F500111E36 /* main.cpp */; };
 		038B787D1A6EB3F500111E36 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038B78661A6EB3F500111E36 /* Model.cpp */; };
+		038B787E1A6EB3F500111E36 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038B78691A6EB3F500111E36 /* Path.cpp */; };
 		038B787F1A6EB3F500111E36 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038B786B1A6EB3F500111E36 /* Renderer.cpp */; };
 		038B78801A6EB3F500111E36 /* SphereModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038B78731A6EB3F500111E36 /* SphereModel.cpp */; };
 		038B78811A6EB3F500111E36 /* StaticCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038B78751A6EB3F500111E36 /* StaticCamera.cpp */; };
@@ -23,12 +24,6 @@
 		038B79181A6FF35E00111E36 /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 038B79171A6FF35E00111E36 /* libGLEW.a */; };
 		038B791A1A6FF39000111E36 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038B79191A6FF39000111E36 /* CoreVideo.framework */; };
 		038B791E1A6FF3EB00111E36 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038B791D1A6FF3EB00111E36 /* IOKit.framework */; };
-		A17043DA1AC7CDD3002708AC /* ThirdPersonCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A17043D81AC7CDD3002708AC /* ThirdPersonCamera.cpp */; };
-		A17043E21AC861CE002708AC /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A17043E11AC861CE002708AC /* Path.cpp */; };
-		A19C9B6B1ABA7555008CCF54 /* BSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A19C9B691ABA7555008CCF54 /* BSpline.cpp */; };
-		A19C9B761ABA7599008CCF54 /* CubeModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A19C9B6C1ABA7599008CCF54 /* CubeModel.cpp */; };
-		A19C9B771ABA7599008CCF54 /* MoonModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A19C9B6E1ABA7599008CCF54 /* MoonModel.cpp */; };
-		A1D9A0ED1ABB149E00A6959D /* ShipModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1D9A0EB1ABB149E00A6959D /* ShipModel.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,8 +53,10 @@
 		038B78661A6EB3F500111E36 /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
 		038B78671A6EB3F500111E36 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		038B78681A6EB3F500111E36 /* ParsingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParsingHelper.h; sourceTree = "<group>"; };
+		038B78691A6EB3F500111E36 /* Path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
 		038B786A1A6EB3F500111E36 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
 		038B786B1A6EB3F500111E36 /* Renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
+		038B786C1A6EB3F500111E36 /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		038B78731A6EB3F500111E36 /* SphereModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SphereModel.cpp; sourceTree = "<group>"; };
 		038B78741A6EB3F500111E36 /* SphereModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphereModel.h; sourceTree = "<group>"; };
 		038B78751A6EB3F500111E36 /* StaticCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StaticCamera.cpp; sourceTree = "<group>"; };
@@ -72,23 +69,6 @@
 		038B79191A6FF39000111E36 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		038B791B1A6FF3D100111E36 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		038B791D1A6FF3EB00111E36 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		A17043D81AC7CDD3002708AC /* ThirdPersonCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThirdPersonCamera.cpp; sourceTree = "<group>"; };
-		A17043D91AC7CDD3002708AC /* ThirdPersonCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdPersonCamera.h; sourceTree = "<group>"; };
-		A17043E11AC861CE002708AC /* Path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
-		A19C9B681ABA74B4008CCF54 /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
-		A19C9B691ABA7555008CCF54 /* BSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BSpline.cpp; sourceTree = "<group>"; };
-		A19C9B6A1ABA7555008CCF54 /* BSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSpline.h; sourceTree = "<group>"; };
-		A19C9B6C1ABA7599008CCF54 /* CubeModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CubeModel.cpp; sourceTree = "<group>"; };
-		A19C9B6D1ABA7599008CCF54 /* CubeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeModel.h; sourceTree = "<group>"; };
-		A19C9B6E1ABA7599008CCF54 /* MoonModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoonModel.cpp; sourceTree = "<group>"; };
-		A19C9B6F1ABA7599008CCF54 /* MoonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoonModel.h; sourceTree = "<group>"; };
-		A19C9B711ABA7599008CCF54 /* BlueColor.fragmentshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BlueColor.fragmentshader; sourceTree = "<group>"; };
-		A19C9B721ABA7599008CCF54 /* PathLines.fragmentshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PathLines.fragmentshader; sourceTree = "<group>"; };
-		A19C9B731ABA7599008CCF54 /* PathLines.vertexshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PathLines.vertexshader; sourceTree = "<group>"; };
-		A19C9B741ABA7599008CCF54 /* SolidColor.fragmentshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SolidColor.fragmentshader; sourceTree = "<group>"; };
-		A19C9B751ABA7599008CCF54 /* SolidColor.vertexshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SolidColor.vertexshader; sourceTree = "<group>"; };
-		A1D9A0EB1ABB149E00A6959D /* ShipModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShipModel.cpp; sourceTree = "<group>"; };
-		A1D9A0EC1ABB149E00A6959D /* ShipModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShipModel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,13 +132,6 @@
 		038B785E1A6EB3F500111E36 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A19C9B6C1ABA7599008CCF54 /* CubeModel.cpp */,
-				A19C9B6D1ABA7599008CCF54 /* CubeModel.h */,
-				A19C9B6E1ABA7599008CCF54 /* MoonModel.cpp */,
-				A19C9B6F1ABA7599008CCF54 /* MoonModel.h */,
-				A19C9B701ABA7599008CCF54 /* Shaders */,
-				A19C9B691ABA7555008CCF54 /* BSpline.cpp */,
-				A19C9B6A1ABA7555008CCF54 /* BSpline.h */,
 				038B785F1A6EB3F500111E36 /* Camera.cpp */,
 				038B78601A6EB3F500111E36 /* Camera.h */,
 				038B78631A6EB3F500111E36 /* EventManager.cpp */,
@@ -167,35 +140,19 @@
 				038B78661A6EB3F500111E36 /* Model.cpp */,
 				038B78671A6EB3F500111E36 /* Model.h */,
 				038B78681A6EB3F500111E36 /* ParsingHelper.h */,
-				A17043E11AC861CE002708AC /* Path.cpp */,
+				038B78691A6EB3F500111E36 /* Path.cpp */,
 				038B786A1A6EB3F500111E36 /* Path.h */,
 				038B786B1A6EB3F500111E36 /* Renderer.cpp */,
-				A19C9B681ABA74B4008CCF54 /* Renderer.h */,
+				038B786C1A6EB3F500111E36 /* Renderer.h */,
 				038B78731A6EB3F500111E36 /* SphereModel.cpp */,
 				038B78741A6EB3F500111E36 /* SphereModel.h */,
 				038B78751A6EB3F500111E36 /* StaticCamera.cpp */,
 				038B78761A6EB3F500111E36 /* StaticCamera.h */,
-				A17043D81AC7CDD3002708AC /* ThirdPersonCamera.cpp */,
-				A17043D91AC7CDD3002708AC /* ThirdPersonCamera.h */,
 				038B78771A6EB3F500111E36 /* World.cpp */,
 				038B78781A6EB3F500111E36 /* World.h */,
-				A1D9A0EB1ABB149E00A6959D /* ShipModel.cpp */,
-				A1D9A0EC1ABB149E00A6959D /* ShipModel.h */,
 			);
 			name = Source;
 			path = ../Source;
-			sourceTree = "<group>";
-		};
-		A19C9B701ABA7599008CCF54 /* Shaders */ = {
-			isa = PBXGroup;
-			children = (
-				A19C9B711ABA7599008CCF54 /* BlueColor.fragmentshader */,
-				A19C9B721ABA7599008CCF54 /* PathLines.fragmentshader */,
-				A19C9B731ABA7599008CCF54 /* PathLines.vertexshader */,
-				A19C9B741ABA7599008CCF54 /* SolidColor.fragmentshader */,
-				A19C9B751ABA7599008CCF54 /* SolidColor.vertexshader */,
-			);
-			path = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,20 +211,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A19C9B771ABA7599008CCF54 /* MoonModel.cpp in Sources */,
 				038B78801A6EB3F500111E36 /* SphereModel.cpp in Sources */,
 				038B78811A6EB3F500111E36 /* StaticCamera.cpp in Sources */,
+				038B787E1A6EB3F500111E36 /* Path.cpp in Sources */,
 				038B787B1A6EB3F500111E36 /* EventManager.cpp in Sources */,
 				038B787D1A6EB3F500111E36 /* Model.cpp in Sources */,
-				A19C9B761ABA7599008CCF54 /* CubeModel.cpp in Sources */,
-				A19C9B6B1ABA7555008CCF54 /* BSpline.cpp in Sources */,
 				038B78821A6EB3F500111E36 /* World.cpp in Sources */,
 				038B787F1A6EB3F500111E36 /* Renderer.cpp in Sources */,
-				A1D9A0ED1ABB149E00A6959D /* ShipModel.cpp in Sources */,
-				A17043E21AC861CE002708AC /* Path.cpp in Sources */,
 				038B787C1A6EB3F500111E36 /* main.cpp in Sources */,
 				038B78791A6EB3F500111E36 /* Camera.cpp in Sources */,
-				A17043DA1AC7CDD3002708AC /* ThirdPersonCamera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

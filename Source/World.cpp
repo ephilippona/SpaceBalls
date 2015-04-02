@@ -11,12 +11,10 @@
 #include "Renderer.h"
 #include "ParsingHelper.h"
 
-#include "ShipModel.h"
 #include "SphereModel.h"
 #include "MoonModel.h"
 #include "Path.h"
 #include "BSpline.h"
-#include "ThirdPersonCamera.h"
 
 #include "StaticCamera.h"
 
@@ -32,6 +30,14 @@ World::World()
 {
     instance = this;
 
+	// Setup Camera
+	mCamera.push_back(new StaticCamera(vec3(3.0f, 70.0f, 5.0f), vec3(10.0f, 0.0f, 10.0f), vec3(0.0f, 1.0f, 0.0f)));//looks at initial placement of planets
+	mCamera.push_back(new StaticCamera(vec3(3.0f, 30.0f, 5.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
+	mCamera.push_back(new StaticCamera(vec3(0.5f,  0.5f, 5.0f), vec3(0.0f, 0.5f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
+    
+    mCamera.push_back(new StaticCamera(vec3(3.0f, 90.0f, 5.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
+    
+	mCurrentCamera = 0;
 }
 
 World::~World()
@@ -99,12 +105,6 @@ void World::Update(float dt)
         {
             mCurrentCamera = 3;
         }
-    }   else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_5 ) == GLFW_PRESS)
-    {
-        if (mCamera.size() > 4)
-        {
-            mCurrentCamera = 4;
-        }
     }
 
 	// Spacebar to change the shader
@@ -125,23 +125,6 @@ void World::Update(float dt)
 	{
 		(*it)->Update(dt);
 	}
-    
-    for (std::vector<Model*>::iterator it = mModel.begin(); it < mModel.end(); ++it)
-    {
-        
-
-            if(distance((*it)->GetPosition(), ship->GetPosition())< (ship->GetScaling().x+(*it)->GetScaling().x)){
-        
-                vec3 temp = ship->GetPosition() - (*it)->GetPosition();
-        
-                ship->SetPosition(ship->GetPosition() + (temp/20.0f));
-        
-            }
-        
-        
-    }
-
-    
 }
 
 void World::Draw()
@@ -213,10 +196,11 @@ void World::LoadScene(const char * scene_path)
 	while( std::getline( input, item, '[' ) )   
 	{
         ci_istringstream iss( item );
-        
+
 		ci_string result;
 		if( std::getline( iss, result, ']') )
 		{
+
             if( result == "sphere" )
             {
                 SphereModel* sphere = new SphereModel();
@@ -241,14 +225,7 @@ void World::LoadScene(const char * scene_path)
 				moon->Load(iss);
 				moon->SetParent(FindModelByName(moon->GetParentName()));
 				mModel.push_back(moon);
-                
-            }else if( result == "ship" )
-            {
-                ShipModel* ship = new ShipModel();
-                ship->Load(iss);
-                mModel.push_back(ship);
-//                ship -> SetScaling(vec3(0.1f,0.1f,0.1f));
-            }
+			}
 			else if ( result.empty() == false && result[0] == '#')
 			{
 				// this is a comment line
@@ -280,35 +257,13 @@ void World::LoadScene(const char * scene_path)
     LoadCameras();
 }
 void World::LoadCameras()
-{
-    
-    
-    // Setup Camera
-    mCamera.push_back(new StaticCamera(vec3(3.0f, 70.0f, 5.0f), vec3(10.0f, 0.0f, 10.0f), vec3(0.0f, 1.0f, 0.0f)));//looks at initial placement of planets
-    mCamera.push_back(new StaticCamera(vec3(3.0f, 30.0f, 5.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
-    mCamera.push_back(new StaticCamera(vec3(0.5f,  0.5f, 5.0f), vec3(0.0f, 0.5f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
-    
-    mCamera.push_back(new StaticCamera(vec3(3.0f, 90.0f, 5.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
-    mCurrentCamera = 0;
-    
-    // Ship Character controlled with Third Person Camera
-    ShipModel* character = new ShipModel();
-    character->SetPosition(vec3(0.0f, 15.5f, 0.0f));
-    mCamera.push_back(new ThirdPersonCamera(character));
-    mModel.push_back(character);
-    
-    ship = character;
-    
-    
-    
-//    // BSpline Camera
-//    BSpline* spline = FindSpline("\"RollerCoaster\"");
-//    if (spline == nullptr)
-//    {
-//        spline = FindSplineByIndex(0);
-//    }
-   
-    
+{      
+    // BSpline Camera
+    BSpline* spline = FindSpline("\"RollerCoaster\"");
+    if (spline == nullptr)
+    {
+        spline = FindSplineByIndex(0);
+    }
     
     mCurrentCamera = 0;
 }
