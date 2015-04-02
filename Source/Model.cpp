@@ -13,6 +13,10 @@
 #include "World.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/common.hpp>
+#include <GLM/glm.hpp>
+#include <glm/gtx/vector_angle.hpp>
+#include "EventManager.h"
+#include <GLFW/glfw3.h>
 
 using namespace std;
 using namespace glm;
@@ -46,9 +50,17 @@ void Model::Update(float dt)
     }
 	else if (mSpline)
 	{
-		// @TODO - Animate along the spline
-		//         You can adjust the parameter T every frame to compute the new position
-		//         Make sure the speed matches mSpeed in units per second
+		//vec3 target = vec3(0,0,0);
+		//vec3 directionToTarget = target - mSpline->GetPosition(mSplineParameterT);
+		//float distanceToTarget = length(directionToTarget);
+		//
+		//// Normalize direction and update direction
+		//directionToTarget = normalize(directionToTarget);
+		//mSplineParameterT = mSplineParameterT + dt*mSpeed;
+		//SetPosition(mSpline->GetPosition(mSplineParameterT) + directionToTarget);
+
+		mSplineParameterT = mSplineParameterT + dt*mSpeed;
+		SetPosition(mSpline->GetPosition(mSplineParameterT));
 	}
 }
 
@@ -72,9 +84,8 @@ void Model::Load(ci_istringstream& iss)
 
 		if (ParseLine(token) == false)
 		{
-			fprintf(stdout, "Error loading scene file... token:  %s!", line.c_str());
-
-            getchar();
+			fprintf(stdout, "Error loading scene file... token:  %s!", line);
+			getchar();
 			exit(-1);
 		}
 	}
