@@ -23,6 +23,7 @@ using namespace glm;
 
 Model::Model() : mName("UNNAMED"), mPosition(0.0f, 0.0f, 0.0f), mScaling(1.0f, 1.0f, 1.0f), mRotationAxis(0.0f, 1.0f, 0.0f), mRotationAngleInDegrees(0.0f), mPath(nullptr), mSpeed(0.0f), mTargetWaypoint(1), mSpline(nullptr), mSplineParameterT(0.0f), mNumChildren(0)
 {
+	blackHole = false;
 }
 
 Model::~Model()
@@ -50,17 +51,41 @@ void Model::Update(float dt)
     }
 	else if (mSpline)
 	{
-		//vec3 target = vec3(0,0,0);
-		//vec3 directionToTarget = target - mSpline->GetPosition(mSplineParameterT);
-		//float distanceToTarget = length(directionToTarget);
-		//
-		//// Normalize direction and update direction
-		//directionToTarget = normalize(directionToTarget);
-		//mSplineParameterT = mSplineParameterT + dt*mSpeed;
-		//SetPosition(mSpline->GetPosition(mSplineParameterT) + directionToTarget);
+		if (blackHole)
+		{
+			vec3 target = vec3(0, 0, 0);
+			direction = target - mSpline->GetPosition(mSplineParameterT);
+			float distanceToTarget = length(direction);
+			float distance = mSpeed*dt;
 
-		mSplineParameterT = mSplineParameterT + dt*mSpeed;
-		SetPosition(mSpline->GetPosition(mSplineParameterT));
+			if (length(direction) > 2)
+			{
+				// Normalize direction and update direction
+				direction = normalize(direction);
+				mSplineParameterT = mSplineParameterT + dt*mSpeed;
+				SetPosition(mSpline->GetPosition(mSplineParameterT) + 0.5f*mSplineParameterT*direction);
+			}
+			else
+			{
+				SetPosition(vec3(0, 0, 0));
+			}
+		}
+		else
+		{
+			mSplineParameterT = mSplineParameterT + dt*mSpeed;
+			SetPosition(mSpline->GetPosition(mSplineParameterT));
+		}
+
+		// Press Spacebar to activate black hole
+		if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_SPACE) == GLFW_PRESS)
+		{
+			blackHole = true;
+		}
+		// Press B to deactivate black hole
+		if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_B) == GLFW_PRESS)
+		{
+			blackHole = false;
+		}
 	}
 }
 

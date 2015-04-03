@@ -39,10 +39,10 @@ public:
 	glm::vec3 GetScaling() const		{ return mScaling; }
 	glm::vec3 GetRotationAxis() const	{ return mRotationAxis; }
 	float     GetRotationAngle() const	{ return mRotationAngleInDegrees; }
-    ci_string GetName()                 { return mName; }
+	ci_string GetName()                 { return mName; }
 	unsigned int GetNumChildren()       { return mNumChildren; }
 
-    void SetSpeed(float spd);
+	void SetSpeed(float spd);
 	void IncrementNumChild()       { mNumChildren++; }
 
 protected:
@@ -54,11 +54,13 @@ protected:
 	glm::vec3 mRotationAxis;
 	float     mRotationAngleInDegrees;
 
-    // Makes the model follow a path defined by a set of waypoints
-    Path* mPath;
+	// Makes the model follow a path defined by a set of waypoints
+	Path* mPath;
 	BSpline* mSpline;
 	float mSplineParameterT;
-    float mSpeed;
-    unsigned int mTargetWaypoint;
+	float mSpeed;
+	bool blackHole;
+	glm::vec3 direction;
+	unsigned int mTargetWaypoint;
 	unsigned int mNumChildren;
 };
