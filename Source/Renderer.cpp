@@ -53,7 +53,7 @@ void Renderer::Initialize()
     glDepthFunc(GL_LESS); 
 
 	// Line width
-	glLineWidth(2);
+	glLineWidth(0.1f);
 
 	// Loading Shaders
 #if defined(PLATFORM_OSX)
