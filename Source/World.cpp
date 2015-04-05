@@ -15,6 +15,8 @@
 #include "MoonModel.h"
 #include "Path.h"
 #include "BSpline.h"
+#include "EarthModel.h"
+#include "RingModel.h"
 
 #include "StaticCamera.h"
 
@@ -125,6 +127,7 @@ void World::Update(float dt)
 	{
 		(*it)->Update(dt);
 	}
+
 }
 
 void World::Draw()
@@ -133,6 +136,8 @@ void World::Draw()
 	
 	// Set shader to use
 	glUseProgram(Renderer::GetShaderProgramID());
+
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 	// This looks for the MVP Uniform variable in the Vertex Program
 	GLuint VPMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "ViewProjectionTransform"); 
@@ -144,8 +149,40 @@ void World::Draw()
 	// Draw models
 	for (vector<Model*>::iterator it = mModel.begin(); it < mModel.end(); ++it)
 	{
-		// Draw model
-		(*it)->Draw();
+		int currentTexture;
+		glGetIntegerv(GL_TEXTURE_BINDING_2D, &currentTexture);
+
+		//std::cout<<"Model " <<(*it)->GetName().c_str() << " has texture: " << currentTexture <<endl;
+
+		//if (strcmp((*it)->GetName().c_str(), earth) == 0) {
+		if ((*it)->GetShaderType() == true) {
+			//std::cout<<"drawing earth" << std::endl;
+			// Earth model
+			unsigned int prevShader = Renderer::GetCurrentShader();
+			Renderer::SetShader(SHADER_EARTH);
+			glUseProgram(Renderer::GetShaderProgramID());
+
+			// Since you changed the shader, resend the view projection matrix
+			VPMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "ViewProjectionTransform"); 
+			glUniformMatrix4fv(VPMatrixLocation, 1, GL_FALSE, &VP[0][0]);
+
+			(*it)->Draw();
+
+			// Restore previous shader
+			Renderer::SetShader((ShaderType) prevShader);
+			glUseProgram(Renderer::GetShaderProgramID());
+	
+		}
+		else {
+
+			// Since you changed the shader, resend the view projection matrix
+			VPMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "ViewProjectionTransform"); 
+			glUniformMatrix4fv(VPMatrixLocation, 1, GL_FALSE, &VP[0][0]);
+
+			// Draw model
+			//std::cout<<"drawing something else" << std::endl;
+			(*it)->Draw();
+		}
 	}
 
 	// Draw Path Lines
@@ -156,6 +193,7 @@ void World::Draw()
 	glUseProgram(Renderer::GetShaderProgramID());
 
 	// Send the view projection constants to the shader
+	
 	VPMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "ViewProjectionTransform");
 	glUniformMatrix4fv(VPMatrixLocation, 1, GL_FALSE, &VP[0][0]);
 
@@ -176,6 +214,7 @@ void World::Draw()
 	Renderer::SetShader((ShaderType) prevShader);
 
 	Renderer::EndFrame();
+
 }
 
 void World::LoadScene(const char * scene_path)
@@ -226,6 +265,12 @@ void World::LoadScene(const char * scene_path)
 				moon->SetParent(FindModelByName(moon->GetParentName()));
 				mModel.push_back(moon);
 			}
+			else if (result == "planet") {
+				EarthModel* earth = new EarthModel();
+				earth->Load(iss);
+				earth->init();
+				mModel.push_back(earth);
+			}
 			else if ( result.empty() == false && result[0] == '#')
 			{
 				// this is a comment line
@@ -253,6 +298,9 @@ void World::LoadScene(const char * scene_path)
 		// Draw model
 		(*it)->CreateVertexBuffer();
 	}
+
+	RingModel* ring = new RingModel();
+	mModel.push_back(ring);
     
     LoadCameras();
 }
