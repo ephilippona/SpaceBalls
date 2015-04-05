@@ -250,6 +250,7 @@ void World::LoadScene(const char * scene_path)
 				MoonModel* moon = new MoonModel();
 				moon->Load(iss);
 				moon->SetParent(FindModelByName(moon->GetParentName()));
+				moon->init();
 				mModel.push_back(moon);
 			}
 			else if (result == "planet") {
