@@ -3,7 +3,16 @@
 #include "Renderer.h"
 #include "World.h"
 #include "EventManager.h"
+#include "texture.hpp"
+#include <GL/glew.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
+#include <GLFW/glfw3.h>
+GLFWwindow* window;
+
+using namespace glm;
 
 int main(int argc, char*argv[])
 {

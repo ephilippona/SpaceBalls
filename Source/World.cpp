@@ -141,15 +141,10 @@ void World::Draw()
 	// Draw models
 	for (vector<Model*>::iterator it = mModel.begin(); it < mModel.end(); ++it)
 	{
-		int currentTexture;
-		glGetIntegerv(GL_TEXTURE_BINDING_2D, &currentTexture);
-
-		//std::cout<<"Model " <<(*it)->GetName().c_str() << " has texture: " << currentTexture <<endl;
 
 		//if (strcmp((*it)->GetName().c_str(), earth) == 0) {
 		if ((*it)->GetShaderType() == true) {
-			//std::cout<<"drawing earth" << std::endl;
-			// Earth model
+
 			unsigned int prevShader = Renderer::GetCurrentShader();
 			Renderer::SetShader(SHADER_EARTH);
 			glUseProgram(Renderer::GetShaderProgramID());
@@ -291,6 +286,7 @@ void World::LoadScene(const char * scene_path)
 		(*it)->CreateVertexBuffer();
 	}
 
+	// Add the rings
 	RingModel* ring = new RingModel();
 	mModel.push_back(ring);
     

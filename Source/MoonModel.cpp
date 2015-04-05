@@ -1328,8 +1328,12 @@ void MoonModel::Draw()
     // The Model View Projection transforms are computed in the Vertex Shader
     glBindVertexArray(mVertexArrayID);
 
-    GLuint WorldMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "WorldTransform"); 
-    glUniformMatrix4fv(WorldMatrixLocation, 1, GL_FALSE, &GetWorldMatrix()[0][0]);
+    GLuint WorldMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "WorldTransform");
+
+	// TODO -- Use the parent * local for hierarchical transforms
+	// mat4 worldMatrix = mParent->GetWorldMatrix()*GetWorldMatrix();
+	
+	glUniformMatrix4fv(WorldMatrixLocation, 1, GL_FALSE, &GetWorldMatrix()[0][0]);
     
     // 1st attribute buffer : vertex Positions
     glEnableVertexAttribArray(0);

@@ -41,6 +41,7 @@ public:
 	float     GetRotationAngle() const	{ return mRotationAngleInDegrees; }
 	ci_string GetName()                 { return mName; }
 	unsigned int GetNumChildren()       { return mNumChildren; }
+	bool GetShaderType()                { return mDiffferentShader;}
 
 	void SetSpeed(float spd);
 	void IncrementNumChild()       { mNumChildren++; }
@@ -63,4 +64,14 @@ protected:
 	glm::vec3 direction;
 	unsigned int mTargetWaypoint;
 	unsigned int mNumChildren;
+
+	// For models with an object file
+	std::string mObjectFileName;
+
+	// For models with textures
+	std::string mTextureFileName;
+
+	// If the model needs a special shader to render
+	bool mDiffferentShader;
+
 };

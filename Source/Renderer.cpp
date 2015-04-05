@@ -61,7 +61,10 @@ void Renderer::Initialize()
 #else
     std::string shaderPathPrefix = "../Source/Shaders/";
 #endif
-
+	/*sShaderProgramID.push_back(
+            LoadShaders(shaderPathPrefix + "Earth.vertexshader",
+                        shaderPathPrefix + "Earth.fragmentshader")
+								);*/
 	sShaderProgramID.push_back(
                 LoadShaders(shaderPathPrefix + "SolidColor.vertexshader",
                             shaderPathPrefix + "SolidColor.fragmentshader")
@@ -74,6 +77,10 @@ void Renderer::Initialize()
                 LoadShaders(shaderPathPrefix + "SolidColor.vertexshader",
                             shaderPathPrefix + "BlueColor.fragmentshader")
                                );
+	sShaderProgramID.push_back(
+            LoadShaders(shaderPathPrefix + "Earth.vertexshader",
+                        shaderPathPrefix + "Earth.fragmentshader")
+                            );
 	sCurrentShader = 0;
 
 }
@@ -233,6 +240,8 @@ bool Renderer::LoadOBJ(	const char * path,
 #else
     fopen_s(&file, path, "r");
 #endif
+
+	//file = fopen(path, "r");
     
 	if (file == nullptr){
 		printf("Impossible to open the file ! Are you in the right path ? See Tutorial 1 for details\n");
@@ -244,7 +253,7 @@ bool Renderer::LoadOBJ(	const char * path,
 
 		char lineHeader[128];
 		// read the first word of the line
-        int res = fscanf_s(file, "%s", lineHeader);
+        int res = fscanf(file, "%s", lineHeader);
 		if (res == EOF)
 			break; // EOF = End Of File. Quit the loop.
 

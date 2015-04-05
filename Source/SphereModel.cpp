@@ -8,6 +8,8 @@ using namespace glm;
 
 SphereModel::SphereModel(vec3 size) : Model()
 {
+	mDiffferentShader = false;
+
     Vertex vertexBuffer[] = {
         // position,                                    normal,                              color
         { vec3(0.000000, 0.000000, -1.000000), vec3(0.000000, 0.000000, -1.000000), vec3(1.0f, 0.05f, 0.05f) },

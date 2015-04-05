@@ -24,6 +24,7 @@ using namespace glm;
 Model::Model() : mName("UNNAMED"), mPosition(0.0f, 0.0f, 0.0f), mScaling(1.0f, 1.0f, 1.0f), mRotationAxis(0.0f, 1.0f, 0.0f), mRotationAngleInDegrees(0.0f), mPath(nullptr), mSpeed(0.0f), mTargetWaypoint(1), mSpline(nullptr), mSplineParameterT(0.0f), mNumChildren(0)
 {
 	blackHole = false;
+	mDiffferentShader = false;
 }
 
 Model::~Model()
@@ -191,6 +192,16 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 				mPosition = mSpline->GetPosition(mSplineParameterT);
 			}
 		}
+		else if (token[0] == "object") {
+			assert(token.size() > 2);
+			assert(token[1] == "=");
+			mObjectFileName = token[2].c_str();
+		}
+		else if (token[0] == "texture") {
+			assert(token.size() > 2);
+			assert(token[1] == "=");
+			mTextureFileName = token[2].c_str();
+		}
 		else
 		{
 			return false;
@@ -224,7 +235,7 @@ void Model::SetScaling(glm::vec3 scaling)
 
 void Model::SetRotation(glm::vec3 axis, float angleDegrees)
 {
-	mRotationAxis = axis;
+	mRotationAxis = normalize(axis);
 	mRotationAngleInDegrees = angleDegrees;
 }
 
