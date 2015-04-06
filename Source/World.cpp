@@ -15,6 +15,7 @@
 #include "MoonModel.h"
 #include "Path.h"
 #include "BSpline.h"
+#include "PlanetModel.h"
 #include "EarthModel.h"
 #include "RingModel.h"
 
@@ -131,25 +132,31 @@ void World::Draw()
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	// This looks for the MVP Uniform variable in the Vertex Program
-	GLuint VPMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "ViewProjectionTransform"); 
-
-	// Send the view projection constants to the shader
+	// Compute matricies which the shaders need
 	mat4 VP = mCamera[mCurrentCamera]->GetViewProjectionMatrix();
-	glUniformMatrix4fv(VPMatrixLocation, 1, GL_FALSE, &VP[0][0]);
+	mat4 V = mCamera[mCurrentCamera]->GetViewMatrix();
+	mat4 MVP;
+	mat4 M;
+	
+	// Handles to the shader matricies
+	GLuint MVPMatrixLocation;
+	GLuint VPMatrixLocation;
+	GLuint VMatrixLocation;
+	GLuint MMatrixLocation;
+	GLuint MV3x3Location;
 
 	// Draw models
 	for (vector<Model*>::iterator it = mModel.begin(); it < mModel.end(); ++it)
 	{
 
 		//if (strcmp((*it)->GetName().c_str(), earth) == 0) {
-		if ((*it)->GetShaderType() == true) {
+		if ((*it)->GetDrawType() == Planet) {
 
 			unsigned int prevShader = Renderer::GetCurrentShader();
-			Renderer::SetShader(SHADER_EARTH);
+			Renderer::SetShader(SHADER_PLANET);
 			glUseProgram(Renderer::GetShaderProgramID());
 
-			// Since you changed the shader, resend the view projection matrix
+			// Send the view projection matrix and view matrix
 			VPMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "ViewProjectionTransform"); 
 			glUniformMatrix4fv(VPMatrixLocation, 1, GL_FALSE, &VP[0][0]);
 
@@ -159,6 +166,41 @@ void World::Draw()
 			Renderer::SetShader((ShaderType) prevShader);
 			glUseProgram(Renderer::GetShaderProgramID());
 	
+		}
+		else if ((*it)->GetDrawType() == Normal_Map) {
+		
+			unsigned int prevShader = Renderer::GetCurrentShader();
+			Renderer::SetShader(SHADER_NORMAL_MAP);
+			glUseProgram(Renderer::GetShaderProgramID());
+
+			// Compute MVP matrix since the shader wants it
+			M = (*it)->GetWorldMatrix();
+			MVP = VP * M;
+
+			// Comput MV3x3 matrix that the shander wants
+			mat3 ModelView3x3Matrix = glm::mat3(V*M);
+
+			// Send the MVP matrix, View matrix, Model Matrix and 3x3 MV matrix
+			MVPMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "MVP"); 
+			VMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "V"); 
+			MMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "M"); 
+			MV3x3Location = glGetUniformLocation(Renderer::GetShaderProgramID(), "MV3x3"); 
+						
+			glUniformMatrix4fv(VMatrixLocation, 1, GL_FALSE, &V[0][0]);
+			glUniformMatrix4fv(MVPMatrixLocation, 1, GL_FALSE, &MVP[0][0]);
+			glUniformMatrix4fv(MMatrixLocation, 1, GL_FALSE, &M[0][0]);
+			glUniformMatrix3fv(MV3x3Location, 1, GL_FALSE, &ModelView3x3Matrix[0][0]);
+
+			// Send the world light position. Sun is at the center of the world
+			GLuint LightID = glGetUniformLocation(Renderer::GetShaderProgramID(), "LightPosition_worldspace");
+			glUniform3f(LightID, 0.0f, 2.5f, 0.0f);
+
+			(*it)->Draw();
+
+			// Restore previous shader
+			Renderer::SetShader((ShaderType) prevShader);
+			glUseProgram(Renderer::GetShaderProgramID());
+
 		}
 		else {
 
@@ -253,10 +295,36 @@ void World::LoadScene(const char * scene_path)
 				mModel.push_back(moon);
 			}
 			else if (result == "planet") {
+				
+				unsigned int prevShader = Renderer::GetCurrentShader();
+				Renderer::SetShader(SHADER_PLANET);
+				glUseProgram(Renderer::GetShaderProgramID());
+
+				PlanetModel* planet = new PlanetModel();
+				planet->Load(iss);
+				planet->init();
+				mModel.push_back(planet);
+
+				// Restore previous shader
+				Renderer::SetShader((ShaderType) prevShader);
+				glUseProgram(Renderer::GetShaderProgramID());
+
+			}
+			else if (result == "earth") {
+
+				unsigned int prevShader = Renderer::GetCurrentShader();
+				Renderer::SetShader(SHADER_NORMAL_MAP);
+				glUseProgram(Renderer::GetShaderProgramID());
+
 				EarthModel* earth = new EarthModel();
 				earth->Load(iss);
 				earth->init();
 				mModel.push_back(earth);
+
+				// Restore previous shader
+				Renderer::SetShader((ShaderType) prevShader);
+				glUseProgram(Renderer::GetShaderProgramID());
+
 			}
 			else if ( result.empty() == false && result[0] == '#')
 			{

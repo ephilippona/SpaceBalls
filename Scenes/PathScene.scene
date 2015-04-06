@@ -128,14 +128,17 @@ pathspeed = 1.3
 object = earth.obj
 texture = Venus.bmp
 
-[Planet]
+[Earth]
 name     = "Earth"
 position = 0.0 5.0 -12.0
-scaling = 0.25 0.25 0.25
+scaling = 15.25 15.25 15.25
 boundpath = "Path3"
-pathspeed = 1.5
+pathspeed = 0.25
 object = earth.obj
 texture = Earth_D.bmp
+texture_n = Earth_N.bmp
+texture_d = Earth_D.bmp
+texture_s = Earth_S.bmp
 
 [Planet]
 name     = "Mars"
