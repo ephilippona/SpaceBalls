@@ -44,6 +44,14 @@ void Model::Update(float dt)
 		float distance = mSpeed*dt;
 		mPosition += distance * directionToTarget;
 
+		//rotate
+		mRotationAngleInDegrees += 1.0f;
+	    if(mRotationAngleInDegrees>360.f)
+		{
+		printf("angle reset\n");
+		mRotationAngleInDegrees-=360;
+		}
+
 		// Update waypoint
 		if (distance > distanceToTarget)
 		{
