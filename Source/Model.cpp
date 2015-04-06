@@ -24,8 +24,10 @@ using namespace glm;
 Model::Model() : mName("UNNAMED"), mPosition(0.0f, 0.0f, 0.0f), mScaling(1.0f, 1.0f, 1.0f), mRotationAxis(0.0f, 1.0f, 0.0f), mRotationAngleInDegrees(0.0f), mPath(nullptr), mSpeed(0.0f), mTargetWaypoint(1), mSpline(nullptr), mSplineParameterT(0.0f), mNumChildren(0)
 {
 	blackHole = false;
-	holeFactor = 0.5f;
 	mDrawStyle = Standard;
+	
+	// Set some default lighting -- to override from scene file
+	mMaterialCoefficients = vec4(0.25, 0.1, 0.6, 8.0);
 }
 
 Model::~Model()
@@ -53,25 +55,23 @@ void Model::Update(float dt)
     }
 	else if (mSpline)
 	{
-		vec3 target = vec3(0, 0, 0);
-		direction = target - mSpline->GetPosition(mSplineParameterT);
-		float distanceToTarget = length(direction);
-
 		if (blackHole)
 		{
-			holeFactor += 0.002f;
+			vec3 target = vec3(0, 0, 0);
+			direction = target - mSpline->GetPosition(mSplineParameterT);
+			float distanceToTarget = length(direction);
+			float distance = mSpeed*dt;
 
-			if (abs(mPosition.x) > 2.0f || abs(mPosition.z) > 2.0f)
+			if (length(direction) > 2)
 			{
 				// Normalize direction and update direction
 				direction = normalize(direction);
-				direction.y = 0;
 				mSplineParameterT = mSplineParameterT + dt*mSpeed;
-				SetPosition(mSpline->GetPosition(mSplineParameterT) + holeFactor*mSplineParameterT*direction);
+				SetPosition(mSpline->GetPosition(mSplineParameterT) + 0.5f*mSplineParameterT*direction);
 			}
 			else
 			{
-				SetPosition(vec3(0, 100000000, 0));
+				SetPosition(vec3(0, 0, 0));
 			}
 		}
 		else
@@ -165,6 +165,16 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 			mScaling.y = static_cast<float>(atof(token[3].c_str()));
 			mScaling.z = static_cast<float>(atof(token[4].c_str()));
 		}
+		else if (token[0] == "lighting")
+		{
+			assert(token.size() > 5);
+			assert(token[1] == "=");
+
+			mMaterialCoefficients.x = static_cast<float>(atof(token[2].c_str()));
+			mMaterialCoefficients.y = static_cast<float>(atof(token[3].c_str()));
+			mMaterialCoefficients.z = static_cast<float>(atof(token[4].c_str()));
+			mMaterialCoefficients.w = static_cast<float>(atof(token[5].c_str()));
+		}
         else if (token[0] == "pathspeed")
 		{
 			assert(token.size() > 2);
@@ -219,6 +229,11 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 			assert(token.size() > 2);
 			assert(token[1] == "=");
 			mTextureSpecularFileName = token[2].c_str();
+		}
+		else if (token[0] == "rotation_speed") {
+			assert(token.size() > 2);
+			assert(token[1] == "=");
+			spin_speed = static_cast<float>(atof(token[2].c_str()));
 		}
 		else
 		{
