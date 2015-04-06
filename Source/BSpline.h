@@ -41,6 +41,10 @@ public:
     // @TODO - add method(s) returning the tangent vector on the spline
 	static glm::vec3 GetVelocity(float t, const glm::vec3& p1, const glm::vec3& p2, const glm::vec3& p3, const glm::vec3& p4);
 
+	//Get Tangent-Chris
+	glm::vec3 GetTangent(float t);
+	static glm::vec3 GetTangent(float t, const glm::vec3& p1, const glm::vec3& p2, const glm::vec3& p3, const glm::vec3& p4);
+
 protected:
     virtual bool ParseLine(const std::vector<ci_string> &token);
 

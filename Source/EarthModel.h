@@ -15,21 +15,41 @@ public:
 	virtual void Draw();
 	virtual void init();
 
-	GLuint Texture;
-	GLuint TextureID;
+	// The one with ID is the handle to the shader. The other one is the texture object itself.
+	GLuint TextureNormal;
+	GLuint TextureNormalID;
+	GLuint TextureDiffuse;
+	GLuint TextureDiffuseID;
+	GLuint TextureSpecular;
+	GLuint TextureSpecularID;
 
 protected:
 	virtual bool ParseLine(const std::vector<ci_string> &token);
 
 private:
-	// The vertex format could be different for different types of models
 
+	void computeTangentBasis(
+		// inputs
+		std::vector<glm::vec3> & vertices,
+		std::vector<glm::vec2> & uvs,
+		std::vector<glm::vec3> & normals,
+		// outputs
+		std::vector<glm::vec3> & tangents,
+		std::vector<glm::vec3> & bitangents);
+
+	// Buffers
 	unsigned int mVertexArrayID;
 	unsigned int vertexbuffer;
 	unsigned int uvbuffer;
+	unsigned int normalbuffer;
+	unsigned int tangentbuffer;
+	unsigned int bitangentbuffer;
 	
+	// Vertex information
 	std::vector<glm::vec3> vertices;
 	std::vector<glm::vec2> uvs;
-	std::vector<glm::vec3> normals; // Won't be used at the moment.
+	std::vector<glm::vec3> normals;
+	std::vector<glm::vec3> tangents;
+	std::vector<glm::vec3> bitangents;
 
 };

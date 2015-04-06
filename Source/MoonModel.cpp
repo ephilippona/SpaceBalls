@@ -3,16 +3,19 @@
 #include "MoonModel.h"
 #include "Renderer.h"
 #include <GL/glew.h>
-#include <iostream>
+#include "texture.hpp"
+//#include <iostream>
 using namespace glm;
-using namespace std;
+//using namespace std;
 
 MoonModel::MoonModel(vec3 size) : Model()
 { 
 
-	mDrawStyle = Standard;
+	mDrawStyle = Planet;
 
-    Vertex vertexBuffer[] = {
+   //obsolete, using Earth.obj model as base, so textures can be added.  Keeping old method just in case.
+	/*
+	Vertex vertexBuffer[] = {
         // position,                                    normal,                              color
         { vec3(0.000000, 0.000000, -1.000000), vec3(0.000000, 0.000000, -1.000000), vec3(1.0f, 0.05f, 0.05f) },
         { vec3(0.173648, 0.000000, -0.984808), vec3(0.173648, 0.000000, -0.984808), vec3(1.0f, 0.05f, 0.05f) },
@@ -1283,12 +1286,51 @@ MoonModel::MoonModel(vec3 size) : Model()
     glGenBuffers(1, &mVertexBufferID);
     glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferID);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexBuffer), vertexBuffer, GL_STATIC_DRAW);
+	*/
+
 }
 
 MoonModel::~MoonModel()
 {
-    glDeleteBuffers(1, &mVertexBufferID);
+    //glDeleteBuffers(1, &mVertexBufferID);
+	//glDeleteBuffers(1, &mVertexBuffer);
+	glDeleteBuffers(1, &vertexbuffer);
+	glDeleteBuffers(1, &uvbuffer); //Texture buffer
     glDeleteVertexArrays(1, &mVertexArrayID);
+}
+
+void MoonModel::init() {
+
+	std::string path;
+
+	path = "../Objects_And_Textures/";
+	std::string texturePath = path.append(mTextureFileName.c_str());
+
+	path = "../Objects_And_Textures/";
+	std::string objectPath = path.append(mObjectFileName.c_str());
+
+	// Load the texture
+	Texture = loadBMP_custom(texturePath.c_str());
+
+	// Get a handle for our "myTextureSampler" uniform
+	TextureID = glGetUniformLocation(Renderer::GetShaderProgramID(), "myTextureSampler");
+
+	// Read our .obj file
+	bool res = Renderer::LoadOBJ(objectPath.c_str(), vertices, uvs, normals);
+
+	glGenVertexArrays(1, &mVertexArrayID);
+
+	glGenBuffers(1, &vertexbuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
+
+	glGenBuffers(1, &uvbuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
+	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &uvs[0], GL_STATIC_DRAW);
+
+	// Bind our texture in Texture Unit 0
+	glActiveTexture(GL_TEXTURE0);
+
 }
 
 void MoonModel::Update(float dt)
@@ -1337,18 +1379,36 @@ void MoonModel::Draw()
 	// mat4 worldMatrix = mParent->GetWorldMatrix()*GetWorldMatrix();
 	
 	glUniformMatrix4fv(WorldMatrixLocation, 1, GL_FALSE, &GetWorldMatrix()[0][0]);
+
+	// Set our "myTextureSampler" sampler to user Texture Unit 0
+	glBindTexture(GL_TEXTURE_2D, Texture);
+	glUniform1i(TextureID, 0);
     
     // 1st attribute buffer : vertex Positions
     glEnableVertexAttribArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferID);
+	//glBindBuffer(GL_ARRAY_BUFFER, &mVertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
     glVertexAttribPointer(  0,              // attribute. No particular reason for 0, but must match the layout in the shader.
                             3,              // size
                             GL_FLOAT,       // type
                             GL_FALSE,       // normalized?
-                            sizeof(Vertex), // stride
+                            0,//sizeof(Vertex), // stride
                             (void*)0        // array buffer offset
                         );
 
+	// 2nd attribute buffer : UVs
+	glEnableVertexAttribArray(1);
+	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
+	glVertexAttribPointer(
+		1,                                // attribute
+		2,                                // size
+		GL_FLOAT,                         // type
+		GL_FALSE,                         // normalized?
+		0,                                // stride
+		(void*)0                          // array buffer offset
+		);
+
+	/*
     // 2nd attribute buffer : vertex normal
     glEnableVertexAttribArray(1);
     glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferID);
@@ -1371,13 +1431,18 @@ void MoonModel::Draw()
                             sizeof(Vertex),
                             (void*) (2* sizeof(vec3)) // Color is Offseted by 2 vec3 (see class Vertex)
                         );
+	*/
 
     // Draw the triangles !
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, numOfVertices);
+    //glDrawArrays(GL_TRIANGLE_STRIP, 0, numOfVertices);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, vertices.size());
 
-    glDisableVertexAttribArray(2);
+    //glDisableVertexAttribArray(2);
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(0);
+
+	// Set the texture for subsequent draws
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 /*
 * Obtain parameter from the scene file unique to a moon

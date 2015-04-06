@@ -24,7 +24,7 @@ using namespace glm;
 Model::Model() : mName("UNNAMED"), mPosition(0.0f, 0.0f, 0.0f), mScaling(1.0f, 1.0f, 1.0f), mRotationAxis(0.0f, 1.0f, 0.0f), mRotationAngleInDegrees(0.0f), mPath(nullptr), mSpeed(0.0f), mTargetWaypoint(1), mSpline(nullptr), mSplineParameterT(0.0f), mNumChildren(0)
 {
 	blackHole = false;
-	mDiffferentShader = false;
+	mDrawStyle = Standard;
 }
 
 Model::~Model()
@@ -201,6 +201,21 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 			assert(token.size() > 2);
 			assert(token[1] == "=");
 			mTextureFileName = token[2].c_str();
+		}
+		else if (token[0] == "texture_n") {
+			assert(token.size() > 2);
+			assert(token[1] == "=");
+			mTextureNormalFileName = token[2].c_str();
+		}
+		else if (token[0] == "texture_d") {
+			assert(token.size() > 2);
+			assert(token[1] == "=");
+			mTextureDiffuseFileName = token[2].c_str();
+		}
+		else if (token[0] == "texture_s") {
+			assert(token.size() > 2);
+			assert(token[1] == "=");
+			mTextureSpecularFileName = token[2].c_str();
 		}
 		else
 		{

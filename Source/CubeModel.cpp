@@ -17,6 +17,9 @@ using namespace glm;
 
 CubeModel::CubeModel(vec3 size) : Model()
 {
+
+	mDrawStyle = Standard;
+
 	// Create Vertex Buffer for all the verices of the Cube
 	vec3 halfSize = size * 0.5f;
 	

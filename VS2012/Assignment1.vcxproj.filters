@@ -44,16 +44,22 @@
     <None Include="..\Source\Shaders\PathLines.vertexshader">
       <Filter>Resource Files\Shaders</Filter>
     </None>
-    <None Include="..\Source\Shaders\Earth.vertexshader">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="..\Source\Shaders\Earth.fragmentshader">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
     <None Include="..\Source\Shaders\TextureFragmentShader.fragmentshader">
       <Filter>Resource Files\Shaders</Filter>
     </None>
     <None Include="..\Source\Shaders\TransformVertexShader.vertexshader">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Source\Shaders\Planet.fragmentshader">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Source\Shaders\Planet.vertexshader">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Source\Shaders\NormalMapping.fragmentshader">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Source\Shaders\NormalMapping.vertexshader">
       <Filter>Resource Files\Shaders</Filter>
     </None>
   </ItemGroup>
@@ -94,9 +100,6 @@
     <ClCompile Include="..\Source\MoonModel.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\EarthModel.cpp">
-      <Filter>Source Files\Model</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -108,6 +111,12 @@
     </ClCompile>
     <ClCompile Include="..\Source\MovableCamera.cpp">
       <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\PlanetModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\EarthModel.cpp">
+      <Filter>Source Files\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -147,9 +156,6 @@
     <ClInclude Include="..\Source\MoonModel.h">
       <Filter>Source Files\Model</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\EarthModel.h">
-      <Filter>Source Files\Model</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\texture.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -161,6 +167,12 @@
     </ClInclude>
     <ClInclude Include="..\Source\MovableCamera.h">
       <Filter>Source Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\PlanetModel.h">
+      <Filter>Source Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\EarthModel.h">
+      <Filter>Source Files\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

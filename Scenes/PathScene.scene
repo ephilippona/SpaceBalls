@@ -192,6 +192,8 @@ parent = "Earth"
 position = 0.0 0.0 0.0
 scaling = 0.042 0.042 0.042
 parentDistance = 0.4
+object = earth.obj
+texture = moon.bmp
 
 [Moon]
 name = "Europa"
@@ -199,6 +201,8 @@ parent = "Jupiter"
 position = 0.0 0.0 0.0
 scaling = 0.06125 0.06125 0.06125
 parentDistance = 3.0
+object = earth.obj
+texture = moon.bmp
 
 [Moon]
 name = "Io"
@@ -206,6 +210,8 @@ parent = "Jupiter"
 position = 0.0 0.0 0.0
 scaling = 0.0715 0.0715 0.0715
 parentDistance = 3.0
+object = earth.obj
+texture = moon.bmp
 
 [Moon]
 name = "Callisto"
@@ -213,6 +219,8 @@ parent = "Jupiter"
 position = 0.0 0.0 0.0
 scaling = 0.0945 0.0945 0.0945
 parentDistance = 3.0
+object = earth.obj
+texture = moon.bmp
 
 [Moon]
 name = "Ganymede"
@@ -220,6 +228,8 @@ parent = "Jupiter"
 position = 0.0 0.0 0.0
 scaling = 0.10325 0.10325 0.10325
 parentDistance = 3.0
+object = earth.obj
+texture = moon.bmp
 
 [Moon]
 name = "Titan"
@@ -227,6 +237,8 @@ parent = "Saturn"
 position = 0.0 0.0 0.0
 scaling = 0.101 0.101 0.101
 parentDistance = 2.63
+object = earth.obj
+texture = moon.bmp
 
 [Moon] 
 name     = "Rhea"
@@ -234,6 +246,8 @@ parent = "Saturn"
 position = 0.0 0.0 0.0
 scaling = 0.03 0.03 0.03
 parentDistance = 2.63
+object = earth.obj
+texture = moon.bmp
 
 [Moon]
 name     = "Iapetus"
@@ -241,6 +255,8 @@ parent = "Saturn"
 position = 0.0 0.0 0.0
 scaling = 0.02825 0.02825 0.02825
 parentDistance = 2.63
+object = earth.obj
+texture = moon.bmp
 
 [Moon]
 name     = "Dione"
@@ -248,6 +264,8 @@ parent = "Saturn"
 position = 0.0 0.0 0.0
 scaling = 0.022 0.022 0.022
 parentDistance = 2.63
+object = earth.obj
+texture = moon.bmp
 
 [Moon]
 name     = "Titania"
@@ -255,6 +273,8 @@ parent = "Uranus"
 position = 0.0 0.0 0.0
 scaling = 0.031 0.031 0.031
 parentDistance = 1.2
+object = earth.obj
+texture = moon.bmp
 
 [Moon]
 name     = "Oberon"
@@ -262,6 +282,8 @@ parent = "Uranus"
 position = 0.0 0.0 0.0
 scaling = 0.03 0.03 0.03
 parentDistance = 1.2
+object = earth.obj
+texture = moon.bmp
 
 [Moon]
 name     = "Umbriel"
@@ -269,6 +291,8 @@ parent = "Uranus"
 position = 0.0 0.0 0.0
 scaling = 0.023 0.023 0.023
 parentDistance = 1.2
+object = earth.obj
+texture = moon.bmp
 
 [Moon]
 name     = "Ariel"
@@ -276,6 +300,8 @@ parent = "Uranus"
 position = 0.0 0.0 0.0
 scaling = 0.02275 0.02275 0.02275
 parentDistance = 1.2
+object = earth.obj
+texture = moon.bmp
 
 [Moon]
 name     = "Triton"
@@ -283,3 +309,5 @@ parent = "Neptune"
 position = 0.0 0.0 0.0
 scaling = 0.053 0.053 0.053
 parentDistance = 1.2
+object = earth.obj
+texture = moon.bmp

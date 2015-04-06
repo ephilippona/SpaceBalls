@@ -18,6 +18,9 @@ Path::~Path()
 
 void Path::CreateVertexBuffer()
 {
+
+	mDrawStyle = Standard;
+
 	// Create a vertex array
 	glGenVertexArrays(1, &mVertexArrayID);
 

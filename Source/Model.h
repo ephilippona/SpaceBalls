@@ -18,6 +18,13 @@
 class Path;
 class BSpline;
 
+
+enum DrawType {
+	Standard,
+	Planet,
+	Normal_Map
+};
+
 class Model
 {
 public:
@@ -41,7 +48,7 @@ public:
 	float     GetRotationAngle() const	{ return mRotationAngleInDegrees; }
 	ci_string GetName()                 { return mName; }
 	unsigned int GetNumChildren()       { return mNumChildren; }
-	bool GetShaderType()                { return mDiffferentShader;}
+	DrawType GetDrawType()              { return mDrawStyle;}
 
 	void SetSpeed(float spd);
 	void IncrementNumChild()       { mNumChildren++; }
@@ -70,8 +77,11 @@ protected:
 
 	// For models with textures
 	std::string mTextureFileName;
+	std::string mTextureNormalFileName;
+	std::string mTextureDiffuseFileName;
+	std::string mTextureSpecularFileName;
 
 	// If the model needs a special shader to render
-	bool mDiffferentShader;
+	DrawType mDrawStyle;
 
 };

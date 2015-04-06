@@ -78,9 +78,13 @@ void Renderer::Initialize()
                             shaderPathPrefix + "BlueColor.fragmentshader")
                                );
 	sShaderProgramID.push_back(
-            LoadShaders(shaderPathPrefix + "Earth.vertexshader",
-                        shaderPathPrefix + "Earth.fragmentshader")
-                            );
+				LoadShaders(shaderPathPrefix + "Planet.vertexshader",
+							shaderPathPrefix + "Planet.fragmentshader")
+								);
+	sShaderProgramID.push_back(
+				LoadShaders(shaderPathPrefix + "NormalMapping.vertexshader",
+							shaderPathPrefix + "NormalMapping.fragmentshader")
+								);
 	sCurrentShader = 0;
 
 }

@@ -100,8 +100,10 @@
     <None Include="..\Scenes\CoordinateSystem.scene" />
     <None Include="..\Scenes\PathScene.scene" />
     <None Include="..\Source\Shaders\BlueColor.fragmentshader" />
-    <None Include="..\Source\Shaders\Earth.fragmentshader" />
-    <None Include="..\Source\Shaders\Earth.vertexshader" />
+    <None Include="..\Source\Shaders\NormalMapping.fragmentshader" />
+    <None Include="..\Source\Shaders\NormalMapping.vertexshader" />
+    <None Include="..\Source\Shaders\Planet.fragmentshader" />
+    <None Include="..\Source\Shaders\Planet.vertexshader" />
     <None Include="..\Source\Shaders\PathLines.fragmentshader" />
     <None Include="..\Source\Shaders\PathLines.vertexshader" />
     <None Include="..\Source\Shaders\SolidColor.vertexshader" />
@@ -114,6 +116,7 @@
     <ClCompile Include="..\Source\Camera.cpp" />
     <ClCompile Include="..\Source\CubeModel.cpp" />
     <ClCompile Include="..\Source\EarthModel.cpp" />
+    <ClCompile Include="..\Source\PlanetModel.cpp" />
     <ClCompile Include="..\Source\MoonModel.cpp" />
     <ClCompile Include="..\Source\MovableCamera.cpp" />
     <ClCompile Include="..\Source\Path.cpp" />
@@ -133,6 +136,7 @@
     <ClInclude Include="..\Source\Camera.h" />
     <ClInclude Include="..\Source\CubeModel.h" />
     <ClInclude Include="..\Source\EarthModel.h" />
+    <ClInclude Include="..\Source\PlanetModel.h" />
     <ClInclude Include="..\Source\MoonModel.h" />
     <ClInclude Include="..\Source\MovableCamera.h" />
     <ClInclude Include="..\Source\ParsingHelper.h" />

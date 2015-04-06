@@ -11,7 +11,7 @@ const int NUMBER_OF_VERTICES = 606;
 
 RingModel::RingModel(vec3 size) : Model()
 {
-	mDiffferentShader = false;
+	mDrawStyle = Standard;
 
 	vec3 vertexBuffer[NUMBER_OF_VERTICES];
 	vec3 normalBuffer[NUMBER_OF_VERTICES];
