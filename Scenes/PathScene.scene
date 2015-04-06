@@ -197,6 +197,7 @@ scaling = 0.042 0.042 0.042
 parentDistance = 0.4
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name = "Europa"
@@ -206,6 +207,7 @@ scaling = 0.06125 0.06125 0.06125
 parentDistance = 3.0
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name = "Io"
@@ -215,6 +217,7 @@ scaling = 0.0715 0.0715 0.0715
 parentDistance = 3.0
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name = "Callisto"
@@ -224,6 +227,7 @@ scaling = 0.0945 0.0945 0.0945
 parentDistance = 3.0
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name = "Ganymede"
@@ -233,6 +237,7 @@ scaling = 0.10325 0.10325 0.10325
 parentDistance = 3.0
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name = "Titan"
@@ -242,6 +247,7 @@ scaling = 0.101 0.101 0.101
 parentDistance = 2.63
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon] 
 name     = "Rhea"
@@ -251,6 +257,7 @@ scaling = 0.03 0.03 0.03
 parentDistance = 2.63
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Iapetus"
@@ -260,6 +267,7 @@ scaling = 0.02825 0.02825 0.02825
 parentDistance = 2.63
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Dione"
@@ -269,6 +277,7 @@ scaling = 0.022 0.022 0.022
 parentDistance = 2.63
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Titania"
@@ -278,6 +287,7 @@ scaling = 0.031 0.031 0.031
 parentDistance = 1.2
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Oberon"
@@ -287,6 +297,7 @@ scaling = 0.03 0.03 0.03
 parentDistance = 1.2
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Umbriel"
@@ -296,6 +307,7 @@ scaling = 0.023 0.023 0.023
 parentDistance = 1.2
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Ariel"
@@ -305,6 +317,7 @@ scaling = 0.02275 0.02275 0.02275
 parentDistance = 1.2
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Triton"
@@ -314,3 +327,4 @@ scaling = 0.053 0.053 0.053
 parentDistance = 1.2
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
