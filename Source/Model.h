@@ -70,6 +70,7 @@ protected:
 	float mSplineParameterT;
 	float mSpeed;
 	bool blackHole;
+	float holeFactor;
 	glm::vec3 direction;
 	unsigned int mTargetWaypoint;
 	unsigned int mNumChildren;

@@ -24,6 +24,7 @@ using namespace glm;
 Model::Model() : mName("UNNAMED"), mPosition(0.0f, 0.0f, 0.0f), mScaling(1.0f, 1.0f, 1.0f), mRotationAxis(0.0f, 1.0f, 0.0f), mRotationAngleInDegrees(0.0f), mPath(nullptr), mSpeed(0.0f), mTargetWaypoint(1), mSpline(nullptr), mSplineParameterT(0.0f), mNumChildren(0)
 {
 	blackHole = false;
+	holeFactor = 0.5f;
 	mDrawStyle = Standard;
 	
 	// Set some default lighting -- to override from scene file
@@ -55,23 +56,25 @@ void Model::Update(float dt)
     }
 	else if (mSpline)
 	{
+		vec3 target = vec3(0, 0, 0);
+		direction = target - mSpline->GetPosition(mSplineParameterT);
+		float distanceToTarget = length(direction);
+
 		if (blackHole)
 		{
-			vec3 target = vec3(0, 0, 0);
-			direction = target - mSpline->GetPosition(mSplineParameterT);
-			float distanceToTarget = length(direction);
-			float distance = mSpeed*dt;
+			holeFactor += 0.002f;
 
-			if (length(direction) > 2)
+			if (abs(mPosition.x) > 2.0f || abs(mPosition.z) > 2.0f)
 			{
 				// Normalize direction and update direction
 				direction = normalize(direction);
+				direction.y = 0;
 				mSplineParameterT = mSplineParameterT + dt*mSpeed;
-				SetPosition(mSpline->GetPosition(mSplineParameterT) + 0.5f*mSplineParameterT*direction);
+				SetPosition(mSpline->GetPosition(mSplineParameterT) + holeFactor*mSplineParameterT*direction);
 			}
 			else
 			{
-				SetPosition(vec3(0, 0, 0));
+				SetPosition(vec3(0, 100000000, 0));
 			}
 		}
 		else
