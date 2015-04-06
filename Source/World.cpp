@@ -24,6 +24,7 @@
 
 #include <GLFW/glfw3.h>
 #include "EventManager.h"
+#include <string.h>
 
 using namespace std;
 using namespace glm;
@@ -135,15 +136,19 @@ void World::Draw()
 	// Compute matricies which the shaders need
 	mat4 VP = mCamera[mCurrentCamera]->GetViewProjectionMatrix();
 	mat4 V = mCamera[mCurrentCamera]->GetViewMatrix();
+	mat4 P = mCamera[mCurrentCamera]->GetProjectionMatrix();
 	mat4 MVP;
 	mat4 M;
 	
 	// Handles to the shader matricies
 	GLuint MVPMatrixLocation;
 	GLuint VPMatrixLocation;
+	GLuint MV3x3Location;
+
+	GLuint PMatrixLocation;
 	GLuint VMatrixLocation;
 	GLuint MMatrixLocation;
-	GLuint MV3x3Location;
+	GLuint NormalMatrixLocation;
 
 	// Draw models
 	for (vector<Model*>::iterator it = mModel.begin(); it < mModel.end(); ++it)
@@ -156,9 +161,26 @@ void World::Draw()
 			Renderer::SetShader(SHADER_PLANET);
 			glUseProgram(Renderer::GetShaderProgramID());
 
-			// Send the view projection matrix and view matrix
-			VPMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "ViewProjectionTransform"); 
-			glUniformMatrix4fv(VPMatrixLocation, 1, GL_FALSE, &VP[0][0]);
+			mat4 worldMatrix = (*it)->GetWorldMatrix();
+			mat4 normalTransform = inverse(transpose(V * worldMatrix));
+			vec4 materialCoefficients = (*it)->GetMaterialCoefficients();
+
+		
+			// Send the metricies to the shader
+			//VPMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "ViewProjectionTransform"); 
+			//glUniformMatrix4fv(VPMatrixLocation, 1, GL_FALSE, &VP[0][0]);
+
+			MMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "WorldTransform");
+			VMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "ViewTransform");
+			PMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "ProjectionTransform");
+			NormalMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "NormalTransform");
+			GLuint materialCoefficientsLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "materialCoefficients");
+
+			glUniformMatrix4fv(MMatrixLocation, 1, GL_FALSE, &worldMatrix[0][0]);
+			glUniformMatrix4fv(VMatrixLocation, 1, GL_FALSE, &V[0][0]);
+			glUniformMatrix4fv(PMatrixLocation, 1, GL_FALSE, &P[0][0]);
+			glUniformMatrix4fv(NormalMatrixLocation, 1, GL_FALSE, &normalTransform[0][0]);
+			glUniform4f(materialCoefficientsLocation, materialCoefficients.x, materialCoefficients.y, materialCoefficients.z, materialCoefficients.w);
 
 			(*it)->Draw();
 

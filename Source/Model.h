@@ -49,6 +49,7 @@ public:
 	ci_string GetName()                 { return mName; }
 	unsigned int GetNumChildren()       { return mNumChildren; }
 	DrawType GetDrawType()              { return mDrawStyle;}
+	glm::vec4 GetMaterialCoefficients() { return mMaterialCoefficients;}
 
 	void SetSpeed(float spd);
 	void IncrementNumChild()       { mNumChildren++; }
@@ -83,5 +84,8 @@ protected:
 
 	// If the model needs a special shader to render
 	DrawType mDrawStyle;
+
+	// Lighting properties
+	glm::vec4 mMaterialCoefficients;
 
 };

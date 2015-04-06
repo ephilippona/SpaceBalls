@@ -25,6 +25,9 @@ Model::Model() : mName("UNNAMED"), mPosition(0.0f, 0.0f, 0.0f), mScaling(1.0f, 1
 {
 	blackHole = false;
 	mDrawStyle = Standard;
+	
+	// Set some default lighting -- to override from scene file
+	mMaterialCoefficients = vec4(0.25, 0.1, 0.6, 8.0);
 }
 
 Model::~Model()
@@ -161,6 +164,16 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 			mScaling.x = static_cast<float>(atof(token[2].c_str()));
 			mScaling.y = static_cast<float>(atof(token[3].c_str()));
 			mScaling.z = static_cast<float>(atof(token[4].c_str()));
+		}
+		else if (token[0] == "lighting")
+		{
+			assert(token.size() > 5);
+			assert(token[1] == "=");
+
+			mMaterialCoefficients.x = static_cast<float>(atof(token[2].c_str()));
+			mMaterialCoefficients.y = static_cast<float>(atof(token[3].c_str()));
+			mMaterialCoefficients.z = static_cast<float>(atof(token[4].c_str()));
+			mMaterialCoefficients.w = static_cast<float>(atof(token[5].c_str()));
 		}
         else if (token[0] == "pathspeed")
 		{

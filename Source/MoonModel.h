@@ -35,17 +35,20 @@ private:
         glm::vec3 color;
     };
 
+	// The vertex data
 	std::vector<glm::vec3> vertices;
 	std::vector<glm::vec2> uvs;
-	std::vector<glm::vec3> normals; // Won't be used at the moment.
+	std::vector<glm::vec3> normals;
 
     unsigned int mVertexArrayID;
     //unsigned int mVertexBufferID;
 	//unsigned int mVertexBuffer;
    // unsigned int numOfVertices;
 
+	// Buffers for holding the vertex data
 	unsigned int vertexbuffer;
 	unsigned int uvbuffer;
+	unsigned int normalbuffer;
 
 	ci_string mParentName;
 	Model* mParent;

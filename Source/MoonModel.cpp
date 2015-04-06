@@ -1328,6 +1328,10 @@ void MoonModel::init() {
 	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
 	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &uvs[0], GL_STATIC_DRAW);
 
+	glGenBuffers(1, &normalbuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
+	glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(glm::vec3), &normals[0], GL_STATIC_DRAW);
+
 	// Bind our texture in Texture Unit 0
 	glActiveTexture(GL_TEXTURE0);
 
@@ -1386,8 +1390,7 @@ void MoonModel::Draw()
     
     // 1st attribute buffer : vertex Positions
     glEnableVertexAttribArray(0);
-	//glBindBuffer(GL_ARRAY_BUFFER, &mVertexBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
     glVertexAttribPointer(  0,              // attribute. No particular reason for 0, but must match the layout in the shader.
                             3,              // size
                             GL_FLOAT,       // type
@@ -1408,36 +1411,22 @@ void MoonModel::Draw()
 		(void*)0                          // array buffer offset
 		);
 
-	/*
-    // 2nd attribute buffer : vertex normal
-    glEnableVertexAttribArray(1);
-    glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferID);
-    glVertexAttribPointer(  1,
-                            3,
-                            GL_FLOAT,
-                            GL_FALSE,
-                            sizeof(Vertex),
-                            (void*)sizeof(vec3)    // Normal is Offseted by vec3 (see class Vertex)
-                        );
-
-
-    // 3rd attribute buffer : vertex color
+	// 3rd attribute buffer : vertex normal
     glEnableVertexAttribArray(2);
-    glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferID);
+	glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
     glVertexAttribPointer(  2,
                             3,
                             GL_FLOAT,
                             GL_FALSE,
-                            sizeof(Vertex),
-                            (void*) (2* sizeof(vec3)) // Color is Offseted by 2 vec3 (see class Vertex)
+                            0,
+                            (void*)sizeof(vec3)    // Normal is Offseted by vec3 (see class Vertex)
                         );
-	*/
 
     // Draw the triangles !
     //glDrawArrays(GL_TRIANGLE_STRIP, 0, numOfVertices);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, vertices.size());
 
-    //glDisableVertexAttribArray(2);
+    glDisableVertexAttribArray(2);
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(0);
 
