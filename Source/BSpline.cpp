@@ -152,6 +152,30 @@ glm::vec3 BSpline::GetVelocity(float t, const vec3& p1, const vec3& p2, const ve
     return vec3(vec4(product.x * p1 + product.y * p2 + product.z * p3 + product.w * p4, 1.0f) );
 }
 
+//Get Tangent-Chris
+glm::vec3 BSpline::GetTangent(float t)
+{
+    // The value of t includes where on the spline you are.
+    // The integral value of t is the first control point
+    // The decimal value of t is the parameter t within the segment
+    
+	int p1 = ((int) t) % mControlPoints.size();
+	int p2 = (p1 + 1)  % mControlPoints.size();
+	int p3 = (p2 + 1)  % mControlPoints.size();
+	int p4 = (p3 + 1)  % mControlPoints.size();
+
+	return vec3(GetWorldMatrix() * vec4(BSpline::GetPosition(t - (int) t, mControlPoints[p1], mControlPoints[p2], mControlPoints[p3], mControlPoints[p4]), 1.0f));
+}
+glm::vec3 BSpline::GetTangent(float t, const vec3& p1, const vec3& p2, const vec3& p3, const vec3& p4)
+{
+    
+    vec4 params(3*t*t, 2*t, 1, 0);
+    mat4 coefficients(vec4(-1, 3, -3, 1), vec4(3, -6, 0, 4), vec4(-3, 3, 3, 1), vec4(1, 0, 0, 0));
+    vec4 product = (1.0f / 6.0f) * params * coefficients;
+    
+    return vec3(vec4(product.x * p1 + product.y * p2 + product.z * p3 + product.w * p4, 1.0f) );
+}
+
 void BSpline::GenerateSamplePoints()
 {
     if(mControlPoints.size() == 0)
