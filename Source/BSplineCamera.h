@@ -19,6 +19,7 @@ private:
     glm::vec3 mPosition;
     glm::vec3 mLookAt;
     glm::vec3 mUp;
+	
 
     BSpline* mSpline;
     float mSplineParameterT;

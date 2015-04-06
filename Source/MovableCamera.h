@@ -32,14 +32,8 @@ private:
 
     // @TODO - Maybe you should add more camera attributes (Speed, etc)
 	glm::vec3 mDirection; 
-	float speed;
-	float acceleration;
 	float mouseSpeed;
-	float verticalFOV;
-	float horizontalFOV;
-	static double lastTime;
-	double currentTime;
-	float deltaTime;
 	double xpos;
 	double ypos;
+	
 };
