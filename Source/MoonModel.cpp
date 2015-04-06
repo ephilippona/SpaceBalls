@@ -1335,6 +1335,14 @@ void MoonModel::init() {
 
 void MoonModel::Update(float dt)
 {
+		//rotate
+		mRotationAngleInDegrees += 1.0f;
+	    if(mRotationAngleInDegrees>360.f)
+		{
+		//printf("angle reset\n");
+		mRotationAngleInDegrees-=360;
+		}
+
 	// idea to rotate: glm::vec3( radius from parent * glm::cos(speed*incrementedVariable), 1, radius from parent *glm::sin(speed*incrementedVariable))
 	//We limit overflow and keep the increment between -pi,pi
 	if(increment>3.1416){

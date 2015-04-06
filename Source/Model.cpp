@@ -44,16 +44,6 @@ void Model::Update(float dt)
 		float distance = mSpeed*dt;
 		mPosition += distance * directionToTarget;
 
-		/*
-		//rotate
-		mRotationAngleInDegrees += 1.0f;
-	    if(mRotationAngleInDegrees>360.f)
-		{
-		printf("angle reset\n");
-		mRotationAngleInDegrees-=360;
-		}
-		*/
-
 		// Update waypoint
 		if (distance > distanceToTarget)
 		{
@@ -226,6 +216,11 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 			assert(token.size() > 2);
 			assert(token[1] == "=");
 			mTextureSpecularFileName = token[2].c_str();
+		}
+		else if (token[0] == "rotation_speed") {
+			assert(token.size() > 2);
+			assert(token[1] == "=");
+			spin_speed = static_cast<float>(atof(token[2].c_str()));
 		}
 		else
 		{
