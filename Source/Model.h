@@ -62,6 +62,7 @@ protected:
 	glm::vec3 mScaling;
 	glm::vec3 mRotationAxis;
 	float     mRotationAngleInDegrees;
+	float	  spin_speed;
 
 	// Makes the model follow a path defined by a set of waypoints
 	Path* mPath;
@@ -72,6 +73,8 @@ protected:
 	glm::vec3 direction;
 	unsigned int mTargetWaypoint;
 	unsigned int mNumChildren;
+
+
 
 	// For models with an object file
 	std::string mObjectFileName;

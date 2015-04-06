@@ -53,6 +53,8 @@ private:
 	ci_string mParentName;
 	Model* mParent;
 	float mParentDistance;
+	float initialDisperse;
+	float increment;
 };
 
 

@@ -230,6 +230,11 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 			assert(token[1] == "=");
 			mTextureSpecularFileName = token[2].c_str();
 		}
+		else if (token[0] == "rotation_speed") {
+			assert(token.size() > 2);
+			assert(token[1] == "=");
+			spin_speed = static_cast<float>(atof(token[2].c_str()));
+		}
 		else
 		{
 			return false;

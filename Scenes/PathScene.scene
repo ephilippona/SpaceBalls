@@ -102,19 +102,26 @@ controlpoint = 	-31.815	0	-31.815
 controlpoint = 	0	0	-45
 controlpoint = 	31.815	0	-31.815
 
-[Sphere]
+[Planet]
 name     = "Sun"
 position = 0.0 5.0 -12.0
 #scaling = 27.32467 27.32467 27.32467
-scaling = 5.0 5.0 5.0
+#scaling = 5.0 5.0 5.0
+scaling = 10.0 10.0 10.0
+lighting = 1.0 0.10 0.9 6.0
+rotation = 0 1 0 0
+rotation_speed = 0.1f
 boundpath = "Center"
 pathspeed = 0.0
+object = earth.obj
+texture = sun.bmp
 
 [Planet]
 name     = "Mercury"
 position = 0.0 5.0 -12.0
 scaling = 02.0955 02.0955 02.0955
 lighting = 0.35 0.10 0.9 6.0
+rotation_speed = 1.0f
 boundpath = "Path1"
 pathspeed = 2.0
 object = earth.obj
@@ -125,6 +132,7 @@ name     = "Venus"
 position = 0.0 5.0 -12.0
 scaling = 02.23725 02.23725 02.23725
 lighting = 0.3 0.13 0.9 6.0
+rotation_speed = 1.0f
 boundpath = "Path2"
 pathspeed = 1.3
 object = earth.obj
@@ -134,6 +142,7 @@ texture = Venus.bmp
 name     = "Earth"
 position = 0.0 5.0 -12.0
 scaling = 15.25 15.25 15.25
+rotation = 1 0 0 0
 boundpath = "Path3"
 pathspeed = 0.25
 object = earth.obj
@@ -147,6 +156,7 @@ name     = "Mars"
 position = 0.0 5.0 -12.0
 scaling = 02.133 02.133 02.133
 lighting = 0.35 0.07 0.65 10.0
+rotation_speed = 1.0f
 boundpath = "Path4"
 pathspeed = 0.8
 object = earth.obj
@@ -157,6 +167,8 @@ name     = "Jupiter"
 position = 0.0 5.0 -12.0
 scaling = 2.80225 2.80225 2.80225
 lighting = 0.25 0.02 0.5 8.0
+rotation = 0 1 0 0
+rotation_speed = 1.5f
 boundpath = "Path5"
 pathspeed = 0.1
 object = earth.obj
@@ -166,6 +178,8 @@ texture = Jupiter.bmp
 name     = "Saturn"
 position = 0.0 5.0 -12.0
 scaling = 2.36225 2.36225 2.36225
+lighting = 0.25 0.02 0.6 8.0
+rotation_speed = 1.0f
 boundpath = "Path6"
 pathspeed = 1.2
 object = earth.obj
@@ -176,6 +190,7 @@ name     = "Uranus"
 position = 0.0 5.0 -12.0
 scaling = 3.00175 3.00175 3.00175
 lighting = 0.2 0.02 0.7 12.0
+rotation_speed = 1.0f
 boundpath = "Path7"
 pathspeed = 0.9
 object = earth.obj
@@ -187,6 +202,7 @@ name     = "Neptune"
 position = 0.0 5.0 -12.0
 scaling = 3.97075 3.97075 3.97075
 lighting = 0.25 0.02 0.7 9.0
+rotation_speed = 1.0f
 boundpath = "Path8"
 pathspeed = 0.8
 object = earth.obj
@@ -197,123 +213,151 @@ name = "Moon"
 parent = "Earth"
 position = 0.0 0.0 0.0
 scaling = 0.042 0.042 0.042
+rotation_speed = 1.0f
 parentDistance = 0.4
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name = "Europa"
 parent = "Jupiter"
 position = 0.0 0.0 0.0
 scaling = 0.06125 0.06125 0.06125
+rotation_speed = 1.0f
 parentDistance = 3.0
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name = "Io"
 parent = "Jupiter"
 position = 0.0 0.0 0.0
 scaling = 0.0715 0.0715 0.0715
+rotation_speed = 1.0f
 parentDistance = 3.0
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name = "Callisto"
 parent = "Jupiter"
 position = 0.0 0.0 0.0
 scaling = 0.0945 0.0945 0.0945
+rotation_speed = 1.0f
 parentDistance = 3.0
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name = "Ganymede"
 parent = "Jupiter"
 position = 0.0 0.0 0.0
 scaling = 0.10325 0.10325 0.10325
+rotation_speed = 1.0f
 parentDistance = 3.0
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name = "Titan"
 parent = "Saturn"
 position = 0.0 0.0 0.0
 scaling = 0.101 0.101 0.101
+rotation_speed = 1.0f
 parentDistance = 2.63
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon] 
 name     = "Rhea"
 parent = "Saturn"
 position = 0.0 0.0 0.0
 scaling = 0.03 0.03 0.03
+rotation_speed = 1.0f
 parentDistance = 2.63
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Iapetus"
 parent = "Saturn"
 position = 0.0 0.0 0.0
 scaling = 0.02825 0.02825 0.02825
+rotation_speed = 1.0f
 parentDistance = 2.63
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Dione"
 parent = "Saturn"
 position = 0.0 0.0 0.0
 scaling = 0.022 0.022 0.022
+rotation_speed = 1.0f
 parentDistance = 2.63
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Titania"
 parent = "Uranus"
 position = 0.0 0.0 0.0
 scaling = 0.031 0.031 0.031
+rotation_speed = 1.0f
 parentDistance = 1.2
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Oberon"
 parent = "Uranus"
 position = 0.0 0.0 0.0
 scaling = 0.03 0.03 0.03
+rotation_speed = 1.0f
 parentDistance = 1.2
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Umbriel"
 parent = "Uranus"
 position = 0.0 0.0 0.0
 scaling = 0.023 0.023 0.023
+rotation_speed = 1.0f
 parentDistance = 1.2
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Ariel"
 parent = "Uranus"
 position = 0.0 0.0 0.0
 scaling = 0.02275 0.02275 0.02275
+rotation_speed = 1.0f
 parentDistance = 1.2
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04
 
 [Moon]
 name     = "Triton"
 parent = "Neptune"
 position = 0.0 0.0 0.0
 scaling = 0.053 0.053 0.053
+rotation_speed = 1.0f
 parentDistance = 1.2
 object = earth.obj
 texture = moon.bmp
+pathspeed = 0.04

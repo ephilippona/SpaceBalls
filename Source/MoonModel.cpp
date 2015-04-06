@@ -12,7 +12,7 @@ MoonModel::MoonModel(vec3 size) : Model()
 { 
 
 	mDrawStyle = Planet;
-
+	increment = 0.0f;
    //obsolete, using Earth.obj model as base, so textures can be added.  Keeping old method just in case.
 	/*
 	Vertex vertexBuffer[] = {
@@ -1339,8 +1339,23 @@ void MoonModel::init() {
 
 void MoonModel::Update(float dt)
 {
+		//rotate
+		mRotationAngleInDegrees += 1.0f;
+	    if(mRotationAngleInDegrees>360.f)
+		{
+		//printf("angle reset\n");
+		mRotationAngleInDegrees-=360;
+		}
+
 	// idea to rotate: glm::vec3( radius from parent * glm::cos(speed*incrementedVariable), 1, radius from parent *glm::sin(speed*incrementedVariable))
-    Model::Update(dt);
+	//We limit overflow and keep the increment between -pi,pi
+	if(increment>3.1416){
+		increment=mod(increment, 3.1416f);
+		increment-=3.1416;
+	}
+	increment+=mSpeed;
+	mPosition = mParent->GetPosition()-(glm::vec3(mParentDistance*(glm::cos(increment+initialDisperse)),0,mParentDistance*(glm::sin(increment+initialDisperse))));
+    //Model::Update(dt);
 }
 
 /*
@@ -1350,23 +1365,33 @@ void MoonModel::SetParent(Model* m)
 {
     mParent = m;
 	mParent->IncrementNumChild();
-	// TODO revise - Disperses the init position of children. Support up to 4-5 moons. 
+	// TODO revise - Symmetrical type of dispersing the init position of the moons. Support up to 4-5 moons. 
 	switch (mParent->GetNumChildren())
 	{
-		case 1:
+		case 1:{
+			initialDisperse = -3.1416;
 			mPosition = mParent->GetPosition()+glm::vec3(mParentDistance,0.0f,0.0f);
+		}
 		break;
-		case 2:
+		case 2:{
+			initialDisperse = -1.047197551;
 			mPosition = mParent->GetPosition()+glm::vec3(-mParentDistance,0.0f,0.0f);
+		}
 		break;
-		case 3:
+		case 3:{
+			initialDisperse = 1.047197551;
 			mPosition = mParent->GetPosition()+glm::vec3(0.0f,0.0f,mParentDistance);
+		}
 		break;
-		case 4:
+		case 4:{
+			initialDisperse = 3.1416;
 			mPosition = mParent->GetPosition()+glm::vec3(0.0f,0.0f,-mParentDistance);
+		}
 		break;
-		default:
-			mPosition = mParent->GetPosition()+mParentDistance;
+		default:{
+			initialDisperse = 0;
+			mPosition = mParent->GetPosition()+glm::vec3(mParentDistance,0.0f,mParentDistance);
+		}
 	}
 }
 

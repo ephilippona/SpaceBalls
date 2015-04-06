@@ -23,14 +23,19 @@ protected:
 
 private:
 	// The vertex format could be different for different types of models
+	void computeLightSources(glm::vec3 lightOrigin, glm::vec3 planetOrigin, float sunRadius, glm::vec3* outputBuf);
+	void convertSphericalToCartesian(float horizontalAngle, float verticalAngle, float radius, float* x, float* y, float* z);
 
 	unsigned int mVertexArrayID;
+
+	// Buffers for vertex data
 	unsigned int vertexbuffer;
 	unsigned int uvbuffer;
 	unsigned int normalbuffer;
 	
+	// Vertex data
 	std::vector<glm::vec3> vertices;
 	std::vector<glm::vec2> uvs;
-	std::vector<glm::vec3> normals; // Won't be used at the moment.
+	std::vector<glm::vec3> normals;
 
 };

@@ -1,20 +1,55 @@
 #version 330 core
 
 
-in vec2 UV;
-
-// Ouput to fragment shader
-out vec3 color;
-
-//in vec3 normal; // You will need this when you do per-fragment lighting
-
 // Values that stay constant for the whole mesh.
 uniform sampler2D myTextureSampler;
 
+// Light and Material Uniform Variables
+uniform vec4 materialCoefficients; // x: ambient   y: diffuse   z: specular   w: specular exponent
+uniform vec3 lightColor;
+
+
+// Inputs
+in vec2 UV;
+in vec3 normalVector;          // Transformed normal in View Space
+in vec3 eyeVector;       // Vector from the vertex to the Camera in View Space
+in vec3 lightVector;     // Vector from the vertex to the Light in View Space
+						 // Length of lightVector is the distance between light and vertex
+// Ouput data
+out vec3 color;
+
+
 void main()
 {
-	// set the fragment color to the interpolated vertex color
 
-	color = texture2D( myTextureSampler, UV ).rgb;
+	// Implment Phong Shading based on the parameters above
+	// Remember that directional light don't have attenuation
+	
+	//  ***************** Calculate ambient ********************
+	float ambient = materialCoefficients.x;
+
+	// ******************* Calculate diffuse ********************
+	float diffuse = materialCoefficients.y * max(0, dot(normalVector, lightVector));
+		
+	// ****************** Calcualte specular ********************
+
+	vec3 l_normalized = normalize(lightVector);
+	//vec3 r = 2*dot(normal, l_normalized)*normalVector-l_normalized;
+	//r = normalize(r);
+	
+	vec3 r = reflect(-l_normalized,normalVector);
+
+	float specular = materialCoefficients.z;
+	float cosTheta = max(0, dot(r, eyeVector));
+
+	// For loop for the exponent
+	for (int i = 0; i < materialCoefficients.w; i++) {
+		specular = cosTheta * specular;
+	}
+
+	float lightIntensity = ambient + diffuse + specular;
+	
+	// set the fragment color to the interpolated vertex color
+	color = texture2D( myTextureSampler, UV ).rgb * lightIntensity;
 
 }

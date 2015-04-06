@@ -57,47 +57,24 @@ void MovableCamera::CalculateCameraBasis()
 void MovableCamera::Update(float dt)
 {
     EventManager::DisableMouseCursor();
-    
-    // @TODO
-    // 1 - Map Mouse motion to Spherical Angles
-    // 2 - Clamp vertical angle to [-85, 85] degrees
-    // 3 - Wrap Horizontal angle within [-180, 180] degrees
-    
-	//Initial values
-	
-	speed = 3.0f;
+    //Initial values
 	mouseSpeed = 0.005f;
-	
-	//TIME
-	static double lastTime = glfwGetTime();
-	double currentTime = glfwGetTime();
-    float deltaTime = float (currentTime - lastTime);
 	
 	//Mouse
 	// Get mouse position
 	glfwGetCursorPos(EventManager::GetWindow(), &xpos, &ypos);
-
 	// Reset mouse position for next frame
 	glfwSetCursorPos(EventManager::GetWindow(), 1024/2, 768/2);
 
+	
 	// Compute new orientation
-	mHorizontalAngle += mouseSpeed * float(1024/2 - xpos );
+	if(mVerticalAngle >=-85 && mVerticalAngle <= 85)
+	{
 	mVerticalAngle   += mouseSpeed * float( 768/2 - ypos );
-
+	}
+	mHorizontalAngle += mouseSpeed * float(1024/2 - xpos );
 	
-	
-	// @TODO
-    // Align target model with the horizontal angle
-	
-	//mTargetModel = mTargetModel * vec3(1,0,1);
-
-	lastTime = currentTime;
-   
-	float FOV = horizontalFOV;
-
-
-
-    CalculateCameraBasis();
+	CalculateCameraBasis();
 }
 
 glm::mat4 MovableCamera::GetViewMatrix() const

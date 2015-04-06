@@ -21,6 +21,7 @@
 
 #include "StaticCamera.h"
 #include "MovableCamera.h"
+#include "BSplineCamera.h"
 
 #include <GLFW/glfw3.h>
 #include "EventManager.h"
@@ -395,11 +396,16 @@ void World::LoadCameras()
     mModel.push_back(character);
 
 
-    // BSpline Camera
-    BSpline* spline = FindSpline("\"RollerCoaster\"");
+     // BSpline Camera
+    BSpline* spline = FindSpline("\"Path3\"");
     if (spline == nullptr)
     {
-        spline = FindSplineByIndex(0);
+        spline = FindSplineByIndex(6);
+    }
+    
+    if (spline != nullptr)
+    {
+        mCamera.push_back(new BSplineCamera(spline , 2.0f));
     }
     
     mCurrentCamera = 0;
