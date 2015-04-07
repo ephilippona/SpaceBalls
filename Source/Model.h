@@ -82,6 +82,7 @@ protected:
 
 	// For models with textures
 	std::string mTextureFileName;
+	std::string mTextureBlackHoleFileName;
 	std::string mTextureNormalFileName;
 	std::string mTextureDiffuseFileName;
 	std::string mTextureSpecularFileName;

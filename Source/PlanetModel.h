@@ -16,6 +16,7 @@ public:
 	virtual void init();
 
 	GLuint Texture;
+	GLuint TextureBlackhole;
 	GLuint TextureID;
 
 protected:

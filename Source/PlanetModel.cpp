@@ -35,6 +35,13 @@ void PlanetModel::init() {
 
 	// Load the texture
 	Texture = loadBMP_custom(texturePath.c_str());
+	
+	// If it's the Sun, load a blackhole texture. 
+	if (strcmp(GetName().c_str(), "\"Sun\"") == 0) {
+		path = "../Objects_And_Textures/";
+		std::string texturePathBlackhole = path.append(mTextureBlackHoleFileName.c_str());
+		TextureBlackhole = loadBMP_custom(texturePathBlackhole.c_str());
+	}
 
 	// Get a handle for our "myTextureSampler" uniform
 	TextureID = glGetUniformLocation(Renderer::GetShaderProgramID(), "myTextureSampler");
@@ -87,7 +94,14 @@ void PlanetModel::Draw()
 	glBindVertexArray(mVertexArrayID);
 
 	// Set our "myTextureSampler" sampler to user Texture Unit 0
-	glBindTexture(GL_TEXTURE_2D, Texture);
+	
+	if (strcmp(GetName().c_str(), "\"Sun\"") == 0 && blackHole == true) {
+		glBindTexture(GL_TEXTURE_2D, TextureBlackhole);
+	}
+	else {
+		glBindTexture(GL_TEXTURE_2D, Texture);
+	}
+
 	glUniform1i(TextureID, 0);
 	
 

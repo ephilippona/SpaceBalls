@@ -115,6 +115,7 @@ boundpath = "Center"
 pathspeed = 0.0
 object = earth.obj
 texture = sun.bmp
+texture2 = black-hole.bmp
 
 [Planet]
 name     = "Mercury"

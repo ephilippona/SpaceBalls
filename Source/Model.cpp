@@ -82,18 +82,19 @@ void Model::Update(float dt)
 			mSplineParameterT = mSplineParameterT + dt*mSpeed;
 			SetPosition(mSpline->GetPosition(mSplineParameterT));
 		}
-
-		// Press Spacebar to activate black hole
-		if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_SPACE) == GLFW_PRESS)
-		{
-			blackHole = true;
-		}
-		// Press B to deactivate black hole
-		if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_B) == GLFW_PRESS)
-		{
-			blackHole = false;
-		}
 	}
+
+	// Press Spacebar to activate black hole
+	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_SPACE) == GLFW_PRESS)
+	{
+		blackHole = true;
+	}
+	// Press B to deactivate black hole
+	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_B) == GLFW_PRESS)
+	{
+		blackHole = false;
+	}
+
 }
 
 void Model::Draw()
@@ -217,6 +218,11 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 			assert(token.size() > 2);
 			assert(token[1] == "=");
 			mTextureFileName = token[2].c_str();
+		}
+		else if (token[0] == "texture2") {
+			assert(token.size() > 2);
+			assert(token[1] == "=");
+			mTextureBlackHoleFileName = token[2].c_str();
 		}
 		else if (token[0] == "texture_n") {
 			assert(token.size() > 2);
