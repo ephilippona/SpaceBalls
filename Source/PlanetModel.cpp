@@ -69,7 +69,11 @@ void PlanetModel::Update(float dt)
 	    if(mRotationAngleInDegrees>360.f)
 		{
 		//printf("angle reset\n");
-		mRotationAngleInDegrees-=360;
+			mRotationAngleInDegrees-=350;
+		}
+		if(mRotationAngleInDegrees<0.f)
+		{
+			mRotationAngleInDegrees+=350;
 		}
 	Model::Update(dt);
 }
