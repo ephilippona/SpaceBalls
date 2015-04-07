@@ -82,7 +82,8 @@ void Model::Update(float dt)
 		}
 		else
 		{
-			mSplineParameterT = mSplineParameterT + dt*mSpeed;
+			
+			mSplineParameterT = mSplineParameterT + dt*holeSpeed;
 			SetPosition(mSpline->GetPosition(mSplineParameterT));
 		}
 	}
@@ -96,6 +97,18 @@ void Model::Update(float dt)
 	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_B) == GLFW_PRESS)
 	{
 		blackHole = false;
+	}
+	// Press S to activate alignment
+	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_S) == GLFW_PRESS)
+	{
+		holeSpeed += 0.01;
+		if (abs(mPosition.z) < 1 && mPosition.x > 0)
+			holeSpeed = 0;
+	}
+	// Press A to deactivate alignment
+	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_A) == GLFW_PRESS)
+	{
+		holeSpeed = mSpeed;
 	}
 
 }

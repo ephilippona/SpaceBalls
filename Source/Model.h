@@ -72,6 +72,7 @@ protected:
 	bool blackHole;
 	float holeFactor;
 	float holeSpeed;
+	float realSpeed;
 	glm::vec3 direction;
 	unsigned int mTargetWaypoint;
 	unsigned int mNumChildren;
