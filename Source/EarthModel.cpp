@@ -90,16 +90,16 @@ void EarthModel::Update(float dt)
 {
 	
 		//rotate
-		//mRotationAngleInDegrees += 1.0f;
 		mRotationAngleInDegrees += spin_speed;
 	    if(mRotationAngleInDegrees>360.f)
 		{
 		//printf("angle reset\n");
-			mRotationAngleInDegrees-=350;
+			//mRotationAngleInDegrees-=350;
+			mRotationAngleInDegrees=1;
 		}
 		if(mRotationAngleInDegrees<0.f)
 		{
-			mRotationAngleInDegrees+=350;
+			mRotationAngleInDegrees=359;
 		}
 		
 	Model::Update(dt);
