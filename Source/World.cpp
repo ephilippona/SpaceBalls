@@ -318,6 +318,13 @@ void World::LoadScene(const char * scene_path)
 				moon->init();
 				mModel.push_back(moon);
 			}
+			else if( result == "ring" )
+			{
+				RingModel* ring = new RingModel();
+				ring->Load(iss);
+				ring->SetParent(FindModelByName(ring->GetParentName()));
+				mModel.push_back(ring);
+			}
 			else if (result == "planet") {
 				
 				unsigned int prevShader = Renderer::GetCurrentShader();
@@ -377,10 +384,6 @@ void World::LoadScene(const char * scene_path)
 		// Draw model
 		(*it)->CreateVertexBuffer();
 	}
-
-	// Add the rings
-	RingModel* ring = new RingModel();
-	mModel.push_back(ring);
     
     LoadCameras();
 }

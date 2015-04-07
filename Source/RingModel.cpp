@@ -80,13 +80,12 @@ RingModel::RingModel(vec3 size) : Model()
 	glBindBuffer(GL_ARRAY_BUFFER, mColourBufferID);
 	glBufferData(GL_ARRAY_BUFFER, NUMBER_OF_VERTICES * sizeof(glm::vec3), &colourBuffer[0], GL_STATIC_DRAW);
 
-	// TODO - add parent
-	mPosition = vec3(6,3,6);
-	mScaling = vec3(4,4,4);
+	// TODO - add parent -> Validate new way to config
+	//mPosition = vec3(6,3,6);
+	//mScaling = vec3(4,4,4);
 	mRotationAxis = vec3(0,1,0);
 	mRotationAngleInDegrees = 0;
-	mName = "Rings";
-
+	//mName = "Rings";
 }
 
 RingModel::~RingModel()
@@ -100,7 +99,7 @@ RingModel::~RingModel()
 
 void RingModel::Update(float dt)
 {
-    Model::Update(dt);
+	mPosition = mParent->GetPosition();
 }
 
 void RingModel::Draw()
@@ -157,7 +156,21 @@ void RingModel::Draw()
 
 bool RingModel::ParseLine(const std::vector<ci_string> &token)
 {
-    return true;
+     if (token.empty())
+    {
+        return true;
+    }
+	else if (token[0] == "parent")
+	{
+		assert(token.size() > 2);
+		assert(token[1] == "=");
+		mParentName = token[2];
+	}
+    else
+    {
+        return Model::ParseLine(token);
+    }
+	return true;
 }
 
 void RingModel::convertPolarToCartesian(float radius, float angle, float* x, float* z) {
@@ -165,4 +178,10 @@ void RingModel::convertPolarToCartesian(float radius, float angle, float* x, flo
 	*x = cos(angle*PI/180) * radius;
 	*z = sin(angle*PI/180) * radius;
 
+}
+
+void RingModel::SetParent(Model* m)
+{
+    mParent = m;
+	mPosition = mParent->GetPosition();
 }

@@ -12,7 +12,8 @@ public:
 
     virtual void Update(float dt);
     virtual void Draw();
-    
+    void SetParent(Model* m);
+	ci_string GetParentName()  { return mParentName; }
 protected:
     virtual bool ParseLine(const std::vector<ci_string> &token);
 
@@ -26,7 +27,8 @@ private:
 	unsigned int mVertexBufferID;
 	unsigned int mNormalBufferID;
 	unsigned int mColourBufferID;
-
+	Model* mParent;
+	ci_string mParentName;
 };
 
 
