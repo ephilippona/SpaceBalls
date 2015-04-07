@@ -63,18 +63,21 @@ void Model::Update(float dt)
 		if (blackHole)
 		{
 			holeFactor += 0.002f;
+			holeSpeed += 0.002f;
 
 			if (abs(mPosition.x) > 2.0f || abs(mPosition.z) > 2.0f)
 			{
 				// Normalize direction and update direction
 				direction = normalize(direction);
 				direction.y = 0;
-				mSplineParameterT = mSplineParameterT + dt*mSpeed;
+				mSplineParameterT = mSplineParameterT + dt*holeSpeed;
 				SetPosition(mSpline->GetPosition(mSplineParameterT) + holeFactor*mSplineParameterT*direction);
 			}
 			else
 			{
 				SetPosition(vec3(0, 100000000, 0));
+				holeFactor = 0.5f;
+				holeSpeed = mSpeed;
 			}
 		}
 		else
@@ -186,6 +189,7 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 
             float speed = static_cast<float>(atof(token[2].c_str()));
             SetSpeed(speed);
+			holeSpeed = mSpeed;
 		}
         else if (token[0] == "boundpath")
 		{
