@@ -82,12 +82,26 @@ void EarthModel::init() {
 	glBufferData(GL_ARRAY_BUFFER, bitangents.size() * sizeof(glm::vec3), &bitangents[0], GL_STATIC_DRAW);
 
 	mRotationAngleInDegrees = 23;
-	mRotationAxis = normalize(vec3(0,0,1));
+	mRotationAxis = normalize(vec3(0,1,0));
 
 }
 
 void EarthModel::Update(float dt)
 {
+	
+		//rotate
+		//mRotationAngleInDegrees += 1.0f;
+		mRotationAngleInDegrees += spin_speed;
+	    if(mRotationAngleInDegrees>360.f)
+		{
+		//printf("angle reset\n");
+			mRotationAngleInDegrees-=350;
+		}
+		if(mRotationAngleInDegrees<0.f)
+		{
+			mRotationAngleInDegrees+=350;
+		}
+		
 	Model::Update(dt);
 }
 
