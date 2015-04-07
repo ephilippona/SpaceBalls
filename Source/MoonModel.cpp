@@ -1340,11 +1340,16 @@ void MoonModel::init() {
 void MoonModel::Update(float dt)
 {
 		//rotate
-		mRotationAngleInDegrees += 1.0f;
+		//mRotationAngleInDegrees += 1.0f;
+		mRotationAngleInDegrees += spin_speed;
 	    if(mRotationAngleInDegrees>360.f)
 		{
 		//printf("angle reset\n");
-		mRotationAngleInDegrees-=360;
+			mRotationAngleInDegrees-=350;
+		}
+		if(mRotationAngleInDegrees<0.f)
+		{
+			mRotationAngleInDegrees+=350;
 		}
 
 	// idea to rotate: glm::vec3( radius from parent * glm::cos(speed*incrementedVariable), 1, radius from parent *glm::sin(speed*incrementedVariable))
