@@ -22,7 +22,7 @@ using namespace glm;
 
 
 ThirdPersonCamera::ThirdPersonCamera(Model* targetModel)
-    : Camera(), mTargetModel(targetModel), mHorizontalAngle(0.0f), mVerticalAngle(0.0f), mRadius(10.0f)
+    : Camera(), mTargetModel(targetModel), mHorizontalAngle(0.0f), mVerticalAngle(0.0f), mRadius(2.0f)
 
 {
     assert(mTargetModel != nullptr);
@@ -43,11 +43,11 @@ void ThirdPersonCamera::CalculateCameraBasis()
     float Py = mRadius * sinf(b);
     float Pz = -mRadius * cosf(b)*sinf(a);
     
-    mPosition = mTargetModel->GetPosition()+ vec3(Px,Py,Pz);
-    mLookAt = vec3(-Px,-Py,-Pz);
+    mLookAt = normalize(vec3(-Px,-Py,-Pz));
     mRight = normalize(cross(vec3(0,-1,0), mLookAt));
     mUp = normalize(cross(mRight,mLookAt));
-	
+
+	mPosition = mTargetModel->GetPosition()+ vec3(Px,Py,Pz) - (2.0f * mRight);
 }
 
 
@@ -76,16 +76,14 @@ void ThirdPersonCamera::Update(float dt)
     //================
     //Model Movement
     //================
-    
-    std::cout << mTargetModel->GetPosition().x<<"    "<< mTargetModel->GetPosition().y<<"    "<< mTargetModel->GetPosition().z;
-    
+        
     // Press W to move Forward
     if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_W ) == GLFW_PRESS)
-        mTargetModel->SetPosition(mTargetModel->GetPosition() + mLookAt*dt);
+        mTargetModel->SetPosition(mTargetModel->GetPosition() + mLookAt*5.0f*dt);
     
     // Press S to move Backward
     if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_S ) == GLFW_PRESS)
-        mTargetModel->SetPosition(mTargetModel->GetPosition() - mLookAt*dt);
+        mTargetModel->SetPosition(mTargetModel->GetPosition() - mLookAt*5.0f*dt);
     
     // Press E to move Up
     if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_E ) == GLFW_PRESS)

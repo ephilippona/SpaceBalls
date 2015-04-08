@@ -133,14 +133,14 @@ void World::Update(float dt)
 		(*it)->Update(dt);  
 		
 		
-		
+	/*	
 		if(glm::distance((*it)->GetPosition(), ship->GetPosition())< (ship->GetScaling().x+(*it)->GetScaling().x)){
         
                vec3 temp = ship->GetPosition() - (*it)->GetPosition();
         
 				ship->SetPosition(ship->GetPosition() + (temp/20.0f));
         
-       }
+       }*/
 	}
 
 
@@ -380,10 +380,20 @@ void World::LoadScene(const char * scene_path)
 			}
 			else if(result == "ship"){
 			
+				unsigned int prevShader = Renderer::GetCurrentShader();
+				Renderer::SetShader(SHADER_PLANET);
+				glUseProgram(Renderer::GetShaderProgramID());
+
 				ShipModel* ship = new ShipModel();
 				ship->Load(iss);
+				ship->init();
 				mModel.push_back(ship);
+				mShip = ship;
 
+
+				// Restore previous shader
+				Renderer::SetShader((ShaderType) prevShader);
+				glUseProgram(Renderer::GetShaderProgramID());
 			}
 			else if ( result.empty() == false && result[0] == '#')
 			{
@@ -441,13 +451,11 @@ void World::LoadCameras()
     }
 
     // Ship Character controlled with Third Person Camera
-    ShipModel* character = new ShipModel();
-    character->SetPosition(vec3(0.0f, 15.5f, 0.0f));
-    mCamera.push_back(new ThirdPersonCamera(character));
-    mModel.push_back(character);
+
+    mCamera.push_back(new ThirdPersonCamera(mShip));
 	
 
-    ship = character;
+
     
     
     mCurrentCamera = 0;

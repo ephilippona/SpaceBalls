@@ -21,6 +21,7 @@ public:
     void SetParentDistance(float d);
 
 	GLuint Texture;
+	//GLuint Texture_s;
 	GLuint TextureID;
 
 protected:

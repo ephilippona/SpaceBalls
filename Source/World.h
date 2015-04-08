@@ -39,7 +39,7 @@ public:
     BSpline* FindSplineByIndex(unsigned int index);
     Model* FindModelByIndex(unsigned int index);
 	Model* FindModelByName(ci_string name);
-	ShipModel* ship;
+	ShipModel* mShip;
 
 private:
     static World* instance;
