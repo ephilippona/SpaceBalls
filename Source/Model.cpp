@@ -63,10 +63,10 @@ void Model::Update(float dt)
 
 		if (blackHole)
 		{
-			holeFactor += 0.002f;
+			holeFactor += 0.05f;
 			holeSpeed += 0.002f;
 
-			if (abs(mPosition.x) > 2.0f || abs(mPosition.z) > 2.0f)
+			if (abs(mPosition.x) > 15.0f || abs(mPosition.z) > 15.0f)
 			{
 				// Normalize direction and update direction
 				direction = normalize(direction);
@@ -103,8 +103,9 @@ void Model::Update(float dt)
 	// Press Z to activate alignment
 	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_Z) == GLFW_PRESS)
 	{
-		holeSpeed += 0.01;
-		if (abs(mPosition.z) < 1 && mPosition.x > 0)
+		holeSpeed += 0.001;
+		//cout << mPosition.z << ", " << mPosition.x << endl;
+		if (abs(mPosition.z) < 5 && mPosition.x < 0)
 		{
 			holeSpeed = 0;
 			align = true;
