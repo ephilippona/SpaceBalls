@@ -24,6 +24,7 @@ using namespace glm;
 Model::Model() : mName("UNNAMED"), mPosition(0.0f, 0.0f, 0.0f), mScaling(1.0f, 1.0f, 1.0f), mRotationAxis(0.0f, 1.0f, 0.0f), mRotationAngleInDegrees(0.0f), mPath(nullptr), mSpeed(0.0f), mTargetWaypoint(1), mSpline(nullptr), mSplineParameterT(0.0f), mNumChildren(0)
 {
 	blackHole = false;
+	align = false;
 	holeFactor = 0.5f;
 	mDrawStyle = Standard;
 	
@@ -80,9 +81,9 @@ void Model::Update(float dt)
 				holeSpeed = mSpeed;
 			}
 		}
-		else
+		else if(align == false)
 		{
-			
+			//holeSpeed = mSpeed;
 			mSplineParameterT = mSplineParameterT + dt*holeSpeed;
 			SetPosition(mSpline->GetPosition(mSplineParameterT));
 		}
@@ -99,19 +100,22 @@ void Model::Update(float dt)
 	{
 		blackHole = false;
 	}
-	// Press S to activate alignment
+	// Press Z to activate alignment
 	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_Z) == GLFW_PRESS)
 	{
 		holeSpeed += 0.01;
 		if (abs(mPosition.z) < 1 && mPosition.x > 0)
+		{
 			holeSpeed = 0;
+			align = true;
+		}
 	}
 	// Press A to deactivate alignment
 	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_X) == GLFW_PRESS)
 	{
+		align = false;
 		holeSpeed = mSpeed;
 	}
-
 }
 
 void Model::Draw()

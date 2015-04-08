@@ -70,6 +70,7 @@ protected:
 	float mSplineParameterT;
 	float mSpeed;
 	bool blackHole;
+	bool align;
 	float holeFactor;
 	float holeSpeed;
 	float realSpeed;
