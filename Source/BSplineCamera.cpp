@@ -18,6 +18,8 @@ BSplineCamera::BSplineCamera(BSpline* spline, float speed)
 {
     assert(spline != nullptr);
     mPosition = mSpline->GetPosition(mSplineParameterT);
+	deltapos = 25.0f;
+
 }
 
 BSplineCamera::~BSplineCamera()
@@ -26,11 +28,58 @@ BSplineCamera::~BSplineCamera()
 
 void BSplineCamera::Update(float dt)
 {
-    // @TODO - Using the BSpline class, update the position on the spline
-    //         Set the mLookAt vector pointing in front (tangent on spline)
-    //         And mUp vector being as up as possible
+	
+	//Speed Control
+	//-------------------------------------------------------------------------------------------------------------------------------
+    if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_RIGHT ) == GLFW_PRESS && (mSpeed<=4.0f))//Increase Camera Speed
+	{
+		mSpeed = mSpeed + 0.01f;
+		if(mSpeed>4.0f)
+		{
+			mSpeed=4.0f;
+		}
+	}
+
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_LEFT ) == GLFW_PRESS && (mSpeed>0.0f))//Decrease Camera Speed
+	{
+		mSpeed = mSpeed - 0.01f;
+		if(mSpeed<0.0f)
+		{
+			mSpeed=0.0f;
+		}
+	}
+
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_S ) == GLFW_PRESS)//Stop Camera
+	{
+		mSpeed = 0.0f;
+	}
+	//--------------------------------------------------------------------------------------------------------------------------------
+	
+	//Position and Zoom Control
+	//---------------------------------------------------------------------------------------------------------------------------------
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_UP ) == GLFW_PRESS && (deltapos>=9.0f)) //Zoom In
+	{
+		deltapos = deltapos - 0.01f;
+	}
+
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_DOWN ) == GLFW_PRESS && (deltapos<=28.0f)) //Zoom out
+	{
+		deltapos = deltapos + 0.01f;
+	}
+
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_D ) == GLFW_PRESS ) //Default Zoom
+	{
+		deltapos = 25.0f;
+	}
+	//----------------------------------------------------------------------------------------------------------------------------------
+
+
+	//Testing values
+	//std::cout << "mSpeed = "<<mSpeed<<"                       ";
+	std::cout << "DeltaPos = "<<deltapos<<"                    ";
+
 	mSplineParameterT = mSplineParameterT + (0.3 * mSpeed * dt);
-	mPosition = mSpline->GetPosition(mSplineParameterT)+25.0f;
+	mPosition = mSpline->GetPosition(mSplineParameterT) + deltapos;
 
 	mLookAt = glm::normalize(mSpline->GetTangent(mSplineParameterT));
 
