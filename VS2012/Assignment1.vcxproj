@@ -115,13 +115,13 @@
     <ClCompile Include="..\Source\BSpline.cpp" />
     <ClCompile Include="..\Source\BSplineCamera.cpp" />
     <ClCompile Include="..\Source\Camera.cpp" />
-    <ClCompile Include="..\Source\CubeModel.cpp" />
     <ClCompile Include="..\Source\EarthModel.cpp" />
     <ClCompile Include="..\Source\PlanetModel.cpp" />
     <ClCompile Include="..\Source\MoonModel.cpp" />
     <ClCompile Include="..\Source\MovableCamera.cpp" />
     <ClCompile Include="..\Source\Path.cpp" />
     <ClCompile Include="..\Source\RingModel.cpp" />
+    <ClCompile Include="..\Source\ShipModel.cpp" />
     <ClCompile Include="..\Source\SphereModel.cpp" />
     <ClCompile Include="..\Source\StaticCamera.cpp" />
     <ClCompile Include="..\Source\EventManager.cpp" />
@@ -131,12 +131,12 @@
     <ClCompile Include="..\Source\stb_image.c" />
     <ClCompile Include="..\Source\texture.cpp" />
     <ClCompile Include="..\Source\World.cpp" />
+    <ClCompile Include="..\Source\ThirdPersonCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\BSpline.h" />
     <ClInclude Include="..\Source\BSplineCamera.h" />
     <ClInclude Include="..\Source\Camera.h" />
-    <ClInclude Include="..\Source\CubeModel.h" />
     <ClInclude Include="..\Source\EarthModel.h" />
     <ClInclude Include="..\Source\PlanetModel.h" />
     <ClInclude Include="..\Source\MoonModel.h" />
@@ -144,6 +144,7 @@
     <ClInclude Include="..\Source\ParsingHelper.h" />
     <ClInclude Include="..\Source\Path.h" />
     <ClInclude Include="..\Source\RingModel.h" />
+    <ClInclude Include="..\Source\ShipModel.h" />
     <ClInclude Include="..\Source\SphereModel.h" />
     <ClInclude Include="..\Source\StaticCamera.h" />
     <ClInclude Include="..\Source\EventManager.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="..\Source\stb_image.h" />
     <ClInclude Include="..\Source\texture.hpp" />
     <ClInclude Include="..\Source\World.h" />
+    <ClInclude Include="..\Source\ThirdPersonCamera.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

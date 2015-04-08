@@ -369,3 +369,6 @@ name = "Rings"
 parent = "Saturn"
 position = 0.0 0.0 0.0
 scaling = 4.0 4.0 4.0
+
+[Ship]
+position = 0.0 10.0 0.0

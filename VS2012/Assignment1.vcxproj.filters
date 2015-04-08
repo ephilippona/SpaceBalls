@@ -94,9 +94,6 @@
     <ClCompile Include="..\Source\BSpline.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\CubeModel.cpp">
-      <Filter>Source Files\Model</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\MoonModel.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
@@ -120,6 +117,15 @@
     </ClCompile>
     <ClCompile Include="..\Source\BSplineCamera.cpp">
       <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\ThirdPersonCamera.cpp">
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\RingModel.h">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\ShipModel.cpp">
+      <Filter>Source Files\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,9 +159,6 @@
     <ClInclude Include="..\Source\BSpline.h">
       <Filter>Source Files\Model</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\CubeModel.h">
-      <Filter>Source Files\Model</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\MoonModel.h">
       <Filter>Source Files\Model</Filter>
     </ClInclude>
@@ -164,9 +167,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\stb_image.h">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\RingModel.h">
-      <Filter>Source Files\Model</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\MovableCamera.h">
       <Filter>Source Files\Camera</Filter>
@@ -179,6 +179,12 @@
     </ClInclude>
     <ClInclude Include="..\Source\BSplineCamera.h">
       <Filter>Source Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\ThirdPersonCamera.h">
+      <Filter>Source Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\ShipModel.h">
+      <Filter>Source Files\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

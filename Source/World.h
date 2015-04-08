@@ -16,6 +16,7 @@ class Camera;
 class Model;
 class MoonModel;
 class Path;
+class ShipModel;
 class BSpline;
 
 class World
@@ -38,6 +39,7 @@ public:
     BSpline* FindSplineByIndex(unsigned int index);
     Model* FindModelByIndex(unsigned int index);
 	Model* FindModelByName(ci_string name);
+	ShipModel* ship;
 
 private:
     static World* instance;

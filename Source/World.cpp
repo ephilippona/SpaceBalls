@@ -18,14 +18,17 @@
 #include "PlanetModel.h"
 #include "EarthModel.h"
 #include "RingModel.h"
+#include "ShipModel.h"
 
 #include "StaticCamera.h"
 #include "MovableCamera.h"
 #include "BSplineCamera.h"
+#include "ThirdPersonCamera.h"
 
 #include <GLFW/glfw3.h>
 #include "EventManager.h"
 #include <string.h>
+#include <GL/GL.h>
 
 using namespace std;
 using namespace glm;
@@ -103,6 +106,13 @@ void World::Update(float dt)
             mCurrentCamera = 3;
         }
     }
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_5 ) == GLFW_PRESS)
+    {
+        if (mCamera.size() > 4)
+        {
+            mCurrentCamera = 4;
+        }
+    }
 
 	// Spacebar to change the shader
 	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_0 ) == GLFW_PRESS)
@@ -120,8 +130,19 @@ void World::Update(float dt)
 	// Update models
 	for (vector<Model*>::iterator it = mModel.begin(); it < mModel.end(); ++it)
 	{
-		(*it)->Update(dt);
+		(*it)->Update(dt);  
+		
+		
+		
+		if(glm::distance((*it)->GetPosition(), ship->GetPosition())< (ship->GetScaling().x+(*it)->GetScaling().x)){
+        
+               vec3 temp = ship->GetPosition() - (*it)->GetPosition();
+        
+				ship->SetPosition(ship->GetPosition() + (temp/20.0f));
+        
+       }
 	}
+
 
 }
 
@@ -357,6 +378,13 @@ void World::LoadScene(const char * scene_path)
 				glUseProgram(Renderer::GetShaderProgramID());
 
 			}
+			else if(result == "ship"){
+			
+				ShipModel* ship = new ShipModel();
+				ship->Load(iss);
+				mModel.push_back(ship);
+
+			}
 			else if ( result.empty() == false && result[0] == '#')
 			{
 				// this is a comment line
@@ -387,16 +415,17 @@ void World::LoadScene(const char * scene_path)
     
     LoadCameras();
 }
+
 void World::LoadCameras()
 {      
 	// Setup Camera
 	mCamera.push_back(new StaticCamera(vec3(5.0f, 90.0f, 20.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
     
 	//MovableCamera
-	SphereModel* character = new SphereModel();
-    character->SetPosition(vec3(0.0f, 0.5f, 0.0f));
-    mCamera.push_back(new MovableCamera(character));
-    mModel.push_back(character);
+	SphereModel* movableCamera = new SphereModel();
+    movableCamera->SetPosition(vec3(0.0f, 0.5f, 0.0f));
+    mCamera.push_back(new MovableCamera(movableCamera));
+    mModel.push_back(movableCamera);
 
 
      // BSpline Camera
@@ -410,6 +439,16 @@ void World::LoadCameras()
     {
         mCamera.push_back(new BSplineCamera(spline , 2.0f));
     }
+
+    // Ship Character controlled with Third Person Camera
+    ShipModel* character = new ShipModel();
+    character->SetPosition(vec3(0.0f, 15.5f, 0.0f));
+    mCamera.push_back(new ThirdPersonCamera(character));
+    mModel.push_back(character);
+	
+
+    ship = character;
+    
     
     mCurrentCamera = 0;
 }

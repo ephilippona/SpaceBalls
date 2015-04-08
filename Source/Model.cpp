@@ -88,6 +88,7 @@ void Model::Update(float dt)
 		}
 	}
 
+
 	// Press Spacebar to activate black hole
 	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_SPACE) == GLFW_PRESS)
 	{
@@ -99,14 +100,14 @@ void Model::Update(float dt)
 		blackHole = false;
 	}
 	// Press S to activate alignment
-	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_S) == GLFW_PRESS)
+	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_Z) == GLFW_PRESS)
 	{
 		holeSpeed += 0.01;
 		if (abs(mPosition.z) < 1 && mPosition.x > 0)
 			holeSpeed = 0;
 	}
 	// Press A to deactivate alignment
-	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_A) == GLFW_PRESS)
+	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_X) == GLFW_PRESS)
 	{
 		holeSpeed = mSpeed;
 	}
