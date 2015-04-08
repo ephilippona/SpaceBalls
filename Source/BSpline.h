@@ -65,4 +65,6 @@ private:
     std::vector<glm::vec3> mSamplePoints;
 
     void GenerateSamplePoints();
+
+	float mScale;
 };

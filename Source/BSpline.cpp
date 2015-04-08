@@ -17,6 +17,7 @@ using namespace glm;
 
 BSpline::BSpline() : Model()
 {
+	mScale = 1.0f;
 }
 
 BSpline::~BSpline()
@@ -75,6 +76,15 @@ bool BSpline::ParseLine(const std::vector<ci_string> &token)
     {
         return true;
     }
+	else if (token[0] == "scale")
+	{
+		assert(token.size() > 2);
+		assert(token[1] == "=");
+
+		float x = static_cast<float>(atof(token[2].c_str()));
+		mScale = x;
+		return true;
+	}
 	else if (token[0] == "controlpoint")
 	{
 		assert(token.size() > 4);
@@ -83,7 +93,7 @@ bool BSpline::ParseLine(const std::vector<ci_string> &token)
 		float x = static_cast<float>(atof(token[2].c_str()));
 		float y = static_cast<float>(atof(token[3].c_str()));
 		float z = static_cast<float>(atof(token[4].c_str()));
-		AddControlPoint(glm::vec3(x, y, z));
+		AddControlPoint(glm::vec3(mScale*x, mScale*y, mScale*z));
 		return true;
 	}
     else

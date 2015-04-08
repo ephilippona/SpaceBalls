@@ -20,5 +20,5 @@ glm::mat4 Camera::GetViewProjectionMatrix() const
 
 glm::mat4 Camera::GetProjectionMatrix() const
 {
-	return glm::perspective(55.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+	return glm::perspective(55.0f, 4.0f / 3.0f, 0.1f, 2000.0f);
 }

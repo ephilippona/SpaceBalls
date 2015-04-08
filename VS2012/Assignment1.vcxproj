@@ -122,6 +122,7 @@
     <ClCompile Include="..\Source\Path.cpp" />
     <ClCompile Include="..\Source\RingModel.cpp" />
     <ClCompile Include="..\Source\ShipModel.cpp" />
+    <ClCompile Include="..\Source\Skybox.cpp" />
     <ClCompile Include="..\Source\SphereModel.cpp" />
     <ClCompile Include="..\Source\StaticCamera.cpp" />
     <ClCompile Include="..\Source\EventManager.cpp" />
@@ -145,6 +146,7 @@
     <ClInclude Include="..\Source\Path.h" />
     <ClInclude Include="..\Source\RingModel.h" />
     <ClInclude Include="..\Source\ShipModel.h" />
+    <ClInclude Include="..\Source\Skybox.h" />
     <ClInclude Include="..\Source\SphereModel.h" />
     <ClInclude Include="..\Source\StaticCamera.h" />
     <ClInclude Include="..\Source\EventManager.h" />

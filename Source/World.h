@@ -18,6 +18,7 @@ class MoonModel;
 class Path;
 class ShipModel;
 class BSpline;
+class Skybox;
 
 class World
 {

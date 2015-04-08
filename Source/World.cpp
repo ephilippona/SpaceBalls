@@ -19,6 +19,8 @@
 #include "EarthModel.h"
 #include "RingModel.h"
 #include "ShipModel.h"
+#include "Skybox.h"
+
 
 #include "StaticCamera.h"
 #include "MovableCamera.h"
@@ -346,6 +348,13 @@ void World::LoadScene(const char * scene_path)
 				ring->SetParent(FindModelByName(ring->GetParentName()));
 				mModel.push_back(ring);
 			}
+			else if (result == "skybox")
+			{
+				Skybox* skybox = new Skybox();
+				skybox->Load(iss);
+				skybox->init();
+				mModel.push_back(skybox);
+			}
 			else if (result == "planet") {
 				
 				unsigned int prevShader = Renderer::GetCurrentShader();
@@ -429,7 +438,7 @@ void World::LoadScene(const char * scene_path)
 void World::LoadCameras()
 {      
 	// Setup Camera
-	mCamera.push_back(new StaticCamera(vec3(5.0f, 90.0f, 20.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
+	mCamera.push_back(new StaticCamera(vec3(5.0f, 950.0f, 20.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
     
 	//MovableCamera
 	SphereModel* movableCamera = new SphereModel();
