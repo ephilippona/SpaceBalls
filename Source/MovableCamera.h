@@ -29,11 +29,7 @@ private:
     glm::vec3 mLookAt;
     glm::vec3 mRight;
     glm::vec3 mUp;
-
-    // @TODO - Maybe you should add more camera attributes (Speed, etc)
 	glm::vec3 mDirection; 
-	float mouseSpeed;
-	double xpos;
-	double ypos;
+	
 	
 };

@@ -29,9 +29,6 @@ MovableCamera::~MovableCamera()
 
 void MovableCamera::CalculateCameraBasis()
 {
-	// @TODO
-    // Calculate Camera Vectors (LookAt, Up, Right) from Spherical Coordinates
-    // Convert from Spherical to Cartesian Coordinates to get the lookAt Vector
 	
 	// Direction 
 	mDirection = glm::vec3(
@@ -57,23 +54,16 @@ void MovableCamera::CalculateCameraBasis()
 void MovableCamera::Update(float dt)
 {
     EventManager::DisableMouseCursor();
-    //Initial values
-	mouseSpeed = 0.005f;
-	
-	//Mouse
-	// Get mouse position
-	glfwGetCursorPos(EventManager::GetWindow(), &xpos, &ypos);
-	// Reset mouse position for next frame
-	glfwSetCursorPos(EventManager::GetWindow(), 1024/2, 768/2);
+    
+	mHorizontalAngle += EventManager::GetMouseMotionX() *dt ;
+    mVerticalAngle +=  EventManager::GetMouseMotionY() *dt ;
 
+	mVerticalAngle = clamp(mVerticalAngle, 1.65f, 4.65f);
 	
-	// Compute new orientation
-	if(mVerticalAngle >=-85 && mVerticalAngle <= 85)
-	{
-	mVerticalAngle   += mouseSpeed * float( 768/2 - ypos );
-	}
-	mHorizontalAngle += mouseSpeed * float(1024/2 - xpos );
-	
+	//Test values
+	std::cout<<"vertical angle:  "<< mVerticalAngle <<std::endl;
+
+
 	CalculateCameraBasis();
 }
 

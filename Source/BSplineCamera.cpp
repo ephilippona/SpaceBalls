@@ -59,12 +59,12 @@ void BSplineCamera::Update(float dt)
 	//---------------------------------------------------------------------------------------------------------------------------------
 	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_UP ) == GLFW_PRESS && (deltapos>=9.0f)) //Zoom In
 	{
-		deltapos = deltapos - 0.01f;
+		deltapos = deltapos - 0.05f;
 	}
 
 	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_DOWN ) == GLFW_PRESS && (deltapos<=28.0f)) //Zoom out
 	{
-		deltapos = deltapos + 0.01f;
+		deltapos = deltapos + 0.05f;
 	}
 
 	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_D ) == GLFW_PRESS ) //Default Zoom
@@ -75,8 +75,8 @@ void BSplineCamera::Update(float dt)
 
 
 	//Testing values
-	//std::cout << "mSpeed = "<<mSpeed<<"                       ";
-	std::cout << "DeltaPos = "<<deltapos<<"                    ";
+	std::cout << "mSpeed = "<<mSpeed<<"                     ";
+	std::cout << "DeltaPos = "<<deltapos<<std::endl;
 
 	mSplineParameterT = mSplineParameterT + (0.3 * mSpeed * dt);
 	mPosition = mSpline->GetPosition(mSplineParameterT) + deltapos;
