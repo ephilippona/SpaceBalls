@@ -1,5 +1,5 @@
 // Written by Nicolas Bergeron - Initial implementation
-// Modified by Christopher Maroday
+// Modified by Christopher Maroday - Implemented Spline Camera, added speed control and position control
 
 
 #include "BSplineCamera.h"
@@ -18,7 +18,7 @@ BSplineCamera::BSplineCamera(BSpline* spline, float speed)
 {
     assert(spline != nullptr);
     mPosition = mSpline->GetPosition(mSplineParameterT);
-	deltapos = 25.0f;
+	deltapos = 250.0f;
 
 }
 
@@ -57,19 +57,19 @@ void BSplineCamera::Update(float dt)
 	
 	//Position and Zoom Control
 	//---------------------------------------------------------------------------------------------------------------------------------
-	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_UP ) == GLFW_PRESS && (deltapos>=9.0f)) //Zoom In
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_UP ) == GLFW_PRESS && (deltapos >= 130.0f)) //Zoom In
 	{
-		deltapos = deltapos - 0.05f;
+		deltapos = deltapos - 0.3f;
 	}
 
-	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_DOWN ) == GLFW_PRESS && (deltapos<=28.0f)) //Zoom out
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_DOWN ) == GLFW_PRESS && (deltapos <= 470.0f)) //Zoom out
 	{
-		deltapos = deltapos + 0.05f;
+		deltapos = deltapos + 0.3f;
 	}
 
 	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_D ) == GLFW_PRESS ) //Default Zoom
 	{
-		deltapos = 25.0f;
+		deltapos = 250.0f;
 	}
 	//----------------------------------------------------------------------------------------------------------------------------------
 

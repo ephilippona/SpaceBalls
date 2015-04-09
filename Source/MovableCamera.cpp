@@ -1,5 +1,5 @@
 // Written by Nicolas Bergeron - Initial implementation
-// Modified by Christopher Maroday
+// Modified by Christopher Maroday - Implemented mouse controls, vertical angle clamping, and zoom feature
 
 #include "MovableCamera.h"
 #include "EventManager.h"
@@ -7,7 +7,6 @@
 #include <GLM/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/vector_angle.hpp>
-
 #include <GLFW/glfw3.h>
 #include <algorithm>
 
@@ -21,6 +20,9 @@ MovableCamera::MovableCamera(Model* targetModel)
 {
     assert(mTargetModel != nullptr);
     CalculateCameraBasis();
+
+	//Variable used for zoom
+	camDistance = -350.0f;
 }
 
 MovableCamera::~MovableCamera()
@@ -37,8 +39,26 @@ void MovableCamera::CalculateCameraBasis()
 		cos(mVerticalAngle) * cos(mHorizontalAngle)
 	);
 
+	//Zoom In
+	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_UP ) == GLFW_PRESS && (camDistance <= -104.0f)) 
+	{
+		camDistance = camDistance + 0.6f;
+	}
+
+	//Zoom out
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_DOWN ) == GLFW_PRESS && (camDistance>= -1000.0f)) 
+	{
+		camDistance = camDistance - 0.6f;
+	}
+	
+	//Default Zoom
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_D ) == GLFW_PRESS ) 
+	{
+		camDistance = -350.0f;
+	}
+
 	//Position
-	mPosition = mTargetModel -> GetPosition() + mDirection * (-50.0f);
+	mPosition = mTargetModel -> GetPosition() + mDirection * camDistance;
 
 	// LookAt 
 	mLookAt = mDirection;
@@ -54,16 +74,19 @@ void MovableCamera::CalculateCameraBasis()
 void MovableCamera::Update(float dt)
 {
     EventManager::DisableMouseCursor();
-    
+
+    //Define Angles
 	mHorizontalAngle += EventManager::GetMouseMotionX() *dt ;
     mVerticalAngle +=  EventManager::GetMouseMotionY() *dt ;
 
+	//Clamp
 	mVerticalAngle = clamp(mVerticalAngle, 1.65f, 4.65f);
 	
 	//Test values
-	std::cout<<"vertical angle:  "<< mVerticalAngle <<std::endl;
+	std::cout<<"Vertical Angle:  "<< mVerticalAngle <<"                        ";
+	std::cout<<"Camera Distance:  "<< camDistance <<std::endl;
 
-
+	//Function Call
 	CalculateCameraBasis();
 }
 

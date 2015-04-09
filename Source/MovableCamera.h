@@ -1,5 +1,5 @@
 // Written by Nicolas Bergeron - Initial implementation
-// Modified by Christopher Maroday
+// Modified by Christopher Maroday - Added float camDistance to be used for zoom
 
 #pragma once
 
@@ -23,6 +23,7 @@ private:
     float mHorizontalAngle;
     float mVerticalAngle;
     float mRadius;
+	float camDistance;
     
     // Camera Vectors
     glm::vec3 mPosition;
@@ -30,6 +31,4 @@ private:
     glm::vec3 mRight;
     glm::vec3 mUp;
 	glm::vec3 mDirection; 
-	
-	
 };
