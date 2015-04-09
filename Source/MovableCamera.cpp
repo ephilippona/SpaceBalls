@@ -42,13 +42,13 @@ void MovableCamera::CalculateCameraBasis()
 	//Zoom In
 	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_UP ) == GLFW_PRESS && (camDistance <= -104.0f)) 
 	{
-		camDistance = camDistance + 0.6f;
+		camDistance = camDistance + 0.8f;
 	}
 
 	//Zoom out
 	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_DOWN ) == GLFW_PRESS && (camDistance>= -1000.0f)) 
 	{
-		camDistance = camDistance - 0.6f;
+		camDistance = camDistance - 0.8f;
 	}
 	
 	//Default Zoom

@@ -28,7 +28,7 @@ public:
 
 	
 protected:
-	bool ControlsOn = true;
+	bool ControlsOn;
 	float speedColision;
 
 
