@@ -83,8 +83,8 @@ void BSplineCamera::Update(float dt)
 
 	mLookAt = glm::normalize(mSpline->GetTangent(mSplineParameterT));
 
-	glm::vec3 right = glm::normalize(glm::cross(mLookAt, vec3(0,1,0)));
-	mUp = glm::normalize(glm::cross(right, mLookAt));
+	mRight = glm::normalize(glm::cross(mLookAt, vec3(0,1,0)));
+	mUp = glm::normalize(glm::cross(mRight, mLookAt));
 	
 }
 
