@@ -25,11 +25,15 @@ public:
 	void setControls(bool controls);
 
 	float GetSpeedColision() const		{ return speedColision; }
+	bool Tilting() const { return mTilting;	}
+
+	
 
 	
 protected:
 	bool ControlsOn;
 	float speedColision;
+	bool mTilting;
 
 
 private:

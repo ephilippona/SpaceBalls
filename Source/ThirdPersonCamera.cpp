@@ -27,6 +27,7 @@ ThirdPersonCamera::ThirdPersonCamera(Model* targetModel)
 {
     assert(mTargetModel != nullptr);
     CalculateCameraBasis();
+	mTilting = false;
 }
 
 ThirdPersonCamera::~ThirdPersonCamera()
@@ -72,7 +73,8 @@ void ThirdPersonCamera::Update(float dt)
     else if (mHorizontalAngle <-180)
         mHorizontalAngle +=360;
     
-   
+   std::cout<<dt<<std::endl;
+
     //================
     //Model Movement
     //================
@@ -102,12 +104,15 @@ void ThirdPersonCamera::Update(float dt)
 		if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_A) == GLFW_PRESS){
 			mTargetModel->SetPosition(mTargetModel->GetPosition() - mRight*dt*5.0f);
 			speedColision = length(mRight)*5.0f*dt;
+			mTilting=true;
+		}else
+		{
+			mTilting =false;
 		}
 		// Press D to move Right
 		if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_D) == GLFW_PRESS){
 			mTargetModel->SetPosition(mTargetModel->GetPosition() + mRight*dt*5.0f);
 			speedColision = length(mRight)*5.0f*dt;
-
 		}
 	}
 
