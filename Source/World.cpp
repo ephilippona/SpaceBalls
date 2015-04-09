@@ -455,7 +455,7 @@ void World::LoadCameras()
     BSpline* spline = FindSpline("\"Path3\"");
     if (spline == nullptr)
     {
-        spline = FindSplineByIndex(6);
+        spline = FindSplineByIndex(2);
     }
     
     if (spline != nullptr)
