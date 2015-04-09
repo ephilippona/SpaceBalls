@@ -29,7 +29,12 @@ Model::Model() : mName("UNNAMED"), mPosition(0.0f, 0.0f, 0.0f), mScaling(1.0f, 1
 	mDrawStyle = Standard;
 	
 	// Set some default lighting -- to override from scene file
-	mMaterialCoefficients = vec4(0.25, 0.1, 0.6, 8.0);
+	mMaterialCoefficients = vec4(0.25, 0.003, 0.6, 8.0);
+
+	// Default has no secondary rotation
+	mRotationAngleInDegrees2 = 0;
+	mRotationAxis2 = glm::vec3(0, 1, 0);
+
 }
 
 Model::~Model()
@@ -172,7 +177,7 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 		}
 		else if (token[0] == "rotation")
 		{
-			assert(token.size() > 4);
+			assert(token.size() > 5);
 			assert(token[1] == "=");
 
 			mRotationAxis.x = static_cast<float>(atof(token[2].c_str()));
@@ -181,6 +186,17 @@ bool Model::ParseLine(const std::vector<ci_string> &token)
 			mRotationAngleInDegrees = static_cast<float>(atof(token[5].c_str()));
 
 			glm::normalize(mRotationAxis);
+		}
+		else if (token[0] == "rotation2")
+		{
+			assert(token.size() > 4);
+			assert(token[1] == "=");
+
+			mRotationAxis2.x = static_cast<float>(atof(token[2].c_str()));
+			mRotationAxis2.y = static_cast<float>(atof(token[3].c_str()));
+			mRotationAxis2.z = static_cast<float>(atof(token[4].c_str()));
+
+			glm::normalize(mRotationAxis2);
 		}
 		else if (token[0] == "scaling")
 		{
@@ -282,8 +298,9 @@ glm::mat4 Model::GetWorldMatrix() const
 
 	mat4 t = glm::translate(mat4(1.0f), mPosition);
 	mat4 r = glm::rotate(mat4(1.0f), mRotationAngleInDegrees, mRotationAxis);
+	mat4 r2= glm::rotate(mat4(1.0f), mRotationAngleInDegrees2, mRotationAxis2);
 	mat4 s = glm::scale(mat4(1.0f), mScaling);
-	worldMatrix = t * r * s;
+	worldMatrix = t * r2 * r * s;
 
 	return worldMatrix;
 }

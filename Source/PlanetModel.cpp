@@ -71,16 +71,16 @@ void PlanetModel::init() {
 void PlanetModel::Update(float dt)
 {
 		//rotate
-		mRotationAngleInDegrees += spin_speed;
-	    if(mRotationAngleInDegrees>360.f)
+		mRotationAngleInDegrees2 += spin_speed;
+	    if(mRotationAngleInDegrees2>360.f)
 		{
 		//printf("angle reset\n");
 			//mRotationAngleInDegrees-=350;
-			mRotationAngleInDegrees=1;
+			mRotationAngleInDegrees2=1;
 		}
-		if(mRotationAngleInDegrees<0.f)
+		if(mRotationAngleInDegrees2<0.f)
 		{
-			mRotationAngleInDegrees=359;
+			mRotationAngleInDegrees2=359;
 		}
 	Model::Update(dt);
 }

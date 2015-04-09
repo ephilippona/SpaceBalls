@@ -83,8 +83,8 @@ void MovableCamera::Update(float dt)
 	mVerticalAngle = clamp(mVerticalAngle, 1.65f, 4.65f);
 	
 	//Test values
-	std::cout<<"Vertical Angle:  "<< mVerticalAngle <<"                        ";
-	std::cout<<"Camera Distance:  "<< camDistance <<std::endl;
+	//std::cout<<"Vertical Angle:  "<< mVerticalAngle <<"                        ";
+	//std::cout<<"Camera Distance:  "<< camDistance <<std::endl;
 
 	//Function Call
 	CalculateCameraBasis();

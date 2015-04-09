@@ -79,7 +79,7 @@ void ThirdPersonCamera::Update(float dt)
         
     // Press W to move Forward
     if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_W ) == GLFW_PRESS)
-        mTargetModel->SetPosition(mTargetModel->GetPosition() + mLookAt*5.0f*dt);
+        mTargetModel->SetPosition(mTargetModel->GetPosition() + mLookAt*20.0f*dt);
     
     // Press S to move Backward
     if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_S ) == GLFW_PRESS)

@@ -61,7 +61,9 @@ protected:
 	glm::vec3 mPosition;
 	glm::vec3 mScaling;
 	glm::vec3 mRotationAxis;
+	glm::vec3 mRotationAxis2;
 	float     mRotationAngleInDegrees;
+	float     mRotationAngleInDegrees2;
 	float	  spin_speed;
 
 	// Makes the model follow a path defined by a set of waypoints
