@@ -1,8 +1,9 @@
 # This is a comment
 [Skybox]
-name = "Skybox"
+name = Skybox
 position = 0.0 0.0 0.0
 scaling = 1000.0 1000.0 1000.0
+lighting = 1.0 1.0 1.0 1.0
 rotation_speed = 0.0f
 boundpath = "Center"
 pathspeed = 0.0

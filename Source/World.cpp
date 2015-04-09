@@ -180,9 +180,13 @@ void World::Draw()
 
 		//if (strcmp((*it)->GetName().c_str(), earth) == 0) {
 		if ((*it)->GetDrawType() == Planet) {
-
 			unsigned int prevShader = Renderer::GetCurrentShader();
-			Renderer::SetShader(SHADER_PLANET);
+			if((*it)->GetName()=="Skybox"){
+				Renderer::SetShader(SHADER_TEXTURE);
+			}
+			else{
+				Renderer::SetShader(SHADER_PLANET);
+			}
 			glUseProgram(Renderer::GetShaderProgramID());
 
 			mat4 worldMatrix = (*it)->GetWorldMatrix();

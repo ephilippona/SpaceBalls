@@ -85,6 +85,10 @@ void Renderer::Initialize()
 				LoadShaders(shaderPathPrefix + "NormalMapping.vertexshader",
 							shaderPathPrefix + "NormalMapping.fragmentshader")
 								);
+	sShaderProgramID.push_back(
+				LoadShaders(shaderPathPrefix + "TransformVertexShader.vertexshader",
+							shaderPathPrefix + "TextureFragmentShader.fragmentshader")
+								);
 	sCurrentShader = 0;
 
 }
