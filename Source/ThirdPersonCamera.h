@@ -21,7 +21,16 @@ public:
 
     virtual void Update(float dt);
     virtual glm::mat4 GetViewMatrix() const;
+
+	void setControls(bool controls);
+
+	float GetSpeedColision() const		{ return speedColision; }
+
 	
+protected:
+	bool ControlsOn = true;
+	float speedColision;
+
 
 private:
     virtual void CalculateCameraBasis();
@@ -37,6 +46,7 @@ private:
     glm::vec3 mLookAt;
     glm::vec3 mRight;
     glm::vec3 mUp;
+
     
     
     std::vector<Model*> mModels;

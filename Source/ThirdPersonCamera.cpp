@@ -77,30 +77,39 @@ void ThirdPersonCamera::Update(float dt)
     //Model Movement
     //================
         
-    // Press W to move Forward
-    if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_W ) == GLFW_PRESS)
-        mTargetModel->SetPosition(mTargetModel->GetPosition() + mLookAt*20.0f*dt);
-    
-    // Press S to move Backward
-    if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_S ) == GLFW_PRESS)
-        mTargetModel->SetPosition(mTargetModel->GetPosition() - mLookAt*5.0f*dt);
-    
-    // Press E to move Up
-    if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_E ) == GLFW_PRESS)
-        mTargetModel->SetPosition(mTargetModel->GetPosition() + mUp*dt*5.0f);
-    
-    // Press Q to move Down
-    if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_Q ) == GLFW_PRESS)
-        mTargetModel->SetPosition(mTargetModel->GetPosition() - mUp*dt*5.0f);
-    
-    // Press A to move Left
-    if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_A ) == GLFW_PRESS)
-    mTargetModel->SetPosition(mTargetModel->GetPosition() - mRight*dt*5.0f);
-    
-    // Press D to move Right
-    if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_D ) == GLFW_PRESS)
-    mTargetModel->SetPosition(mTargetModel->GetPosition() + mRight*dt*5.0f);
-    
+	if (ControlsOn){
+		// Press W to move Forward
+		if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_W) == GLFW_PRESS){
+			mTargetModel->SetPosition(mTargetModel->GetPosition() + mLookAt*25.0f*dt);
+			speedColision = length(mLookAt)*25.0f*dt;
+		}
+		// Press S to move Backward
+		if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_S) == GLFW_PRESS){
+			mTargetModel->SetPosition(mTargetModel->GetPosition() - mLookAt*5.0f*dt);
+			speedColision = length(mLookAt)*5.0f*dt;
+		}
+		// Press E to move Up
+		if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_E) == GLFW_PRESS){
+			mTargetModel->SetPosition(mTargetModel->GetPosition() + mUp*dt*5.0f);
+			speedColision = length(mUp)*5.0f*dt;
+		}
+		// Press Q to move Down
+		if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_Q) == GLFW_PRESS){
+			mTargetModel->SetPosition(mTargetModel->GetPosition() - mUp*dt*5.0f);
+			speedColision = length(mUp)*5.0f*dt;
+		}
+		// Press A to move Left
+		if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_A) == GLFW_PRESS){
+			mTargetModel->SetPosition(mTargetModel->GetPosition() - mRight*dt*5.0f);
+			speedColision = length(mRight)*5.0f*dt;
+		}
+		// Press D to move Right
+		if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_D) == GLFW_PRESS){
+			mTargetModel->SetPosition(mTargetModel->GetPosition() + mRight*dt*5.0f);
+			speedColision = length(mRight)*5.0f*dt;
+
+		}
+	}
 
 	
 	
@@ -117,4 +126,9 @@ void ThirdPersonCamera::Update(float dt)
 glm::mat4 ThirdPersonCamera::GetViewMatrix() const
 {
     return glm::lookAt(mPosition, mPosition + mLookAt, mUp);
+}
+
+void ThirdPersonCamera::setControls(bool controls){
+
+	ControlsOn = controls;
 }

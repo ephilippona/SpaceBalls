@@ -402,7 +402,7 @@ scaling = 40.0 40.0 40.0
 
 [Ship]
 name = "Ship"
-position = 0.0 0.0 0.0
+position = 100.0 -20.0 0.0
 object = Sample_Ship.obj
 texture = sh3.bmp
 texture_s = sh3_s.bmp

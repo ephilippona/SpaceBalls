@@ -133,16 +133,30 @@ void World::Update(float dt)
 	for (vector<Model*>::iterator it = mModel.begin(); it < mModel.end(); ++it)
 	{
 		(*it)->Update(dt);  
-		
-		
-	/*	
-		if(glm::distance((*it)->GetPosition(), ship->GetPosition())< (ship->GetScaling().x+(*it)->GetScaling().x)){
-        
-               vec3 temp = ship->GetPosition() - (*it)->GetPosition();
-        
-				ship->SetPosition(ship->GetPosition() + (temp/20.0f));
-        
-       }*/
+	
+		mShipCamera->setControls(true);
+
+		float radius = (*it)->GetScaling().x / 2.0f;
+
+		if ((*it)->GetScaling().x != 1000.0f){
+
+
+			if (glm::distance((*it)->GetPosition(), mShip->GetPosition()) < (mShipCamera->GetSpeedColision() + radius)){
+
+				vec3 temp = mShip->GetPosition() - (*it)->GetPosition();
+
+				//mShip->SetPosition(mShip->GetPosition() + (temp / 20.0f));
+				mShipCamera->setControls(false);
+				
+				if (mShip->GetPosition().y < 0)	
+					mShip->SetPosition(mShip->GetPosition() - glm::vec3(0.0f, radius / 100.0f, 0.0f));
+				else
+					mShip->SetPosition(mShip->GetPosition() + glm::vec3(0.0f, radius / 100.0f, 0.0f));
+
+
+				
+			}
+		}
 	}
 
 
@@ -465,7 +479,8 @@ void World::LoadCameras()
 
     // Ship Character controlled with Third Person Camera
 
-    mCamera.push_back(new ThirdPersonCamera(mShip));
+	mShipCamera = new ThirdPersonCamera(mShip);
+    mCamera.push_back(mShipCamera);
 	
 
 

@@ -19,6 +19,7 @@ class Path;
 class ShipModel;
 class BSpline;
 class Skybox;
+class ThirdPersonCamera;
 
 class World
 {
@@ -41,6 +42,7 @@ public:
     Model* FindModelByIndex(unsigned int index);
 	Model* FindModelByName(ci_string name);
 	ShipModel* mShip;
+	ThirdPersonCamera* mShipCamera;
 
 private:
     static World* instance;
