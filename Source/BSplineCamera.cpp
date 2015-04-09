@@ -57,12 +57,12 @@ void BSplineCamera::Update(float dt)
 	
 	//Position and Zoom Control
 	//---------------------------------------------------------------------------------------------------------------------------------
-	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_UP ) == GLFW_PRESS && (deltapos >= 130.0f)) //Zoom In
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_UP ) == GLFW_PRESS && (deltapos >= 100.0f)) //Zoom In
 	{
 		deltapos = deltapos - 0.3f;
 	}
 
-	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_DOWN ) == GLFW_PRESS && (deltapos <= 470.0f)) //Zoom out
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_DOWN ) == GLFW_PRESS && (deltapos <= 280.0f)) //Zoom out
 	{
 		deltapos = deltapos + 0.3f;
 	}
