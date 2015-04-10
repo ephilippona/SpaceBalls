@@ -162,7 +162,7 @@ glm::vec3 BSpline::GetVelocity(float t, const vec3& p1, const vec3& p2, const ve
     return vec3(vec4(product.x * p1 + product.y * p2 + product.z * p3 + product.w * p4, 1.0f) );
 }
 
-//Get Tangent-Chris
+//Get Tangent(to be used in BSplineCamera)-----Christopher Maroday
 glm::vec3 BSpline::GetTangent(float t)
 {
     // The value of t includes where on the spline you are.

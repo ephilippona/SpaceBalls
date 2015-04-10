@@ -1,4 +1,4 @@
-
+// Written by Nicolas Bergeron - Initial implementation
 
 #include "StaticCamera.h"
 #include <glm/gtc/matrix_transform.hpp>

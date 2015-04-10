@@ -1,4 +1,4 @@
-
+// Written by Nicolas Bergeron - Initial implementation
 
 #pragma once
 

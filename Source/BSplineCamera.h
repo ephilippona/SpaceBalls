@@ -1,5 +1,5 @@
 // Written by Nicolas Bergeron - Initial implementation
-// Modified by Christopher Maroday - Added variable deltapos and vector mRight
+// Modified by Christopher Maroday - Added float deltapos and vector mRight
 
 #pragma once
 

@@ -480,17 +480,16 @@ void World::LoadScene(const char * scene_path)
 
 void World::LoadCameras()
 {      
-	// Setup Camera
+	// Setup Camera----Christopher Maroday
 	mCamera.push_back(new StaticCamera(vec3(5.0f, 950.0f, 20.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f)));
     
-	//MovableCamera
+	//MovableCamera-----Christopher Maroday
 	SphereModel* movableCamera = new SphereModel();
     movableCamera->SetPosition(vec3(0.0f, 0.5f, 0.0f));
     mCamera.push_back(new MovableCamera(movableCamera));
     mModel.push_back(movableCamera);
 
-
-     // BSpline Camera
+	// BSpline Camera-----Christopher Maroday
     BSpline* spline = FindSpline("\"Path6\"");
     if (spline == nullptr)
     {
