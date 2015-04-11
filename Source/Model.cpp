@@ -41,6 +41,9 @@ Model::~Model()
 {
 }
 
+
+//MODEL UPDATE DONE BY PHILIP RUSSO: 6348157 (BLACK HOLE SCENARIO AND PLANET ALIGNMENT)
+// AS WELL AS STANDARD PLANET MOVEMENT
 void Model::Update(float dt)
 {
     if(mPath != nullptr)
@@ -66,9 +69,10 @@ void Model::Update(float dt)
 		direction = target - mSpline->GetPosition(mSplineParameterT);
 		float distanceToTarget = length(direction);
 
+		//BLACK HOLE SCENARIO
 		if (blackHole)
 		{
-			holeFactor += 0.05f;
+			holeFactor += 0.03f;
 			holeSpeed += 0.002f;
 
 			if (abs(mPosition.x) > 15.0f || abs(mPosition.z) > 15.0f)
@@ -86,6 +90,7 @@ void Model::Update(float dt)
 				holeSpeed = mSpeed;
 			}
 		}
+		//STANDARD PLANET MOVEMENT
 		else if(align == false)
 		{
 			//holeSpeed = mSpeed;
@@ -105,7 +110,7 @@ void Model::Update(float dt)
 	{
 		blackHole = false;
 	}
-	// Press Z to activate alignment
+	// Press Z to activate PLANET ALIGNMENT
 	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_Z) == GLFW_PRESS)
 	{
 		holeSpeed += 0.001;
@@ -116,7 +121,7 @@ void Model::Update(float dt)
 			align = true;
 		}
 	}
-	// Press A to deactivate alignment
+	// Press X to deactivate alignment
 	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_X) == GLFW_PRESS)
 	{
 		align = false;
