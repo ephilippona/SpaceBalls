@@ -4,6 +4,8 @@
 // Created by Nicolas Bergeron on 8/7/14.
 // Updated by Gary Chang on 14/1/15
 //
+// Modified By Eric Philippona (6225497) -- Added Collision detection and spaceship loading
+//
 // Copyright (c) 2014-2015 Concordia University. All rights reserved.
 //
 
@@ -41,6 +43,7 @@ World::World()
 {
     instance = this;
 	collisionApproaching = false;
+	controlsOn = true;
 }
 
 World::~World()
@@ -127,61 +130,66 @@ void World::Update(float dt)
 		Renderer::SetShader(SHADER_BLUE);
 	}
 
-	//// Update current Camera
-	if(collisionApproaching)
-		mCamera[mCurrentCamera]->Update(dt/3);
-	else
-		mCamera[mCurrentCamera]->Update(dt);
-/*
+	
+
 	if(glfwGetKey(EventManager::GetWindow(), GLFW_KEY_A ) == GLFW_PRESS)
 		mShip->SetRotation(glm::vec3(1,0,0),50.0f);
 	if(glfwGetKey(EventManager::GetWindow(), GLFW_KEY_D ) == GLFW_PRESS)
-		mShip->SetRotation(glm::vec3(1,0,0),-50.0f);*/
+		mShip->SetRotation(glm::vec3(1,0,0),-50.0f);
 
 	bool collisionIsClose = false;
+
+	std::cout << controlsOn << std::endl;
+
+	controlsOn = true;
 
 	// Update models
 	for (vector<Model*>::iterator it = mModel.begin(); it < mModel.end(); ++it)
 	{
 		(*it)->Update(dt);  
-	
-		mShipCamera->setControls(true);
-
-		
 
 		//Exclude skybox from collision detection
-		if ((*it)->GetScaling().x != 1000.0f){
+		if ((*it)->GetScaling().x != 1000.0f && (*it)->GetScaling().x != 1.0f){
 
-			//Get Radius of each sphere
+			//Get Radius of each sphere (Since all models are spheres, the scaling divided by 2 is the radius)
 			float radius = (*it)->GetScaling().x / 2.0f;
 			
 			//Check for collision
-			if (glm::distance((*it)->GetPosition(), mShip->GetPosition()) < (mShipCamera->GetSpeedColision() + radius)){
-
+			if (glm::distance((*it)->GetPosition(), mShip->GetPosition()) < (length(mShipCamera->GetSpeedColision()) + radius)){
+				
 				//Get vector from plannet to the Ship
 				vec3 temp = mShip->GetPosition() - (*it)->GetPosition();
 
 				//Turn off user controls until collision is handled
-				mShipCamera->setControls(false);
-				
+				controlsOn = false; 
+
 				//collision handling (go over/ under plannet)
-				if (mShip->GetPosition().y < 0)	
-					mShip->SetPosition(mShip->GetPosition() - glm::vec3(0.0f, radius / 500.0f, 0.0f));
-				else
-					mShip->SetPosition(mShip->GetPosition() + glm::vec3(0.0f, radius / 500.0f, 0.0f));
-			
+				if (mShip->GetPosition().y < 0)	{
+					mShip->SetPosition(mShip->GetPosition() - glm::vec3(0.0f, radius / 200.0f, 0.0f));
+				}
+				else{
+					mShip->SetPosition(mShip->GetPosition() + glm::vec3(0.0f, radius / 200.0f, 0.0f));
+				}
 			}
-			
 			if (glm::distance((*it)->GetPosition(), mShip->GetPosition()) < (1.3f * radius)){
 				collisionIsClose = true;
-				std::cout<<collisionApproaching<<std::endl;
 			}
 
 		}
 	}
-
 	collisionApproaching = collisionIsClose;
-	std::cout<<collisionApproaching<<std::endl;
+
+	//// Update current Camera
+
+		//First check if controls should be on
+		if (!controlsOn)
+			mCamera[mCurrentCamera]->Update(0.0f);
+		//Then check if collision is approaching (in which case the speed is divided by 3)
+		else if (collisionApproaching)
+			mCamera[mCurrentCamera]->Update(dt / 3);
+		else
+			mCamera[mCurrentCamera]->Update(dt);
+
 
 
 

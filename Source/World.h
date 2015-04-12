@@ -47,7 +47,7 @@ public:
 private:
     static World* instance;
 	bool collisionApproaching;
-
+	bool controlsOn;
 	std::vector<Model*> mModel;
     std::vector<Path*> mPath;
     std::vector<BSpline*> mSpline;

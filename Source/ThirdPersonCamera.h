@@ -21,25 +21,21 @@ public:
 
     virtual void Update(float dt);
     virtual glm::mat4 GetViewMatrix() const;
-
-	void setControls(bool controls);
-
-	float GetSpeedColision() const		{ return speedColision; }
+	glm::vec3 GetSpeedColision() const		{ return speedColision; }
 	bool Tilting() const { return mTilting;	}
 
 	
 
 	
 protected:
-	bool ControlsOn;
-	float speedColision;
+	glm::vec3 speedColision;
 	bool mTilting;
 
 
 private:
     virtual void CalculateCameraBasis();
     Model* mTargetModel;
-    
+
     // Cartesian Coordinates
     float mHorizontalAngle;
     float mVerticalAngle;
