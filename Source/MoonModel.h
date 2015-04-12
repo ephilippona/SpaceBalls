@@ -1,4 +1,5 @@
-
+//Written By Daniel Montalvo - initial implementation including rotation around parent
+//Modified By Philip Eloy - Self rotation, texturing, draw
 
 #pragma once
 
@@ -41,9 +42,6 @@ private:
 	std::vector<glm::vec3> normals;
 
     unsigned int mVertexArrayID;
-    //unsigned int mVertexBufferID;
-	//unsigned int mVertexBuffer;
-   // unsigned int numOfVertices;
 
 	// Buffers for holding the vertex data
 	unsigned int vertexbuffer;

@@ -75,8 +75,8 @@ void BSplineCamera::Update(float dt)
 
 
 	//Testing values
-	std::cout << "mSpeed = "<<mSpeed<<"                     ";
-	std::cout << "DeltaPos = "<<deltapos<<std::endl;
+	//std::cout << "mSpeed = "<<mSpeed<<"                     ";
+	//std::cout << "DeltaPos = "<<deltapos<<std::endl;
 
 	mSplineParameterT = mSplineParameterT + (0.3 * mSpeed * dt);
 	mPosition = mSpline->GetPosition(mSplineParameterT) + deltapos;

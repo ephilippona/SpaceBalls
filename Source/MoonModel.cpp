@@ -1,4 +1,5 @@
-
+//Written By Daniel Montalvo - initial implementation including rotation around parent
+//Modified By Philip Eloy - Self rotation, texturing, draw
 
 #include "MoonModel.h"
 #include "Renderer.h"
@@ -10,10 +11,8 @@ using namespace glm;
 
 MoonModel::MoonModel(vec3 size) : Model()
 { 
-
 	mDrawStyle = Planet;
 	increment = 0.0f;
-
 }
 
 MoonModel::~MoonModel()
@@ -95,7 +94,7 @@ void MoonModel::SetParent(Model* m)
 {
     mParent = m;
 	mParent->IncrementNumChild();
-	// TODO revise - Symmetrical type of dispersing the init position of the moons. Support up to 4-5 moons. 
+	// Symmetrical type of dispersing the init position of the moons. Support up to 4-5 moons. 
 	switch (mParent->GetNumChildren())
 	{
 		case 1:{

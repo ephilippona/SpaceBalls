@@ -1,8 +1,7 @@
-
-
+// Written by Daniel Montalvo (6627781) - Declaration of the skybox model based on Model.h
+// Based on model implementation written by Nicolas Bergeron
 #pragma once
 
-//#include "SphereModel.h"
 #include "ParsingHelper.h"
 #include <GL/glew.h>
 #include <GLM/glm.hpp>
@@ -28,7 +27,6 @@ public:
 	void init();
 	void Draw();
 	GLuint TextureID;
-	void Load(ci_istringstream& iss);
 	virtual void Update(float dt);
 protected:
     bool ParseLine(const std::vector<ci_string> &token);
