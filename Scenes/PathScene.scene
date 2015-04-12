@@ -1,4 +1,4 @@
-# Main Scene
+# This is a comment
 [Skybox]
 name = Skybox
 position = 0.0 0.0 0.0
@@ -8,9 +8,9 @@ rotation_speed = 0.0f
 boundpath = "Center"
 pathspeed = 0.0
 object = cube.obj
-textureTop = skybox2.bmp
-textureBottom = skybox2.bmp
-textureFront = skybox2.bmp
+textureTop = skybox.bmp
+textureBottom = skybox.bmp
+textureFront = skybox.bmp
 textureBack = skybox.bmp
 textureLeft = skybox.bmp
 textureRight = skybox.bmp

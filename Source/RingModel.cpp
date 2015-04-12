@@ -1,5 +1,4 @@
-// Written By Steven Fagen - Initial Implementation
-// Modified by Daniel Montalvo - Definition of methods Update(), SetParent() and ParseLine()
+
 
 #include "RingModel.h"
 #include "Renderer.h"
@@ -81,8 +80,12 @@ RingModel::RingModel(vec3 size) : Model()
 	glBindBuffer(GL_ARRAY_BUFFER, mColourBufferID);
 	glBufferData(GL_ARRAY_BUFFER, NUMBER_OF_VERTICES * sizeof(glm::vec3), &colourBuffer[0], GL_STATIC_DRAW);
 
+	// TODO - add parent -> Validate new way to config
+	//mPosition = vec3(6,3,6);
+	//mScaling = vec3(4,4,4);
 	mRotationAxis = vec3(0,1,0);
 	mRotationAngleInDegrees = 0;
+	//mName = "Rings";
 }
 
 RingModel::~RingModel()

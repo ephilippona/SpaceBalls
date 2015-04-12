@@ -186,11 +186,9 @@
     <ClInclude Include="..\Source\ShipModel.h">
       <Filter>Source Files\Model</Filter>
     </ClInclude>
+    <ClInclude Include="..\Source\RingModel.h" />
     <ClInclude Include="..\Source\Skybox.h">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\RingModel.h">
-      <Filter>Source Files\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

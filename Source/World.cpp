@@ -5,7 +5,6 @@
 // Updated by Gary Chang on 14/1/15
 //
 // Modified By Eric Philippona (6225497) -- Added Collision detection and spaceship loading
-// Modified By Daniel Montalvo (6627781) -- Added FindModelByName and LoadScene moon/ring/skybox
 //
 // Copyright (c) 2014-2015 Concordia University. All rights reserved.
 //
@@ -121,6 +120,18 @@ void World::Update(float dt)
         }
     }
 
+	// Spacebar to change the shader
+	if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_0 ) == GLFW_PRESS)
+	{
+		Renderer::SetShader(SHADER_SOLID_COLOR);
+	}
+	else if (glfwGetKey(EventManager::GetWindow(), GLFW_KEY_9 ) == GLFW_PRESS)
+	{
+		Renderer::SetShader(SHADER_BLUE);
+	}
+
+	
+
 	if(glfwGetKey(EventManager::GetWindow(), GLFW_KEY_A ) == GLFW_PRESS)
 		mShip->SetRotation(glm::vec3(1,0,0),50.0f);
 	if(glfwGetKey(EventManager::GetWindow(), GLFW_KEY_D ) == GLFW_PRESS)
@@ -128,7 +139,7 @@ void World::Update(float dt)
 
 	bool collisionIsClose = false;
 
-	//std::cout << controlsOn << std::endl;
+	std::cout << controlsOn << std::endl;
 
 	controlsOn = true;
 
