@@ -1,3 +1,7 @@
+// COMP 371 Assignment Framework
+//
+// Modified by Daniel Montalvo - Added Shader texture to vector for skybox
+//
 
 #include "Renderer.h"
 

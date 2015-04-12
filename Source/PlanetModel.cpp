@@ -234,7 +234,7 @@ void PlanetModel::computeLightSources(vec3 lightOrigin, vec3 planetOrigin, float
 
 			outputBuf[counter] = vec3(lightLocationWorldspace.x, lightLocationWorldspace.y, lightLocationWorldspace.z);
 
-			std::cout << "Worldspace coordinates: X: " << lightLocationWorldspace.x << ", Y: " << lightLocationWorldspace.y << " Z: " << lightLocationWorldspace.z <<std::endl;
+			//std::cout << "Worldspace coordinates: X: " << lightLocationWorldspace.x << ", Y: " << lightLocationWorldspace.y << " Z: " << lightLocationWorldspace.z <<std::endl;
 			counter++;
 
 		}

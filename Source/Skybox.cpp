@@ -1,14 +1,15 @@
-
+// Written by Daniel Montalvo (6627781) - Definition of the skybox model based on Model.h - Load texture/skybox specific parsing/bind texture
+// Based on model implementation written by Nicolas Bergeron and Model Drawing
 
 #include "Skybox.h"
 #include "Renderer.h"
 #include <GL/glew.h>
 #include "texture.hpp"
-//#include <iostream>
 
 
 Skybox::Skybox()
 { 
+	//For world.cpp draw, it'll however use the non-lighting shader.
 	mDrawStyle = Planet;
 }
 
@@ -60,8 +61,9 @@ void Skybox::Draw()
 	// Draw the Vertex Buffer
 	// Note this draws a unit Cube
 	// The Model View Projection transforms are computed in the Vertex Shader
-	glDisable(GL_LIGHTING); //turn off lighting, when making the skybox
-	glDisable(GL_DEPTH_TEST);       //turn off depth texting
+	glDisable(GL_LIGHTING); 
+	glDisable(GL_DEPTH_TEST);
+	glDepthMask(0);
 	glBindVertexArray(mVertexArrayID);
 
 	GLuint WorldMatrixLocation = glGetUniformLocation(Renderer::GetShaderProgramID(), "WorldTransform");
@@ -108,14 +110,14 @@ void Skybox::Draw()
 		(void*)0                          // array buffer offset
 		);
 
-	// Draw the triangle !
-	glDepthMask(0);
+	// Draw the triangles, every six vertices(=1 cube side since we're using GL_TRIANGLES)
+	// We bind another texture loaded during the initialization.
+	
 	for (int i=0; i < (vertices.size()/6); i++){
 		glBindTexture(GL_TEXTURE_2D, skybox[i]);
-		int start = i * 6;
 		glDrawArrays(GL_TRIANGLES, i*6, 6);
 	}
-	glDepthMask(1);
+	
 	
 
 	glDisableVertexAttribArray(2);
@@ -124,6 +126,7 @@ void Skybox::Draw()
 
 	// Set the texture for subsequent draws
 	glBindTexture(GL_TEXTURE_2D, 0);
+	glDepthMask(1);
 	glEnable(GL_LIGHTING);  
 	glEnable(GL_DEPTH_TEST);
 }
@@ -132,27 +135,6 @@ void Skybox::Update(float dt){
 	
 }
 
-void Skybox::Load(ci_istringstream& iss)
-{
-	ci_string line;
-
-	// Parse model line by line
-	while (std::getline(iss, line))
-	{
-		// Splitting line into tokens
-		ci_istringstream strstr(line);
-		istream_iterator<ci_string, char, ci_char_traits> it(strstr);
-		istream_iterator<ci_string, char, ci_char_traits> end;
-		vector<ci_string> token(it, end);
-
-		if (ParseLine(token) == false)
-		{
-			fprintf(stdout, "Error loading scene file... token:  %s!", line);
-			getchar();
-			exit(-1);
-		}
-	}
-}
 /*
 * Obtain parameter from the scene file unique to the skybox
 */

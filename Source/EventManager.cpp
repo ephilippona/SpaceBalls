@@ -1,4 +1,4 @@
-
+// COMP 371 Assignment Framework
 
 #include "EventManager.h"
 #include "Renderer.h"

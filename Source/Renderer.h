@@ -1,4 +1,7 @@
-
+// COMP 371 Assignment Framework
+//
+// Modified by Daniel Montalvo - Added Shader texture enum for skybox
+//
 
 #pragma once
 
